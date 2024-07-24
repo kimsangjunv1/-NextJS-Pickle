@@ -1,0 +1,94 @@
+// 모든 페이지 푸터
+footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3.2rem 0;
+    box-sizing: border-box;
+
+    .footer_inner {
+        height: 100%;
+        max-width: var(--pc);
+        width: 100%;
+        margin: 0 auto;
+        padding: var(--page-between-padding);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        > article {
+            width: 50%;
+            display: flex;
+            gap: 10px;
+
+            // 회사 로고
+            &:first-child {
+                > img {
+                    width: 10rem;
+                    filter: grayscale(1);
+                }
+            }
+
+            // 메뉴 및 회사 정보
+            &:last-child {
+                justify-content: space-between;
+
+                > section {
+                    // 메뉴
+                    &:first-child {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+
+                        a {
+                            text-transform: uppercase;
+                            text-decoration: none;
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
+                    // 회사 정보
+                    &:last-child {
+                        > section {
+                            margin-bottom: 2.6rem;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.4rem;
+
+                            > h5 {
+                                margin-bottom: 0.4rem;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 섹션 공통 스타일
+            > section {
+                h5,
+                p {
+                    font-family: "LineSeedKR";
+                }
+                p {
+                    color: white;
+                }
+
+                h5 {
+                    color: rgba(255, 255, 255, 0.5);
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

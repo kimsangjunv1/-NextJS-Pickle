@@ -1,0 +1,32 @@
+// 랜딩페이지 섹션별 가림막
+.domino {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    // 각 도형 스타일
+    .domino-rect {
+        display: flex;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
+
+        // 진행 방향이 반대로 설정되었을경우
+        &.reverse {
+            flex-direction: row-reverse;
+        }
+
+        // 슬라이드 되는 도형들의 스타일
+        > div {
+            width: 25%;
+            height: 100%;
+            background: black;
+            transition: 0.5s ease-in-out transform;
+        }
+    }
+}

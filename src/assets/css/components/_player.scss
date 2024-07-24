@@ -1,0 +1,461 @@
+.player {
+    // 최대
+    &#max {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        transform: translateY(0vh);
+        // z-index: 1000;
+        // box-shadow: 0 -20px 100px 100px white ;
+
+        > .player-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--section-space);
+
+            > article {
+
+                // 영역 : 플레이어
+                &#zonePlay {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    > section {
+                        
+                        // 앨범아트
+                        &.albumart {
+                            margin-bottom: 7.2rem;
+
+                            // 설명
+                            > .desc {
+                                text-align: center;
+                                font-family: "dotmatrix";
+                                color: var(--color-gray-900);
+                                margin-bottom: calc(1.6rem + 0.8rem);
+                            }
+                            
+                            // 앨범 아트
+                            > .container-image {
+                                position: relative;
+                                border: 1px solid var(--color-gray-900);
+                                border-radius: 100%;
+                                padding: 0.8rem;
+                                width: 300px;
+                                height: 300px;
+
+                                > img {
+                                    width: 100%;
+                                    border-radius: 1000px;
+                                    box-shadow: 0 0 100px 0px var(--color-gray-200);
+                                }
+
+                                &::after,
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    border-radius: 100%;
+                                }
+
+                                &::after {
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    height: 0.8rem;
+                                    width: 0.8rem;
+                                    background: white;
+                                    border: 4px solid var(--color-brand-500);
+                                }
+                                &::before {
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+
+                            // 뒷 배경
+                            > .backdrop {
+                                overflow: hidden;
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 100%;
+                                height: 50vh;
+                                z-index: -1;
+
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: linear-gradient(0deg, #fff 30%, #ffffff80);
+                                    backdrop-filter: blur(40px);
+                                    -webkit-backdrop-filter: blur(40px);
+                                }
+        
+                                > img {
+                                    width: 100%;
+                                    height: 100%;
+
+                                    object-position: center;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
+
+                        // 진행시간
+                        &.indicator {
+                            width: 100%;
+                            margin-bottom: 1.6rem;
+
+                            > section {
+                                &.progress {
+                                    width: 100%;
+                                    height: 4px;
+                                    background: #82828250;
+                        
+                                    > .bar {
+                                        width: 11%;
+                                        height: 100%;
+                                        background: var(--color-brand-500);
+                    
+                                        position: relative;
+                                        transition: 0.25s width;
+                    
+                                        &::after {
+                                            content: "";
+                                            position: absolute;
+                                            top: -2rem;
+                                            right: 0px;
+                                            width: 2px;
+                                            height: 1.2rem;
+                                            border-radius: 100px;
+                                            background: var(--color-brand-500);
+                                        }
+                                    }
+                                }
+
+                                &.playtime {
+                                    margin-top: 0.4rem;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    width: 100%;
+
+                                    > p {
+                                        &:last-child {
+                                            color: var(--color-brand-500);
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+
+                        // 유저 컨트롤 영역
+                        &.control {
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+
+                            > section {
+                                &.info {
+                                    > h2 {
+                                        font-size: 1.6rem;
+                                        margin-bottom: 0.4rem;
+                                    }
+
+                                    > p {
+                                        font-size: 1.4rem;
+                                    }
+                                }
+        
+                                &.action {
+                                    > article {
+                                        > button {
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                // 영역 : 리스트
+                &#zoneList {
+                    
+                    > h5 {}
+                    > .list {
+                        height: calc(70vh - var(--header-height) - 1.6rem);
+                        overflow: auto;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.4rem;
+
+                        // 항목
+                        > .item {
+                            display: flex;
+                            align-items: center;
+                            padding: 0.4rem;
+                            border: 1px solid transparent;
+                            transition: 0.25s background;
+                            border-radius: 0.4rem;
+
+                            &.active {
+                                border: 1px solid black;
+
+                                > article {
+                                    &.album-art {
+                                        position: relative;
+
+                                        &::before {
+                                            content: "";
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            height: 100%;
+                                            width: 100%;
+                                            background-image: url("/images/icon/ico-common-headphones.svg");
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            border-radius: 0.4rem;
+                                            z-index: 10;
+                                            filter: invert(1);
+                                        }
+
+                                        &::after {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            height: 100%;
+                                            width: 100%;
+                                            background: var(--color-gray-900);
+                                            border-radius: 0.4rem;
+                                        }
+                                    }
+                                }
+                            }
+
+                            > article {
+
+                                // 앨범 아트
+                                &.album-art {
+                                    > img {
+                                        width: 5.2rem;
+                                        height: 5.2rem;
+                                        border-radius: 0.4rem;
+                                    }
+                                }
+                                // 설명
+                                &.desc {
+                                    flex: 1;
+                                    padding: 0 1.6rem;
+                                    
+                                    display: flex;
+                                    justify-content: space-between;
+                                    gap: 1.2rem;
+                                    cursor: default;
+
+                                    > section {
+                                        &.info {}
+                                        &.action {
+                                            > button {
+                                                border: none;
+                                                background: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                background: rgba(0,0,0,0.1);
+                                // border: 1px solid var(--color-brand-500);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 최소
+    &#min {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.6rem;
+        background: #ffffffd4;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        border-top: 1px solid var(--color-gray-100);
+        cursor: pointer;
+
+        > .player-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+    
+            > section {
+                // 진행률
+                &.progress {
+                    position: absolute;
+                    left: 0;
+                    top: -0.4rem;
+                    height: 0.4rem;
+                    z-index: 1000;
+                    width: 100%;
+                    background: #ffffff50;
+    
+                    > .bar {
+                        width: 0%;
+                        height: 100%;
+                        background: var(--color-gray-900);
+    
+                        position: relative;
+                        transition: 0.25s width;
+    
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: -0.4rem;
+                            right: 0px;
+                            width: 2px;
+                            height: 1.2rem;
+                            border-radius: 100px;
+                            background: var(--color-gray-900);
+                        }
+                    }
+                }
+    
+                // 정보
+                &.info {
+                    > div {
+                        // display: flex;
+                        // align-items: center;
+                        // gap: 0.8rem;
+                        // flex-direction: row-reverse;
+                        margin-bottom: 0.2rem;
+
+                        .desc {
+                            // display: none;
+                            font-family: "dotmatrix";
+                            display: flex;
+                            align-items: center;
+                            // padding: 0.4rem 0.6rem;
+                            margin-bottom: 0.8rem;
+                            
+                            > i {
+                                font-size: 0.8rem;
+                                color: var(--color-gray-900);
+                                -webkit-text-stroke: medium;
+                            }
+    
+                            > img {
+                                display: none;
+                                margin-right: 0.4rem;
+                                // filter: grayscale(1);
+                                width: 0.8rem;
+                            }
+                        }
+        
+                        .title {
+                            font-size: 2.0rem;
+                            font-weight: 700;
+                        }
+                    }
+    
+                    > .artist {
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        color: var(--color-gray-500);
+                    }
+                }
+    
+                // 액션버튼
+                &.action {
+                    display: flex;
+                    align-items: center;
+                    gap: 2.4rem;
+
+                    .playtime {
+                        > span {
+                            font-size: 1.6rem;
+                            display: inline-block;
+
+                            &:first-child {
+                                color: var(--color-gray-500);
+                                margin-right: 0.8rem;
+                                border-right: 1px solid var(--color-gray-100);
+                                padding-right: 0.8rem;
+                            }
+                        }
+                    }
+
+                    .buttons {
+                        > button {
+                            border: none;
+                            background: none;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.show {
+        animation-timing-function: ease-in-out;
+        animation: slideUp 0.25s forwards;
+    }
+
+    &.none {
+        animation-timing-function: ease-in-out;
+        animation: slideDown 0.25s forwards;
+    }
+
+    > .player-inner {
+        height: 100%;
+        max-width: var(--pc);
+        margin: 0 auto;
+    }
+
+    .progress {
+        cursor: pointer;
+        
+        .bar {
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}

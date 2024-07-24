@@ -1,0 +1,111 @@
+// 에러 페이지 헤더
+header {
+    &.page {
+        &.undefined {
+            .header-inner {
+                a {
+                    img {
+                        filter: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 에러 페이지 메인
+main {
+    &.undefined {
+        .main-inner {
+            position: relative;
+            max-width: var(--pc);
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 2rem;
+
+            > section {
+                padding-top: var(--header-height);
+                transition: 0.25s;
+
+                // 페이지 제목
+                &:first-child {
+                    height: calc(50vh - var(--header-height));
+
+                    > .page-title-inner {
+                        position: relative;
+                        height: 100%;
+
+                        .scroll {
+                            top: auto;
+                            bottom: calc(-1 * var(--header-height));
+                            transform: none;
+
+                            .parallax {
+                                .scroller {
+                                    > span {
+                                        font-family: "Montserrat-Alt1";
+                                        display: block;
+                                        border-radius: 20px;
+                                        padding: 1rem;
+                                        color: var(--main-color);
+                                        font-weight: 900;
+                                        font-style: italic;
+                                        transform: skewX(350deg);
+
+                                        margin-right: 10rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 데코용 Marquee
+                &:last-child {
+                    width: 100vw;
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+
+                    .parallax {
+                        &:first-child {
+                            transform: translate(0%, 0%) rotate(3deg);
+                            background: #0e100f;
+                            span {
+                                color: white !important;
+                            }
+                        }
+                        &:last-child {
+                            background: var(--main-color);
+                            transform: translate(0%, -100%) rotate(-3deg);
+                        }
+                        .scroller {
+                            span {
+                                font-family: "Montserrat-Alt1";
+                                display: block;
+                                border-radius: 20px;
+                                padding: 1rem;
+                                font-weight: 900;
+                                font-size: 6.2rem;
+                                font-style: italic;
+                                transform: skewX(350deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 스크롤 가이드
+        .cursor-guide {
+            display: none;
+            color: white;
+
+            &::after {
+                background: white;
+            }
+        }
+    }
+}

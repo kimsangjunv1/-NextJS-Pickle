@@ -1,0 +1,51 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: var(--header-height);
+    width: 100%;
+    max-width: var(--pc);
+    z-index: 100;
+    padding: 0px 1.2rem 0px 1.2rem;
+
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0px auto;
+        height: 100%;
+        
+        > section {
+            a {
+                font-size: 1.6rem;
+                margin-right: 2.4rem;
+                text-decoration: none;
+                color: var(--color-gray-900);
+                transition: 0.25s color;
+
+                &:hover {
+                    color: var(--color-brand-500);
+                }
+            }
+
+            &.list-menu {
+                display: flex;
+                align-items: center;
+                gap: 3.2rem;
+
+                > a {
+                    margin-right: 0px;
+
+                    > img {
+                        width: 72px;
+                    }
+                }
+            }
+
+            &.list-action {
+
+            }
+        }
+    }
+}

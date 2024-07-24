@@ -1,0 +1,122 @@
+// 메인 페이지 타이틀
+#title {
+    max-width: var(--pc);
+    padding: 0 6rem;
+    width: 100%;
+    height: 9.2rem;
+    margin: 2.6rem auto 0 auto;
+    margin-bottom: 30vh;
+    position: sticky;
+    top: var(--header-height);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    mix-blend-mode: difference;
+
+    > section {
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+
+        > div {
+            overflow: hidden;
+            width: calc(100% - 109px);
+
+            // 타입
+            &.type {
+                pointer-events: none;
+                width: calc(100% - 109px);
+
+                > h2 {
+                    color: var(--main-color);
+                    display: inline-block;
+                    top: 0;
+                    text-transform: uppercase;
+                    font-size: 1.8rem;
+                    font-weight: bold;
+                    font-family: "Montserrat-Alt1";
+                    line-height: 1.2;
+                    font-weight: 900;
+                }
+            }
+
+            // 제목
+            &.title {
+                pointer-events: none;
+                width: calc(100% - 109px);
+
+                > h2 {
+                    display: inline-block;
+                    top: 0;
+                    font-size: 5.2rem;
+                    font-weight: bold;
+                    font-family: "LineSeedKR";
+                    line-height: 1.2;
+                }
+            }
+
+            // 내용
+            &.desc {
+                pointer-events: none;
+                margin-bottom: 1.6rem;
+
+                > p {
+                    display: inline-block;
+                    white-space: pre-wrap;
+                    font-size: 1.6rem;
+                    line-height: 1.5;
+                }
+            }
+
+            // 액션버튼
+            &.action {
+                > a {
+                    display: inline-block;
+                    text-decoration: none;
+                    padding: 1.2rem 1.6rem;
+                    background: #292929;
+                    color: white;
+
+                    &:hover {
+                        background: var(--main-color);
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 서브 페이지 별 메인 타이틀
+#pageTitle {
+    width: 100%;
+    
+    .page-title-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: var(--pc);
+        box-sizing: border-box;
+        white-space: pre-wrap;
+        text-transform: uppercase;
+        gap: 1.2rem;
+
+        > h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+        }
+
+        > .action {
+            display: flex;
+            gap: 0.8rem;
+
+            > a {
+                &:last-child {
+                    color: var(--color-brand-500);
+                }
+            }
+        }
+    }
+}

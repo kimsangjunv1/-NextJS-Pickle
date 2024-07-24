@@ -1,0 +1,50 @@
+aside {
+    .side-menu-inner {
+        position: sticky;
+        top: var(--header-height);
+        
+        > .group {
+            margin-bottom: 1.2rem;
+
+            > li {
+                padding: 0.4rem 1.2rem;
+                margin-bottom: 0.8rem;
+
+                a {
+                    font-size: 2.0rem;
+                }
+            }
+            
+            > .sub-menu {
+                > li {
+                    margin-bottom: 0.4rem;
+                    padding: 0.4rem 1.2rem;
+                    color: var(--color-gray-500);
+
+                    &:hover {
+                        a {
+                            color: var(--color-gray-900);
+                        }
+                    }
+                    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    &.active {
+                        color: var(--color-gray-900);
+                    }
+
+                    a {
+                        transition: 0.25s color;
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

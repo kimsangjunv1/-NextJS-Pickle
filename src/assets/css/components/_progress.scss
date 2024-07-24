@@ -1,0 +1,26 @@
+// 스크롤 시 상단 프로그래스 바
+.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 0.1rem;
+    width: 100%;
+    transition: 0.25s;
+    z-index: 100000;
+
+    // 배경
+    .scroll-background {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        // 내용
+        .scroll-progress {
+            background: var(--main-color);
+            width: 3px;
+            height: 100%;
+            transition: 0.05s width;
+        }
+    }
+}

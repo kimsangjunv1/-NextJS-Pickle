@@ -1,0 +1,65 @@
+// 플레이리스트 페이지
+main {
+    &.page-album{
+        .main-inner {
+            > article {
+                // 페이지 제목
+                &#pageTitle {}
+
+                // 페이지 내용
+                &#pageContents {
+                    &.main {
+                        > section {
+                            > article {
+                                > .list {
+                                    display: grid;
+                                    grid-template-columns: repeat(6, 1fr);
+                                    grid-gap: 2.4rem;
+
+                                    .item {
+                                        > .image {
+                                            margin-bottom: 0.8rem;
+        
+                                            > img {
+                                                width: 100%;
+                                                object-fit: cover;
+                                            }
+                                        }
+        
+                                        > .info {
+                                            width: 100%;
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: flex-end;
+                                            background: #ffffff54;
+                                            backdrop-filter: blur(20px);
+                                            -webkit-backdrop-filter: blur(20px);
+                                            mix-blend-mode: hard-light;
+                                            // color: white;
+        
+                                            > p {
+                                                font-weight: 700;
+                                                font-size: 1.6rem;
+                                                margin-bottom: 0.4rem;
+                                            }
+                                            
+                                            > figcaption {
+                                                font-size: 1.2rem;
+                                                color: rgb(0 0 0 / 50%);
+                                                font-weight: 700;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+                    &.details {
+                    }
+                }
+            }
+        }
+    }
+}

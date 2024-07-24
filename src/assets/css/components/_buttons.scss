@@ -1,0 +1,35 @@
+a,
+button {
+    cursor: none;
+}
+
+a {
+    transition: 0.25s;
+
+    &.btn {
+        border: 1px solid black;
+        padding: var(--button-padding);
+        text-decoration: none;
+        transition: 0.25s;
+
+        &:hover {
+            background: black;
+            color: white;
+        }
+    }
+
+    &:hover {
+        color: var(--main-color);
+    }
+}
+
+button {
+    font-family: "LineSeedKR";
+
+    &#btn {
+        border: 1px solid black;
+        background: black;
+        color: white;
+        padding: 0.8rem 1.6rem;
+    }
+}

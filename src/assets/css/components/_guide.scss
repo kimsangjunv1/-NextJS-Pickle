@@ -1,0 +1,60 @@
+// 커서 가이드
+.cursor-guide {
+    position: absolute;
+    bottom: 3.2rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 2.2rem;
+    height: 3.6rem;
+
+    // 텍스트
+    &::before {
+        content: "스크롤 해주세요";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 80px;
+        text-wrap: nowrap;
+        transform: translate(-50%, -50%);
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    // 진행방향 표시
+    &::after {
+        content: "";
+        position: absolute;
+        top: 1.6rem;
+        left: calc(50% - 0.2rem);
+        height: 3.4rem;
+        width: 0.5rem;
+        background: var(--main-color);
+        animation: slide-to-below 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+    }
+}
+
+// 진행방향 애니메이션
+@keyframes slide-to-below {
+    0%,
+    50%,
+    60% {
+        transform: translate(-50%, 0) scaleY(0.118);
+    }
+    30% {
+        transform: translate(-50%, 0) scaleY(1);
+    }
+
+    0%,
+    29.99% {
+        transform-origin: top;
+    }
+
+    30%,
+    100% {
+        transform-origin: bottom;
+    }
+    90%,
+    100% {
+        transform: translate(-50%, 0) scaleY(0.118) translateY(-255px);
+    }
+}

@@ -1,0 +1,116 @@
+// 팝업 뒷 배경
+#alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(28 26 36 / 85%);
+    z-index: 1000;
+
+    // 알림창
+    > .alert-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+
+        > section {
+            // 내용
+            &:first-child {
+                h5,
+                p {
+                    color: black;
+                    padding: 2rem;
+                }
+
+                h5 {
+                    padding-bottom: 0;
+                    font-size: 2.4rem;
+                }
+
+                p {
+                    font-size: 1.6rem;
+                }
+            }
+
+            // 액션버튼(버튼)
+            &:last-child {
+                // 확인
+                &.only-yes {
+                    > button {
+                        width: 100%;
+                    }
+                }
+
+                // 확인 또는 취소
+                &.yes-or-no {
+                    > button {
+                        &:last-child {
+                            background: var(--main-color);
+                        }
+                    }
+                }
+
+                // 버튼 공통 기본 스타일
+                > button {
+                    width: 50%;
+                    background: transparent;
+                    border: 0;
+                    padding: 2rem;
+                    transition: 0.25s filter;
+
+                    &:hover {
+                        filter: brightness(0.5);
+                    }
+
+                    &:first-child {
+                        background: black;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 배너
+#banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--banner-height);
+    padding: 0 2rem;
+    background: white;
+    border-bottom: 0;
+    z-index: 1000;
+
+    // 배너 내용 컨테이너
+    > .alert-inner {
+        width: 100%;
+        height: 100%;
+        max-width: 1300px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        > section {
+            &:first-child {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+
+                // 내용
+                p {
+                    color: black;
+                    height: 100%;
+                    line-height: 1.5;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

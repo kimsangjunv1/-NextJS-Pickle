@@ -1,0 +1,85 @@
+// 로딩 애니메이션
+section {
+    // DOM 가림막
+    &.slide {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        z-index: 1000000000;
+
+        .rect {
+            width: 20%;
+            background: var(--main-color);
+            height: 100%;
+            transform: translateY(-100%);
+            scale: 1.2;
+            will-change: transform;
+        }
+    }
+
+    // 페이지 정보
+    &.info {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.25s;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 0 2rem;
+        z-index: 10000000000;
+
+        > div {
+            overflow-y: hidden;
+            transform: skewX(350deg);
+            height: 15vw;
+
+            h2 {
+                color: black;
+                transition: 0.25s;
+                font-size: 15vw;
+                font-family: "Montserrat-Alt1";
+                display: block;
+                border-radius: 20px;
+                font-weight: 900;
+                will-change: transform;
+            }
+        }
+    }
+
+    // 페이지 로딩 진행률
+    &.progress-container {
+        background: rgb(0 0 0 / 0%);
+        width: 100%;
+        height: 1.6rem;
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 0);
+        z-index: 10000000000;
+
+        .bar {
+            width: 0;
+            height: 1.6rem;
+            background: rgb(0, 0, 0);
+            transition: 0.25s width;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+
+            > p {
+                color: transparent;
+                position: absolute;
+                right: 0;
+                top: -20px;
+                transform: translate(50%, 0);
+            }
+        }
+    }
+}

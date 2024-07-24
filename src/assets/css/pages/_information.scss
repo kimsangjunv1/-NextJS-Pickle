@@ -1,0 +1,141 @@
+// 정보 페이지 헤더
+header {
+    &.page {
+        &.information {
+            .header-inner {
+                a {
+                    img {
+                        filter: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 정보 페이지 메인
+main {
+    &.page {
+        &.information {
+            > .main-inner {
+                position: relative;
+                max-width: var(--pc);
+                margin: 0 auto;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 2rem;
+
+                > section {
+                    margin-bottom: var(--header-height);
+                    transition: 0.25s;
+
+                    // 제목
+                    &#pageTitle {
+                        height: calc(50vh - var(--header-height));
+                        > .page-title-inner {
+                            position: relative;
+                            height: 100%;
+
+                            .scroll {
+                                top: calc(50% + var(--header-height));
+                                transform: none;
+
+                                .parallax {
+                                    .scroller {
+                                        > span {
+                                            font-family: "Montserrat-Alt1";
+                                            display: block;
+                                            border-radius: 20px;
+                                            padding: 1rem;
+                                            color: white;
+                                            font-weight: 900;
+                                            font-style: italic;
+                                            transform: skewX(350deg);
+                                            margin-right: 10rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 도형&설명/주소
+                    &#contents {
+                        display: flex;
+
+                        > section {
+                            width: 50%;
+
+                            // 도형
+                            &:first-child {
+                                position: sticky;
+                                top: var(--header-height);
+                                height: fit-content;
+                                display: flex;
+                                justify-content: center;
+                                padding: 2rem 0;
+                            }
+
+                            // 설명&주소
+                            &:last-child {
+                                white-space: pre-wrap;
+                                line-height: 1.5;
+                                font-size: 1.8rem;
+
+                                h5,
+                                p {
+                                    color: white;
+                                    font-weight: 300;
+                                }
+
+                                h5 {
+                                    color: rgba(255, 255, 255, 0.5);
+                                }
+
+                                > section {
+                                    margin-bottom: 3rem;
+
+                                    // 설명
+                                    &:first-child {
+                                        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                                        padding-bottom: 3rem;
+                                    }
+
+                                    // 주소
+                                    &:last-child {
+                                        margin-bottom: 0;
+
+                                        > section {
+                                            margin-bottom: 3.2rem;
+
+                                            &:nth-child(3) {
+                                                p {
+                                                    color: var(--main-color);
+                                                    font-weight: 500;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 위치(카카오, 네이버 API)
+                    &#location {
+                        height: 50vh;
+
+                        #map {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    &:last-child {
+                        margin-bottom: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
