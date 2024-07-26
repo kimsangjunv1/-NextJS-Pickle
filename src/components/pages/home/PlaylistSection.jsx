@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 
 import Article from "@/components/layout/Article";
@@ -6,17 +6,10 @@ import TitleComponents from "@/components/common/TitleComponents";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-
 import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
 const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
-    // console.log("일단 이거 옴", DBPlaylist, DBWeather);
-
-    useEffect(() => {
-        // console.log("응 ? ;",DBWeather?.forecasts?.filter((e, i) => i == 0));
-    }, [])
     return (
         <Article id={"playlist"}>
             <TitleComponents title={"비오는 날인데 어떤 플레이 리스트가 있을까?"} desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"} />
@@ -72,7 +65,8 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
                 {image?.map((e, i) => {
                     return (
                         <>
-                            {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}   
+                            {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
+                            <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" />
                         </>
                     )   
                 })}

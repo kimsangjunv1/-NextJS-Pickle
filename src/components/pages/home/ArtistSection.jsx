@@ -8,6 +8,8 @@ import MainApi from "@/api/main/main_api";
 
 import utilArtist from "@/components/utils/util_artist";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
 const ArtistSection = ({ songList }) => {
     return (
         <Article id={"artist"}>
@@ -20,9 +22,18 @@ const ArtistSection = ({ songList }) => {
                 {/* {Array(8).fill(0).map((i, key) => 
                     <ItemComponents korName={""} engName={""} count={""} key={key} />
                 )} */}
-                {songList.map((e, i) => 
-                    <ItemComponents data={e} key={i} />
-                )}
+                <Swiper
+                    spaceBetween={24}
+                    slidesPerView={8}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >    
+                    {songList.map((e, i) => 
+                        <SwiperSlide key={i}>
+                            <ItemComponents data={e} />
+                        </SwiperSlide>
+                    )}
+                </Swiper>
             </section>
             {/* 내용 END */}
         </Article>
@@ -32,7 +43,7 @@ const ArtistSection = ({ songList }) => {
 const ItemComponents = ({ data }) => {
     // console.log("받아오는 데이터 ",data)
     return (
-        <Link href={`/artist/details/${data.artists[0].adamid}`}>
+        <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
             <div className="info">
                 <section className="artist">
                     {/* <p>GIRI BOY</p> */}

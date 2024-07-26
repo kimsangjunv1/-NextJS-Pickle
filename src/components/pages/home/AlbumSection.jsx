@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import util from "@/api/util";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
 const AlbumSection = ({ artistDetailsList }) => {
     const [ list, setList ] = useState([]);
 
@@ -37,9 +39,18 @@ const AlbumSection = ({ artistDetailsList }) => {
             {/* 제목 END */}
 
             <section className="section-album-container">
-                {list.map((data, key) => 
-                    <ItemComponents data={ data } key={key} />
-                )}
+                <Swiper
+                    spaceBetween={24}
+                    slidesPerView={6}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >   
+                    {list.map((data, key) => 
+                        <SwiperSlide>
+                            <ItemComponents data={ data } key={key} />
+                        </SwiperSlide>
+                    )}
+                </Swiper>
             </section>
         </Article>
     )
