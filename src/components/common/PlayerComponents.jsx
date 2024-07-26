@@ -204,6 +204,9 @@ const MaximizeComponents = ({
                         <div className={`item ${currentTrackIndex == i ? "active" : ""}`} key={i}>
                             <article className="album-art">
                                 <img src={`${e.songId.images.coverart}`} alt="/" />
+                                <button type="button" onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}>
+                                    <img src="/images/icon/ico-common-playonplayer.svg" alt="재생" />
+                                </button>
                             </article>
                             <article className="desc">
                                 <section className="info">
@@ -214,9 +217,9 @@ const MaximizeComponents = ({
                                     <button type="button" onClick={() => utilPlayer.deleteItemOnTrackList(trackList, e._id)}>
                                         <img src="/images/icon/ico-common-close.svg" alt="지우기" />
                                     </button>
-                                    <button type="button" onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}>
+                                    {/* <button type="button" onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}>
                                         <img src="/images/icon/ico-common-playonplayer.svg" alt="재생" />
-                                    </button>
+                                    </button> */}
                                 </section>
                             </article>
                         </div>

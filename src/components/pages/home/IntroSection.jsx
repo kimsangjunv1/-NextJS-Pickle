@@ -32,8 +32,8 @@ const ItemComponents = ({ desc, keywords, list, title }) => {
                 <button type="button">+ 재생 목록에 추가</button>
             </div>
 
-            <img src={list[0].albumImage} alt="/" className="backdrop" />
-            <img src={list[0].albumImage} alt="/" className="albumart" />=
+            {/* <img src={list[0].albumImage} alt="/" className="albumart" /> */}
+            <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" />
         </div>
     )
 }

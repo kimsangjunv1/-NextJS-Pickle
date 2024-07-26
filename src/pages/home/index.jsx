@@ -28,21 +28,29 @@ const main = () => {
     const getApiData = async () => {
         // setWeather(await apiYahoo.getWeatherData());
         setWeather(dummyWeather);
+    }
+    
+    const getPlayList = async () => {
         setPlaylist(await apiMain.getPlayList());
     }
 
-    // 섹션 데이터 : 아티스트
+    // 섹션 데이터 : 노래 목록
     const getSongList = async () => {
-        setSongList(await apiMain.getSongSearchList(utilArtist.getMainArtistList(playlist)));
+        if(playlist.length){
+            setSongList(await apiMain.getSongSearchList(utilArtist.getMainArtistList(playlist)));
+        }
     }
 
     // 섹션 데이터 : 아티스트
     const getArtistList = async () => {
-        setArtistList(await apiMain.getMultipleArtists(utilArtist.getSongAdamid(songList)));
+        if(songList.length){
+            setArtistList(await apiMain.getMultipleArtists(utilArtist.getSongAdamid(songList)));
+        }
     }
 
     useEffect(() => {
         getApiData();
+        getPlayList();
     }, [])
 
     useEffect(() => {
@@ -55,10 +63,10 @@ const main = () => {
     
     return (
         <Fragment>
-            {/* <MarqueeSection />
-            <IntroSection DBPlaylist={ playlist } /> */}
+            {/* <MarqueeSection /> */}
+            <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } DBWeather={ weather } />
-            <EventSection />
+            {/* <EventSection /> */}
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
             <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>
             <RecentSection />
