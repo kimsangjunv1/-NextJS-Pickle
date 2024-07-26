@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import Article from "@/components/layout/Article";
 import TitleComponents from "@/components/common/TitleComponents";
@@ -66,7 +67,12 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
                     return (
                         <>
                             {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
-                            <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" />
+                            {i == 0 && <Image
+                                src="/images/common/img-dummy-playlistart.png"
+                                layout="fill"
+                                alt="더미"
+                                className="albumart"
+                            />}
                         </>
                     )   
                 })}

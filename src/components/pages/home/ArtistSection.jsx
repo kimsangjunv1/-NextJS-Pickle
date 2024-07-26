@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import Article from "@/components/layout/Article";
 import TitleComponents from "@/components/common/TitleComponents";
@@ -55,7 +56,12 @@ const ItemComponents = ({ data }) => {
                     <h5>View</h5>
                 </section>
             </div>
-            <img src={`${data.images.background}`} alt="/" />
+            <Image
+                src={`${data.images.background}`}
+                layout="fill"
+                alt={`${data.subtitle}`}
+            />
+            {/* <img src={`${data.images.background}`} alt="/" /> */}
         </Link>
     )
 }

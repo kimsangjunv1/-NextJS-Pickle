@@ -1,6 +1,10 @@
-import Link from "next/link";
 import React, { useState, useEffect, Fragment } from "react";
+
 import Article from "@/components/layout/Article";
+
+import Link from "next/link";
+import Image from "next/image";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const IntroSection = ({ DBPlaylist }) => {
@@ -30,6 +34,7 @@ const IntroSection = ({ DBPlaylist }) => {
 const ItemComponents = ({ desc, keywords, list, title, id }) => {    
     return (
         <Link href={`/playlist/details/${id}`} className="item">
+            
             <figure>
                 <div className="info">
                     <p>오늘 새로 추가되었어요!</p>
@@ -38,6 +43,12 @@ const ItemComponents = ({ desc, keywords, list, title, id }) => {
                 </div>
 
                 {/* <img src={list[0].albumImage} alt="/" className="albumart" /> */}
+                <Image
+                    src="/images/common/img-dummy-playlistart.png"
+                    layout="fill"
+                    alt="더미"
+                    className="albumart"
+                />
                 <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" />
             </figure>
         </Link>

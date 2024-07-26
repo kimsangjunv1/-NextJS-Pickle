@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import TitleComponents from "@/components/common/TitleComponents";
 import Article from "@/components/layout/Article";
+
 import Link from "next/link";
+import Image from "next/image";
 
 import util from "@/api/util";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 
 const AlbumSection = ({ artistDetailsList }) => {
     const [ list, setList ] = useState([]);
@@ -60,7 +63,14 @@ const ItemComponents = ({ data }) => {
     // console.log("앨범 : ",data)
     return (
         <Link href={`/album/details/${data.pathId}/${data.albumId}`} className="item">
-            <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="/" />
+            {/* <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="/" /> */}
+            <Image
+                src={`${data.artwork.url.replace("{w}x{h}","200x200")}`}
+                // layout="fill"
+                width={216}
+                height={216}
+                alt={`${data.name}`}
+            />
             <div className="info">
                 <figcaption>{data.name}</figcaption>
                 <p>{data.artistName}</p>

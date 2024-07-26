@@ -158,6 +158,7 @@ main {
 
                     .item {
                         width: calc(100vw / 8);
+                        height: 24.0rem;
                         flex: 1;
                         position: relative;
                         border-radius: 10.0rem;
@@ -209,6 +210,7 @@ main {
                             transition: 0.25s;
                             backdrop-filter: blur(0px);
                             -webkit-backdrop-filter: blur(0px);
+                            z-index: 100;
 
                             > section {
                                 position: absolute;
@@ -362,7 +364,7 @@ main {
                 margin-bottom: 1.6rem;
 
                 > h5 {
-                    font-weight: 600;
+                    font-weight: 700;
                     font-size: 2.4rem;
                 }
 
