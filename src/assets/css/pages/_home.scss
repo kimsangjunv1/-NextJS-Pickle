@@ -149,13 +149,16 @@ main {
                                     margin-bottom: 0.8rem;
 
                                     > strong {
+                                        font-family: "dotmatrix";
                                         font-size: 2.0rem;
+                                        line-height: 150%;
                                     }
                                 }
 
                                 > figcaption {
                                     color: var(--color-gray-500);
                                     font-size: 1.4rem;
+                                    line-height: 150%;
                                 }
 
                                 &::after {
