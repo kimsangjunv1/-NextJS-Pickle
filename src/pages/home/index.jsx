@@ -23,11 +23,12 @@ const main = () => {
     const [ artistList, setArtistList ] = useState([]);
 
     const apiMain = new MainApi();
+    const apiYahoo = new YahooApi();
 
     // 메인 데이터
     const getApiData = async () => {
-        // setWeather(await apiYahoo.getWeatherData());
-        setWeather(dummyWeather);
+        setWeather(await apiYahoo.getWeatherData());
+        // setWeather(dummyWeather);
     }
     
     const getPlayList = async () => {
@@ -69,7 +70,7 @@ const main = () => {
             {/* <EventSection /> */}
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
             <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>
-            <RecentSection />
+            {/* <RecentSection /> */}
         </Fragment>
     )
 }

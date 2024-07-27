@@ -38,7 +38,11 @@ const AlbumSection = ({ artistDetailsList }) => {
     return (
         <Article id={"album"}>
             {/* 제목 */}
-            <TitleComponents title={"어떤 앨범이 있을까?"} desc={"날씨에 맞게 추천된 아티스트의 앨범을 보여드릴게요!"} />
+            <TitleComponents
+                title={"어떤 앨범이 있을까?"}
+                desc={"날씨에 맞게 추천된 아티스트의 앨범을 보여드릴게요!"}
+                image={"laugh"}
+            />
             {/* 제목 END */}
 
             <section className="section-album-container">

@@ -11,9 +11,14 @@ import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
 const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
+    console.log("데이터 뜰어왔나 ? ",DBWeather)
     return (
         <Article id={"playlist"}>
-            <TitleComponents title={"비오는 날인데 어떤 플레이 리스트가 있을까?"} desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"} />
+            <TitleComponents
+                title={"비오는 날인데 어떤 플레이 리스트가 있을까?"}
+                desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"}
+                image={"cloth-red"}
+            />
             
             <section className="section-playlist-container">
                 <Swiper
@@ -49,7 +54,7 @@ const WeatherComponents = ({ data }) => {
                         <img src="https://t3.ftcdn.net/jpg/01/22/14/82/360_F_122148268_Q8WEYYO1hP83PLGlIKAP8VSHnGHbTfpk.jpg" alt="앨범아트" />
                     </section>
                     <section className="info">
-                        <p className="degree">서울은 지금,<br/><strong>{util.convertCelcius("72")}</strong></p>
+                        <p className="degree">서울은 지금,<br/><strong>{util.convertCelcius("72")}°</strong></p>
                         <figcaption className="desc">오늘 같이 {util.getWeatherName(data[0]?.text)}날,<br/>듣기 좋은 음악들을 정리해봤어요.</figcaption>
                     </section>
                 </Link>
@@ -66,13 +71,13 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
                 {image?.map((e, i) => {
                     return (
                         <>
-                            {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
                             {i == 0 && <Image
                                 src="/images/common/img-dummy-playlistart.png"
                                 layout="fill"
                                 alt="더미"
                                 className="albumart"
                             />}
+                            {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
                         </>
                     )   
                 })}

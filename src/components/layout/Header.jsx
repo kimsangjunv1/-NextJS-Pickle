@@ -21,7 +21,8 @@ const Header = () => {
 
                 {/* 사용자 액션 리스트 */}
                 <section className="list-action">
-                    <Link href="/">오늘 내가 재생한 곡</Link>
+                    {/* <Link href="/">로그인</Link> */}
+                    {/* <Link href="/">오늘 내가 재생한 곡</Link> */}
                 </section>
                 {/* 사용자 액션 리스트 END */}
 
