@@ -27,8 +27,8 @@ const main = () => {
 
     // 메인 데이터
     const getApiData = async () => {
-        setWeather(await apiYahoo.getWeatherData());
-        // setWeather(dummyWeather);
+        // setWeather(await apiYahoo.getWeatherData());
+        setWeather(dummyWeather);
     }
     
     const getPlayList = async () => {

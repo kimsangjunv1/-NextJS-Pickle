@@ -5,6 +5,8 @@ main {
     .main-inner {
         // 인트로 섹션 스타일
         > article {
+            overflow: hidden;
+
             &#marquee {
                 position: fixed;
                 top: 0;
@@ -320,7 +322,7 @@ main {
                                 overflow: hidden;
                                 text-overflow: ellipsis;
                                 display: -webkit-box;
-                                -webkit-line-clamp: 2; 
+                                -webkit-line-clamp: 1; 
                                 -webkit-box-orient: vertical;
                                 margin-bottom: 0.8rem;
                             }
