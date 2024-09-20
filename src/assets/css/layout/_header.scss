@@ -21,7 +21,7 @@ header {
                 font-size: 1.6rem;
                 margin-right: 2.4rem;
                 text-decoration: none;
-                color: var(--color-gray-900);
+                color: var(--color-gray-50);
                 transition: 0.25s color;
 
                 &:hover {
@@ -35,15 +35,15 @@ header {
                 gap: 3.2rem;
 
                 > a {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    margin-right: 0px;
+                    // position: absolute;
+                    // top: 50%;
+                    // left: 50%;
+                    // transform: translate(-50%, -50%);
+                    // margin-right: 0px;
 
-                    > img {
-                        width: 72px;
-                    }
+                    // > img {
+                    //     width: 72px;
+                    // }
                 }
             }
 

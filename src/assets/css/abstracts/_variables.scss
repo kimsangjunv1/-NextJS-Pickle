@@ -2,9 +2,12 @@
     // 폰트
     --custom-font: "SUITE";
 
+    --color-main-background: #0F0F0F;
+    --color-main-text: #FFFFFF;
+
     // 색상 : 브랜드
-    --color-brand-900: #A70028;
-    --color-brand-500: #FF144D;
+    --color-brand-900: #042786;
+    --color-brand-500: #1348D5;
     --color-brand-50: #FFE7EC;
 
     // 색상 : 그레이
@@ -57,8 +60,11 @@
     --button-lg-height: 4.8rem;
     --button-lg-padding: 1.2rem 1.8rem;
 
+    --border-radius: 0.8rem;
+
     // 반응형 사이즈
-    --pc: 1440px;
+    --pc: 1280px;
+    // --pc: 1440px;
     --tablet: 768px;
     --mobile: 376px;
 }

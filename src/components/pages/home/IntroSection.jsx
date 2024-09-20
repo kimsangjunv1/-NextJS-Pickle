@@ -51,14 +51,14 @@ const ItemComponents = ({ desc, keywords, list, title, id, date }) => {
                     <figcaption>{desc}</figcaption>
                 </div>
 
-                {/* <img src={list[0].albumImage} alt="/" className="albumart" /> */}
-                <Image
+                <img src={list[0].albumImage} alt="/" className="albumart" />
+                {/* <Image
                     src="/images/common/img-dummy-playlistart.png"
                     layout="fill"
                     alt="더미"
                     className="albumart"
-                />
-                <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" />
+                /> */}
+                {/* <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" /> */}
             </figure>
         </Link>
     )

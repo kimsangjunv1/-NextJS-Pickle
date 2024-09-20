@@ -8,7 +8,7 @@
         flex: 1;
 
         .skeleton {
-            background: var(--color-gray-200);
+            background: var(--color-gray-800);
             margin : 10px 0;
             border-radius: 4px;
             animation: skeleton-loading 1.5s infinite ease-in-out;
@@ -43,12 +43,12 @@
 
 @keyframes skeleton-loading {
     0% {
-        background-color: var(--color-gray-50);
+        background-color: var(--color-gray-800);
     }
     50% {
-        background-color: var(--color-gray-100);
+        background-color: var(--color-gray-700);
     }
     100% {
-        background-color: var(--color-gray-50);
+        background-color: var(--color-gray-800);
     }
 }

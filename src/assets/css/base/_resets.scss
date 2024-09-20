@@ -10,8 +10,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   
-    background: var(--page-home-bg);
-    color: var(--main-text-color);
+    background: var(--color-main-background);
+    color: var(--color-main-text);
   }
   
 html {
@@ -136,7 +136,7 @@ video {
     padding: 0;
     border: 0;
     vertical-align: baseline;
-    color: var(--main-text-color);
+    color: var(--color-main-text);
 }
 
 /* HTML5 display-role reset for older browsers */

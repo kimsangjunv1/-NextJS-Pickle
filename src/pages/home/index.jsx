@@ -14,6 +14,7 @@ import { dummyWeather } from "@/components/utils/menulist";
 import utilArtist from "@/components/utils/util_artist";
 import IntroSection from "@/components/pages/home/IntroSection";
 import MarqueeSection from "@/components/pages/home/MarqueeSection";
+import NoticeComponents from "@/components/common/NoticeComponents";
 
 const main = () => {
     const [ weather, setWeather ] = useState([]);
@@ -65,6 +66,7 @@ const main = () => {
     return (
         <Fragment>
             {/* <MarqueeSection /> */}
+            <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } DBWeather={ weather } />
             {/* <EventSection /> */}
