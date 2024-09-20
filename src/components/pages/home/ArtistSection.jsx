@@ -1,16 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import Link from "next/link";
 import Image from "next/image";
 
 import Article from "@/components/layout/Article";
 import TitleComponents from "@/components/common/TitleComponents";
-import MainApi from "@/api/main/main_api";
+import SkeletonComponents from "@/components/common/SkeletonComponents";
 
-import utilArtist from "@/components/utils/util_artist";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
+// 섹션 : 아티스트
 const ArtistSection = ({ songList }) => {
     return (
         <Article id={"artist"}>
@@ -33,11 +31,11 @@ const ArtistSection = ({ songList }) => {
                     // onSlideChange={() => console.log('slide change')}
                     // onSwiper={(swiper) => console.log(swiper)}
                 >    
-                    {songList.map((e, i) => 
+                    {songList.length ? songList.map((e, i) => 
                         <SwiperSlide key={i}>
                             <ItemComponents data={e} />
                         </SwiperSlide>
-                    )}
+                    ) : <SkeletonItem />}
                 </Swiper>
             </section>
             {/* 내용 END */}
@@ -45,6 +43,7 @@ const ArtistSection = ({ songList }) => {
     )
 }
 
+// 공통 : 아티스트
 const ItemComponents = ({ data }) => {
     return (
         <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
@@ -68,5 +67,18 @@ const ItemComponents = ({ data }) => {
         </Link>
     )
 }
+
+// 로딩 : 스켈레톤 UI
+const SkeletonItem = () => {
+    return (
+    <div className="skeleton-wrapper">
+        {Array(6).fill(0).map((e, i) =>
+                <div className="skeleton-artist" key={i}>
+                    <SkeletonComponents type="thumbnail" />
+                </div>
+            )}
+    </div>
+    );
+};
 
 export default ArtistSection
