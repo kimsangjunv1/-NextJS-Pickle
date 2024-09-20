@@ -55,7 +55,7 @@ const AlbumSection = ({ artistDetailsList }) => {
                         // onSwiper={(swiper) => console.log(swiper)}
                     >   
                         {list.map((data, key) => 
-                            <SwiperSlide>
+                            <SwiperSlide key={key}>
                                 <ItemComponents data={ data } key={key} />
                             </SwiperSlide>
                         )}
