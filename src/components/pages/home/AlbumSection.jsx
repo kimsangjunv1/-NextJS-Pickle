@@ -45,6 +45,7 @@ const AlbumSection = ({ artistDetailsList }) => {
             />
             {/* 제목 END */}
 
+            {/* 컨텐츠 */}
             <section className="section-album-container">
                 {list.length ? 
                     <Swiper
@@ -62,6 +63,7 @@ const AlbumSection = ({ artistDetailsList }) => {
                     : <SkeletonItem />
                 }
             </section>
+            {/* 컨텐츠 END */}
         </Article>
     )
 }
@@ -91,7 +93,7 @@ const SkeletonItem = () => {
     return (
     <div className="skeleton-wrapper">
         {Array(8).fill(0).map((e, i) =>
-                <div className="skeleton-profile">
+                <div className="skeleton-profile" key={i}>
                     <SkeletonComponents type="avatar" />
 
                     <div>
