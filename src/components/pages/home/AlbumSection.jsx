@@ -92,9 +92,9 @@ const ItemComponents = ({ data }) => {
 const SkeletonItem = () => {
     return (
     <div className="skeleton-wrapper">
-        {Array(8).fill(0).map((e, i) =>
+        {Array(6).fill(0).map((e, i) =>
                 <div className="skeleton-profile" key={i}>
-                    <SkeletonComponents type="avatar" />
+                    <SkeletonComponents type="thumbnail" />
 
                     <div>
                         <SkeletonComponents type="title" />
