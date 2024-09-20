@@ -1,14 +1,13 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import Article from "@/components/layout/Article";
-
-import util from "@/api/util";
+import SkeletonComponents from "@/components/common/SkeletonComponents";
 
 import Link from "next/link";
 import Image from "next/image";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-// import { Pagination, Navigation } from "swiper";
+import util from "@/api/util";
 
 const IntroSection = ({ DBPlaylist }) => {
     const [ list, setList ] = useState([]);
@@ -18,22 +17,25 @@ const IntroSection = ({ DBPlaylist }) => {
     }, [DBPlaylist])
     return (
         <Article id={"intro"}>
-            <Swiper
-                spaceBetween={24}
-                slidesPerView={"auto"}
-                // onSlideChange={() => console.log('slide change')}
-                // onSwiper={(swiper) => console.log(swiper)}
-                pagination={{
-                    type: "progressbar",
-                }}
-                navigation={true}
-            >
-                {list.map((e, i) => 
-                    <SwiperSlide key={i}>
-                        <ItemComponents desc={ e.desc } keywords={ e.keywords } list={ e.list } title={ e.title } key={ i } id={ e._id } date={ e.createdAt } />
-                    </SwiperSlide>
-                )}
-            </Swiper>
+            {list.length ?
+                <Swiper
+                    spaceBetween={24}
+                    slidesPerView={"auto"}
+                    // onSlideChange={() => console.log('slide change')}
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    pagination={{
+                        type: "progressbar",
+                    }}
+                    navigation={true}
+                >
+                    {list.map((e, i) => 
+                        <SwiperSlide key={i}>
+                            <ItemComponents desc={ e.desc } keywords={ e.keywords } list={ e.list } title={ e.title } key={ i } id={ e._id } date={ e.createdAt } />
+                        </SwiperSlide>
+                    )}
+                </Swiper>
+                : <SkeletonItem />
+            }
         </Article>
     )
 }
@@ -61,5 +63,18 @@ const ItemComponents = ({ desc, keywords, list, title, id, date }) => {
         </Link>
     )
 }
+
+// 로딩 : 스켈레톤 UI
+const SkeletonItem = () => {
+    return (
+    <div className="skeleton-wrapper">
+        {Array(1).fill(0).map((e, i) =>
+                <div className="skeleton-playlist" key={i}>
+                    <SkeletonComponents type="thumbnail" />
+                </div>
+            )}
+    </div>
+    );
+};
 
 export default IntroSection
