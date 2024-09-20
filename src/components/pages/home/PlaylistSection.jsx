@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import Link from "next/link";
 import Image from "next/image";
 
 import Article from "@/components/layout/Article";
 import TitleComponents from "@/components/common/TitleComponents";
-
-import { Swiper, SwiperSlide } from "swiper/react";
+import SkeletonComponents from "@/components/common/SkeletonComponents";
 
 import util from "@/api/util";
 
@@ -20,22 +21,25 @@ const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
             />
             
             <section className="section-playlist-container">
-                <Swiper
-                    spaceBetween={24}
-                    slidesPerView={3}
-                    // onSlideChange={() => console.log('slide change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
-                >    
-                    <SwiperSlide>
-                        <WeatherComponents data={ DBWeather }/>
-                    </SwiperSlide>
-
-                    {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>
-                        <SwiperSlide key={key}>
-                            <ItemComponents title={e.title} desc={e.desc} keywords={e.keywords} image={e.list} id={e._id} key={key}/>
+                {DBPlaylist.length ? 
+                    <Swiper
+                        spaceBetween={24}
+                        slidesPerView={3}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                    >    
+                        <SwiperSlide>
+                            <WeatherComponents data={ DBWeather }/>
                         </SwiperSlide>
-                    )}
-                </Swiper>
+
+                        {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>
+                            <SwiperSlide key={key}>
+                                <ItemComponents title={e.title} desc={e.desc} keywords={e.keywords} image={e.list} id={e._id} key={key}/>
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
+                    : <SkeletonItem />
+                }
             </section>
         </Article>
     )
@@ -57,7 +61,7 @@ const WeatherComponents = ({ data }) => {
                         <figcaption className="desc">오늘 같이 {util.getWeatherName(data[0]?.text)}날,<br/>듣기 좋은 음악들을 정리해봤어요.</figcaption>
                     </section>
                 </Link>
-            : "로딩중"}
+            : <SkeletonItem />}
         </Fragment>
     )
 }
@@ -88,5 +92,18 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
         </Link>
     )
 }
+
+// 로딩 : 스켈레톤 UI
+const SkeletonItem = () => {
+    return (
+    <div className="skeleton-wrapper">
+        {Array(3).fill(0).map((e, i) =>
+                <div className="skeleton-playlist" key={i}>
+                    <SkeletonComponents type="thumbnail" />
+                </div>
+            )}
+    </div>
+    );
+};
 
 export default PlaylistSection
