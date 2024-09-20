@@ -18,14 +18,18 @@ main {
 
                                     .item {
                                         > .image {
-                                            grid-gap: 0rem;
+                                            grid-gap: 0.4rem;
                                             display: grid;
                                             grid-template-columns: repeat(2, 1fr);
                                             margin-bottom: 0.8rem;
+
+                                            border-radius: var(--border-radius);
+                                            overflow: hidden;
         
                                             > img {
                                                 width: 100%;
                                                 object-fit: cover;
+                                                border-radius: var(--border-radius);
                                             }
                                         }
         
@@ -34,7 +38,7 @@ main {
                                             display: flex;
                                             flex-direction: column;
                                             justify-content: flex-end;
-                                            background: #ffffff54;
+                                            // background: #ffffff54;
                                             backdrop-filter: blur(20px);
                                             -webkit-backdrop-filter: blur(20px);
                                             mix-blend-mode: hard-light;

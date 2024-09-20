@@ -67,6 +67,28 @@ const util = {
         return test;
     },
 
+    getRealWeatherName: name => {
+        switch (name) {
+            case "Scattered Showers":
+                return "비"
+
+            case "Sunny":
+                return "맑음"
+
+            case "Mostly Sunny":
+                return "대부분 맑음"
+
+            case "Partly Cloudy":
+                return "부분 흐림"
+
+            case "Cloudy":
+                return "흐림"
+
+            default:
+                return "날씨 정보가 없습니다."
+        }
+    },
+
     getWeatherName: date => {
         let hours = new Date().getHours() // 시
         switch (date) {
@@ -99,6 +121,34 @@ const util = {
 
             default:
                 return "힘내요"
+        }
+    },
+
+    getDayName: name => {
+        switch (name) {
+            case "Sat" :
+                return "토"
+
+            case "Sun" :
+                return "일"
+
+            case "Mon" :
+                return "월"
+
+            case "Tue" :
+                return "화"
+
+            case "Wed" :
+                return "수"
+
+            case "Thu" :
+                return "목"
+
+            case "Fri" :
+                return "금"
+
+            default:
+                return "새로고침을 해주세요"
         }
     },
 

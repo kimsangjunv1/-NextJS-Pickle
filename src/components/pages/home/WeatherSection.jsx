@@ -11,27 +11,27 @@ import SkeletonComponents from "@/components/common/SkeletonComponents";
 import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
-const PlaylistSection = ({ DBPlaylist }) => {
+const WeatherSection = ({ DBWeather }) => {
+    console.log("날씨 나와라!", DBWeather.forecasts)
     return (
-        <Article id={"playlist"}>
+        <Article id={"weather"}>
             <TitleComponents
-                title={"비오는 날인데 어떤 플레이 리스트가 있을까?"}
+                title={"이번주 날씨를 확인해보세요!"}
                 desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"}
                 image={"cloth-red"}
             />
             
             <section className="section-playlist-container">
-                {DBPlaylist.length ? 
+                {DBWeather.forecasts ? 
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={5}
                         // onSlideChange={() => console.log('slide change')}
                         // onSwiper={(swiper) => console.log(swiper)}
                     >
-
-                        {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>
+                        {DBWeather.forecasts.map((e, key) =>
                             <SwiperSlide key={key}>
-                                <ItemComponents title={e.title} desc={e.desc} keywords={e.keywords} image={e.list} id={e._id} key={key}/>
+                                <ItemComponents data={e}/>
                             </SwiperSlide>
                         )}
                     </Swiper>
@@ -42,31 +42,24 @@ const PlaylistSection = ({ DBPlaylist }) => {
     )
 }
 
-// 컴포넌트 : 플레이리스트 목록
-const ItemComponents = ({ title, desc, keywords, id, image }) => {
+// 컴포넌트 : 날씨
+const ItemComponents = ({ data }) => {
+    console.log("띱 : ", data)
+    // data = data.forecasts?.filter((e, i) => i == 0);
+    
     return(
-        <Link href={`/playlist/details/${id}`} className="item">
-            <section className="image">
-                {image?.map((e, i) => {
-                    return (
-                        <Fragment key={i}>
-                            {i == 0 && <Image
-                                src={e.albumImage}
-                                // src="/images/common/img-dummy-playlistart.png"
-                                layout="fill"
-                                alt="더미"
-                                className="albumart"
-                            />}
-                            {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
-                        </Fragment>
-                    )   
-                })}
-            </section>
-            <section className="info">
-                <p>{title}</p>
-                <figcaption>{desc}</figcaption>
-            </section>
-        </Link>
+        <Fragment>
+            <Link href="/weather" className="item main">
+                <section className="image">
+                    <img src="https://t3.ftcdn.net/jpg/01/22/14/82/360_F_122148268_Q8WEYYO1hP83PLGlIKAP8VSHnGHbTfpk.jpg" alt="앨범아트" />
+                </section>
+                <section className="info">
+                    <p>{util.getDayName(data.day)}</p>
+                    <p className="degree">{util.convertCelcius(data.low)}° | {util.convertCelcius(data.high)}°</p>
+                    <figcaption className="desc">{util.getRealWeatherName(data.text)}</figcaption>
+                </section>
+            </Link>
+        </Fragment>
     )
 }
 
@@ -83,4 +76,4 @@ const SkeletonItem = () => {
     );
 };
 
-export default PlaylistSection
+export default WeatherSection

@@ -656,126 +656,126 @@ export const dummySearchList = {
 
 export const dummyWeather = {
     "location": {
-        "city": "Seoul",
-        "woeid": 1132599,
-        "country": "South Korea",
-        "lat": 37.557121,
-        "long": 126.977379,
-        "timezone_id": "Asia/Seoul"
+      "city": "Seoul",
+      "woeid": 1132599,
+      "country": "South Korea",
+      "lat": 37.557121,
+      "long": 126.977379,
+      "timezone_id": "Asia/Seoul"
     },
     "current_observation": {
-        "pubDate": 1721228038,
-        "wind": {
-            "chill": 82,
-            "direction": "South",
-            "speed": 3
-        },
-        "atmosphere": {
-            "humidity": 88,
-            "visibility": 21,
-            "pressure": 1007.8
-        },
-        "astronomy": {
-            "sunrise": "5:24 AM",
-            "sunset": "7:52 PM"
-        },
-        "condition": {
-            "temperature": 78,
-            "text": "Partly Cloudy",
-            "code": 30
-        }
+      "pubDate": 1726849100,
+      "wind": {
+        "chill": 57,
+        "direction": "NE",
+        "speed": 12
+      },
+      "atmosphere": {
+        "humidity": 95,
+        "visibility": 3.98,
+        "pressure": 1007.5
+      },
+      "astronomy": {
+        "sunrise": "6:19 AM",
+        "sunset": "6:30 PM"
+      },
+      "condition": {
+        "temperature": 64,
+        "text": "Mostly Cloudy",
+        "code": 28
+      }
     },
     "forecasts": [
-        {
-            "day": "Wed",
-            "date": 1721232000,
-            "high": 81,
-            "low": 76,
-            "text": "Scattered Showers",
-            "code": 45
-        },
-        {
-            "day": "Thu",
-            "date": 1721318400,
-            "high": 79,
-            "low": 75,
-            "text": "Showers",
-            "code": 11
-        },
-        {
-            "day": "Fri",
-            "date": 1721404800,
-            "high": 85,
-            "low": 75,
-            "text": "Showers",
-            "code": 11
-        },
-        {
-            "day": "Sat",
-            "date": 1721491200,
-            "high": 83,
-            "low": 76,
-            "text": "Rain",
-            "code": 12
-        },
-        {
-            "day": "Sun",
-            "date": 1721577600,
-            "high": 83,
-            "low": 77,
-            "text": "Rain",
-            "code": 12
-        },
-        {
-            "day": "Mon",
-            "date": 1721664000,
-            "high": 88,
-            "low": 78,
-            "text": "Thunderstorms",
-            "code": 4
-        },
-        {
-            "day": "Tue",
-            "date": 1721750400,
-            "high": 92,
-            "low": 79,
-            "text": "Cloudy",
-            "code": 26
-        },
-        {
-            "day": "Wed",
-            "date": 1721836800,
-            "high": 92,
-            "low": 78,
-            "text": "Mostly Cloudy",
-            "code": 28
-        },
-        {
-            "day": "Thu",
-            "date": 1721923200,
-            "high": 95,
-            "low": 82,
-            "text": "Partly Cloudy",
-            "code": 30
-        },
-        {
-            "day": "Fri",
-            "date": 1722009600,
-            "high": 93,
-            "low": 83,
-            "text": "Showers",
-            "code": 11
-        },
-        {
-            "day": "Sat",
-            "date": 1722096000,
-            "high": 85,
-            "low": 73,
-            "text": "Showers",
-            "code": 11
-        }
+      {
+        "day": "Sat",
+        "date": 1726848000,
+        "high": 67,
+        "low": 64,
+        "text": "Scattered Showers",
+        "code": 45
+      },
+      {
+        "day": "Sun",
+        "date": 1726934400,
+        "high": 77,
+        "low": 58,
+        "text": "Partly Cloudy",
+        "code": 30
+      },
+      {
+        "day": "Mon",
+        "date": 1727020800,
+        "high": 76,
+        "low": 58,
+        "text": "Sunny",
+        "code": 32
+      },
+      {
+        "day": "Tue",
+        "date": 1727107200,
+        "high": 77,
+        "low": 62,
+        "text": "Mostly Sunny",
+        "code": 34
+      },
+      {
+        "day": "Wed",
+        "date": 1727193600,
+        "high": 82,
+        "low": 62,
+        "text": "Partly Cloudy",
+        "code": 30
+      },
+      {
+        "day": "Thu",
+        "date": 1727280000,
+        "high": 80,
+        "low": 63,
+        "text": "Mostly Sunny",
+        "code": 34
+      },
+      {
+        "day": "Fri",
+        "date": 1727366400,
+        "high": 79,
+        "low": 58,
+        "text": "Mostly Sunny",
+        "code": 34
+      },
+      {
+        "day": "Sat",
+        "date": 1727452800,
+        "high": 80,
+        "low": 60,
+        "text": "Mostly Sunny",
+        "code": 34
+      },
+      {
+        "day": "Sun",
+        "date": 1727539200,
+        "high": 81,
+        "low": 62,
+        "text": "Partly Cloudy",
+        "code": 30
+      },
+      {
+        "day": "Mon",
+        "date": 1727625600,
+        "high": 75,
+        "low": 57,
+        "text": "Mostly Cloudy",
+        "code": 28
+      },
+      {
+        "day": "Tue",
+        "date": 1727712000,
+        "high": 74,
+        "low": 56,
+        "text": "Cloudy",
+        "code": 26
+      }
     ]
-}
+  }
 
 export const dummyArtistDetail = {
     "data": [

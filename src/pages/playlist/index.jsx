@@ -20,14 +20,14 @@ const index = () => {
 
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"main"}>
-            <article id="recommand">
+            {/* <article id="recommand">
                 <TitleComponents title={"오늘의 추천 플레이리스트"} />
                 <section className="list">
 
                 </section>
-            </article>
+            </article> */}
             <article id="all">
-                <TitleComponents title={"모든 플레이리스트"} />
+                {/* <TitleComponents title={"모든 플레이리스트"} /> */}
                 <section className="list">
                     {list.map((e, i) =>
                         <Link href={`/playlist/details/${e._id}`} className="item" key={i}>

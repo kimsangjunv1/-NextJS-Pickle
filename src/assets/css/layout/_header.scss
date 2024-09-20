@@ -8,8 +8,10 @@ header {
     max-width: var(--pc);
     z-index: 100;
     padding: 0px 1.2rem 0px 1.2rem;
+    background: linear-gradient(180deg, black 20%, transparent);
 
     .header-inner {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -18,10 +20,9 @@ header {
         
         > section {
             a {
-                font-size: 1.6rem;
-                margin-right: 2.4rem;
+                font-size: 1.8rem;
                 text-decoration: none;
-                color: var(--color-gray-50);
+                color: var(--color-gray-200);
                 transition: 0.25s color;
 
                 &:hover {
@@ -32,19 +33,12 @@ header {
             &.list-menu {
                 display: flex;
                 align-items: center;
-                gap: 3.2rem;
+                gap: 2.2rem;
 
-                > a {
-                    // position: absolute;
-                    // top: 50%;
-                    // left: 50%;
-                    // transform: translate(-50%, -50%);
-                    // margin-right: 0px;
-
-                    // > img {
-                    //     width: 72px;
-                    // }
-                }
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
 
             &.list-action {

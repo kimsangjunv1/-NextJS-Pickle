@@ -26,8 +26,8 @@ const ArtistSection = ({ songList }) => {
                     <ItemComponents korName={""} engName={""} count={""} key={key} />
                 )} */}
                 <Swiper
-                    spaceBetween={24}
-                    slidesPerView={8}
+                    spaceBetween={8}
+                    slidesPerView={5}
                     // onSlideChange={() => console.log('slide change')}
                     // onSwiper={(swiper) => console.log(swiper)}
                 >    

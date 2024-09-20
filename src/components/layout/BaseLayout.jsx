@@ -40,7 +40,7 @@ const BaseLayout = ({ children, title, description, currentPage, isScrolled }) =
                 {/* 모든 페이지 별 내용 END */}
 
                 {/* 플레이어 */}
-                {trackList.length && <PlayerComponents />}
+                {trackList.length ? <PlayerComponents /> : ""}
                 {/* 플레이어 */}
             </Main>
             {/* 메인 END */}

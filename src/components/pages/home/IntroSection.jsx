@@ -19,8 +19,9 @@ const IntroSection = ({ DBPlaylist }) => {
         <Article id={"intro"}>
             {list.length ?
                 <Swiper
-                    spaceBetween={24}
-                    slidesPerView={"auto"}
+                    spaceBetween={8}
+                    slidesPerView={2}
+                    // slidesPerView={"auto"}
                     // onSlideChange={() => console.log('slide change')}
                     // onSwiper={(swiper) => console.log(swiper)}
                     pagination={{

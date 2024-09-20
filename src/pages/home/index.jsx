@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import PlaylistSection from "@/components/pages/home/PlaylistSection";
-import EventSection from "@/components/pages/home/EventSection";
+import WeatherSection from "@/components/pages/home/WeatherSection";
 import ArtistSection from "@/components/pages/home/ArtistSection";
 import AlbumSection from "@/components/pages/home/AlbumSection";
 import RecentSection from "@/components/pages/home/RecentSection";
@@ -11,13 +11,15 @@ import MainApi from "@/api/main/main_api";
 
 import { dummyWeather } from "@/components/utils/menulist";
 
+import useSWR from "swr";
+import { fetcherYahoo } from "@/components/utils/fetcher";
+
 import utilArtist from "@/components/utils/util_artist";
 import IntroSection from "@/components/pages/home/IntroSection";
-import MarqueeSection from "@/components/pages/home/MarqueeSection";
 import NoticeComponents from "@/components/common/NoticeComponents";
 
 const main = () => {
-    const [ weather, setWeather ] = useState([]);
+    const [ weatherData, setWeatherData ] = useState([]);
 
     const [ playlist, setPlaylist ] = useState([]);
     const [ songList, setSongList ] = useState([]);
@@ -27,10 +29,12 @@ const main = () => {
     const apiYahoo = new YahooApi();
 
     // 메인 데이터
-    const getApiData = async () => {
+    const getWeatherData = async () => {
         // setWeather(await apiYahoo.getWeatherData());
-        setWeather(dummyWeather);
+        setWeatherData(dummyWeather);
     }
+
+    // const { data: weatherData, error: weatherError } = useSWR("/weather/seoul", fetcherYahoo);
     
     const getPlayList = async () => {
         setPlaylist(await apiMain.getPlayList());
@@ -51,7 +55,7 @@ const main = () => {
     }
 
     useEffect(() => {
-        getApiData();
+        getWeatherData();
         getPlayList();
     }, [])
 
@@ -63,13 +67,13 @@ const main = () => {
         getArtistList();
     }, [songList])
     
+    
     return (
         <Fragment>
-            {/* <MarqueeSection /> */}
             <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
             <IntroSection DBPlaylist={ playlist } />
-            <PlaylistSection DBPlaylist={ playlist } DBWeather={ weather } />
-            {/* <EventSection /> */}
+            <WeatherSection DBWeather={ weatherData } />
+            <PlaylistSection DBPlaylist={ playlist } />
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
             <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>
             {/* <RecentSection /> */}

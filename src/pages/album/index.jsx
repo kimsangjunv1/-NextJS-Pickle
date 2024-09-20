@@ -26,15 +26,15 @@ const index = () => {
     }, [list])
 
     return (
-        <SubPageLayout pageTitle={"앨범"} pagePath={"playlist"} detailClassName={"main"}>
-            <article id="recommand">
+        <SubPageLayout pageTitle={"앨범"} pagePath={"album"} detailClassName={"main"}>
+            {/* <article id="recommand">
                 <TitleComponents title={"오늘의 추천 아티스트"} />
                 <section className="list">
 
                 </section>
-            </article>
+            </article> */}
             <article id="all">
-                <TitleComponents title={"모든 아티스트"} />
+                {/* <TitleComponents title={"모든 아티스트"} /> */}
                 <section className="list">
                     {list.map((item, i) =>
                         <>

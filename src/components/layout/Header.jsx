@@ -6,16 +6,14 @@ const Header = () => {
         <header>
             <div className="header-inner">
                 {/* 메뉴 리스트 */}
+                <Link href="/home">
+                    <img src="/images/common/img-logo-brand.svg" alt="픽클" />
+                </Link>
                 <section className="list-menu">
-                    <Link href="/home">
-                        <img src="/images/common/img-logo-brand.svg" alt="픽클" />
-                    </Link>
-                    <div>
-                        <Link href="/playlist">플레이리스트</Link>
-                        <Link href="/artist">아티스트</Link>
-                        <Link href="/album">앨범</Link>
-                        <Link href="/weather">오늘 날씨</Link>
-                    </div>
+                    <Link href="/playlist">플레이리스트</Link>
+                    <Link href="/artist">아티스트</Link>
+                    <Link href="/album">앨범</Link>
+                    <Link href="/weather">오늘 날씨</Link>
                 </section>
                 {/* 메뉴 리스트 END */}
 
