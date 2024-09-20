@@ -11,7 +11,6 @@ import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
 const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
-    console.log("데이터 뜰어왔나 ? ",DBWeather)
     return (
         <Article id={"playlist"}>
             <TitleComponents
@@ -24,8 +23,8 @@ const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
                 <Swiper
                     spaceBetween={24}
                     slidesPerView={3}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    // onSlideChange={() => console.log('slide change')}
+                    // onSwiper={(swiper) => console.log(swiper)}
                 >    
                     <SwiperSlide>
                         <WeatherComponents data={ DBWeather }/>

@@ -96,7 +96,6 @@ const utilPlayer = {
 
     // 함수 : 재생 목록에서 삭제
     deleteItemOnTrackList: (props, target) => {
-        console.log("first",props,target)
         usePlayerStore.getState().removeTrack(
             props.filter((good) => good._id !== target)
         );
@@ -114,8 +113,6 @@ const utilPlayer = {
 
         let progressWidth = progress?.clientWidth //진행바 전체 길이
         let duration = audio?.duration //오디오 전체 길이
-
-        // console.log("이게 오네 :", timeEstimated, timeFinish, progress, progressBar, refAudio, getPlayState);
 
         let isDragging = false;
 
@@ -200,11 +197,8 @@ const utilPlayer = {
     setVolume: ({ e, refAudio }) => {
         const elementVolume = e.current;
         const elementAudio = refAudio.current;
-
-        console.log("나옴 ! :", elementVolume, elementAudio);
         
         elementVolume.addEventListener("input", (e) => {
-            console.log("디스 : ",e.target.value);
             elementAudio.volume = e.target.value;
         });
     }

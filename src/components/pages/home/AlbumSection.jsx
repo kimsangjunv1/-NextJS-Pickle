@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import TitleComponents from "@/components/common/TitleComponents";
+import SkeletonComponents from "@/components/common/SkeletonComponents";
+
 import Article from "@/components/layout/Article";
 
 import Link from "next/link";
 import Image from "next/image";
-
 import util from "@/api/util";
 
 
+// 섹션 : 앨범
 const AlbumSection = ({ artistDetailsList }) => {
     const [ list, setList ] = useState([]);
 
     const mappingData = () => {
-        // console.log("처음 들어오는 값 : ",artistDetailsList)
         if(artistDetailsList.length){
             const good = artistDetailsList.map(target => {
                 let rand = util.getRandomNum(target.albums.length - 1);
@@ -46,25 +46,28 @@ const AlbumSection = ({ artistDetailsList }) => {
             {/* 제목 END */}
 
             <section className="section-album-container">
-                <Swiper
-                    spaceBetween={24}
-                    slidesPerView={6}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
-                >   
-                    {list.map((data, key) => 
-                        <SwiperSlide>
-                            <ItemComponents data={ data } key={key} />
-                        </SwiperSlide>
-                    )}
-                </Swiper>
+                {list.length ? 
+                    <Swiper
+                        spaceBetween={24}
+                        slidesPerView={6}
+                        // onSlideChange={() => console.log('slide change')}
+                        // onSwiper={(swiper) => console.log(swiper)}
+                    >   
+                        {list.map((data, key) => 
+                            <SwiperSlide>
+                                <ItemComponents data={ data } key={key} />
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
+                    : <SkeletonItem />
+                }
             </section>
         </Article>
     )
 }
 
+// 공통 : 앨범 항목
 const ItemComponents = ({ data }) => {
-    // console.log("앨범 : ",data)
     return (
         <Link href={`/album/details/${data.pathId}/${data.albumId}`} className="item">
             {/* <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="/" /> */}
@@ -82,5 +85,23 @@ const ItemComponents = ({ data }) => {
         </Link>
     )
 }
+
+// 로딩 : 스켈레톤 UI
+const SkeletonItem = () => {
+    return (
+    <div className="skeleton-wrapper">
+        {Array(8).fill(0).map((e, i) =>
+                <div className="skeleton-profile">
+                    <SkeletonComponents type="avatar" />
+
+                    <div>
+                        <SkeletonComponents type="title" />
+                        <SkeletonComponents type="text" />
+                    </div>
+                </div>
+            )}
+    </div>
+    );
+};
 
 export default AlbumSection

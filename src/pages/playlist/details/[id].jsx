@@ -36,7 +36,6 @@ const AlbumPage = () => {
 
 // 섹션 : 정보
 const SectionInfoComponents = ({ desc, keywords = [], title, list = [] }) => {
-    // console.log("리스트 상태 : ", list)
     return (
         <article id="info">
             <section className="album">
@@ -81,7 +80,6 @@ const SectionInfoComponents = ({ desc, keywords = [], title, list = [] }) => {
 
 // 섹션 : 목록
 const SectionListComponents = ({ list = [] }) => {
-    // console.log("상태 : ",list)
     return (
         <article id="list">
 

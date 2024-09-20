@@ -10,8 +10,7 @@ const index = () => {
     const url = "https://jsonplaceholder.typicode.com/todos"
 
     const { data, isLoading, error } = useSWR(url, fetcher)
-
-    console.log("?? ", data)
+    
     return (
         <div>
             {/* <p>로딩 상태 : {JSON.stringify(isLoading)}</p>

@@ -32,7 +32,6 @@ const pageAdmin = () => {
     const getRapidSearchData = async( pageNum = 0 ) => {
         setCheckboxValue([]);
         const test = await apiOther.getRapidSearchData({inputValue, pageNum});
-        console.log("옹 : ",test.tracks?.hits);
 
         setList(test.tracks?.hits);
     }

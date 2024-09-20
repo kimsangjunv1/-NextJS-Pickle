@@ -30,8 +30,8 @@ const ArtistSection = ({ songList }) => {
                 <Swiper
                     spaceBetween={24}
                     slidesPerView={8}
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
+                    // onSlideChange={() => console.log('slide change')}
+                    // onSwiper={(swiper) => console.log(swiper)}
                 >    
                     {songList.map((e, i) => 
                         <SwiperSlide key={i}>
@@ -46,7 +46,6 @@ const ArtistSection = ({ songList }) => {
 }
 
 const ItemComponents = ({ data }) => {
-    // console.log("받아오는 데이터 ",data)
     return (
         <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
             <div className="info">

@@ -24,18 +24,15 @@ const PlayerComponents = () => {
 
     // 감지 : 트랙리스트
     useEffect(() => {
-        console.log("트랙리스트 추가 감지 : ",trackList)
         utilPlayer.setCurrentTrack(trackList);
     }, [trackList])
 
     // 감지 : 현재 트랙 번호
     useEffect(() => {
-        console.log("순서 변화 감지 : ",currentTrackIndex)
     }, [currentTrackIndex])
 
     // 감지 : 재생 상태
     useEffect(() => {
-        console.log("재생 상태 감지 : ",isPlaying);
         utilPlayer.setProgress(elementInfo);
     }, [isPlaying])
     
@@ -111,7 +108,6 @@ const MinimizeComponents = ({
     const refVolumeBar = useRef(null);
 
     useEffect(() => {
-        console.log("정보 전송 , 최소")
         setProgress(refEstimatedTime, refFinishTime, refProgress, refProgressBar)
     }, [])
 
@@ -168,10 +164,6 @@ const MaximizeComponents = ({
         currentTrack,
         currentTrackIndex
     }) => {
-
-    useEffect(() => {
-        console.log("정보 전송 , 최대")
-    }, [])
 
     return (
         <Fragment>

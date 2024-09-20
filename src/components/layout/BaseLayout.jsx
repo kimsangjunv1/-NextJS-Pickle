@@ -21,10 +21,6 @@ const BaseLayout = ({ children, title, description, currentPage, isScrolled }) =
         setIsPlaying, setPlayerSize, setCurrentTrack
     } = usePlayerStore((state) => state);
 
-    useEffect(() => {
-        console.log("현재 페이지 정보 : ", router,util.isArrayEmpty(currentTrack));
-    }, [currentTrack])
-
     return (
         <Fragment>
             {/* SEO 관리 */}

@@ -21,14 +21,12 @@ const IntroSection = ({ DBPlaylist }) => {
             <Swiper
                 spaceBetween={24}
                 slidesPerView={"auto"}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper) => console.log(swiper)}
                 pagination={{
                     type: "progressbar",
                 }}
                 navigation={true}
-                
-                // modules={[Pagination, Navigation]}
             >
                 {list.map((e, i) => 
                     <SwiperSlide key={i}>

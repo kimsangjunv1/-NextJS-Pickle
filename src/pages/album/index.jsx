@@ -22,7 +22,6 @@ const index = () => {
     }, [])
 
     useEffect(() => {
-        console.log("감지 : ",list)
         setAlbum(list.albums);
     }, [list])
 

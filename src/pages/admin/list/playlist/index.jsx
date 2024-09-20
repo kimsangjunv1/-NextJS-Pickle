@@ -22,12 +22,9 @@ const pageAdmin = () => {
 
     // 함수 : 정보 저장
     const handleValue = async(props, type) => {
-        console.log("실행",props, type)
         switch (type) {
             // 사전 저장 : 리스트
             case "lists":
-                console.log("리스트 저장 실행")
-                // let test = { songId: props._id, albumImage: props.share.image }
                 let test = { songId: props._id, albumImage: props.share.image, adamid: props.artists[0].adamid }
                 setCheckboxValue([...checkboxValue, test]);
                 
@@ -35,7 +32,6 @@ const pageAdmin = () => {
 
             // 사전 저장 : 키워드
             case "keywords":
-                console.log("키워드 저장 실행", props.current.value)
                 let value = props.current.value;
                 setKeywords([...keywords, value]);
                 props.current.value = "";
@@ -51,9 +47,7 @@ const pageAdmin = () => {
                     list : checkboxValue
                 }
         
-                console.log("전송 전 : ", info)
                 const data = await apiMain.createPlayList(info);
-                console.log("저장상태 : ",data)
 
                 break;
         }
@@ -110,10 +104,6 @@ const SectionRegisterComponents = ({
     const keywordRef = useRef(null);
     const titleRef = useRef(null);
     const descRef = useRef(null);
-
-    useEffect(() => {
-        console.log("keywords",keywords)
-    }, [])
 
     return (
         <article id="register">

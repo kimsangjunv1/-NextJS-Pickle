@@ -35,7 +35,6 @@ const ArtistDetailPage = () => {
         let final;
 
         if ( !result ) {
-            console.log("저장된 DB가 없어 저장을 시작합니다.");
             let details = await apiRapid.getArtistDetail(id);
             
             // 찾은 정보로 아티스트 정보 생성
@@ -44,13 +43,11 @@ const ArtistDetailPage = () => {
             // 현재 페이지 이용을 위해 가져온 정보를 최종 변수에 삽입
             final = utilArtist.getArtistParameter(details);
         } else {
-            console.log("저장된 DB를 찾았습니다.");
 
             // 현재 페이지 이용을 위해 가져온 정보를 최종 변수에 삽입
             final = result;
         }
 
-        console.log("최종 : ", final);
         saveData(final);
     }
 
@@ -75,9 +72,6 @@ const ArtistDetailPage = () => {
 
 // 섹션 : 현재 아티스트 정보
 const SectionInfoComponents = ({ data = [], albums, songs }) => {
-    
-    console.log("현재 아티스트 정보 : ", data);
-
     return(
         <article id="details">
             <section className="image">
@@ -123,8 +117,6 @@ const SectionInfoComponents = ({ data = [], albums, songs }) => {
 
 // 섹션 : 아티스트가 소유한 노래
 const SectionSongsComponents = ({ data = [] }) => {
-    console.log("현재 소유한 노래 : ", data);
-
     return (
         <article id="songs">
             {data.filter((e, i) => i >= 1).map((e, i) => 
@@ -154,8 +146,6 @@ const SectionSongsComponents = ({ data = [] }) => {
 
 // 섹션 : 아티스트가 소유한 앨범
 const SectionAlbumComponents = ({ data = [] }) => {
-    console.log("현재 소유한 앨범 : ", data);
-
     return (
         <article id="albums">
             {data.map((e, i) => 

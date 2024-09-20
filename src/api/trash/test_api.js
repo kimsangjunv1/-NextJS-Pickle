@@ -31,7 +31,6 @@ export default class TestApi extends Api {
       "offset" : 0,
       "limit" : 5
     }
-    console.log("params", params, test)
     const res = await super.get("/search", test);
 
     if (util.checkResult(res)) {

@@ -59,7 +59,6 @@ const AlbumPage = () => {
 
 // 섹션 : 현재 앨범 정보
 const SectionInfoComponents = ({ data = [] }) => {
-    console.log("현재 상세 정보 : ",data);
     return (
         <article id="details">
             <section>
@@ -83,7 +82,6 @@ const SectionInfoComponents = ({ data = [] }) => {
 
 // 섹션 : 현재 모든 앨범 정보
 const SectionAlbumComponents = ({ data = [] }) => {
-    console.log("존재하는 앨범 목록 : ", data);
     return (
         <article id="albums">
             <div></div>
@@ -93,7 +91,6 @@ const SectionAlbumComponents = ({ data = [] }) => {
 
 // 섹션 : 현재 노래 정보
 const SectionSongsComponents = ({ data = [] }) => {
-    console.log("존재하는 노래 목록 : ", data);
     return (
         <article id="songs">
             <div></div>

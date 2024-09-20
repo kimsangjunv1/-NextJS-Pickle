@@ -13,17 +13,12 @@ const index = () => {
     const getApiData = async () => {
         let data = []
         data = await apiMain.getArtistList();
-        console.log("첫 데이터 : ",data.map((e) => e.artists[0]))
         setList(data.map((e) => e.artists[0]));
     }
 
     useEffect(() => {
         getApiData();
     }, [])
-
-    useEffect(() => {
-        console.log("감지 : ",list)
-    }, [list])
 
     return (
         <SubPageLayout pageTitle={"아티스트"} pagePath={"artist"} detailClassName={"main"}>
