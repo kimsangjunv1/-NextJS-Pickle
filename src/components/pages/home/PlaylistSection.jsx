@@ -31,7 +31,7 @@ const PlaylistSection = ({ DBPlaylist, DBWeather }) => {
                     </SwiperSlide>
 
                     {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>
-                        <SwiperSlide>
+                        <SwiperSlide key={key}>
                             <ItemComponents title={e.title} desc={e.desc} keywords={e.keywords} image={e.list} id={e._id} key={key}/>
                         </SwiperSlide>
                     )}
@@ -69,7 +69,7 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
             <section className="image">
                 {image?.map((e, i) => {
                     return (
-                        <>
+                        <Fragment key={i}>
                             {i == 0 && <Image
                                 src="/images/common/img-dummy-playlistart.png"
                                 layout="fill"
@@ -77,7 +77,7 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
                                 className="albumart"
                             />}
                             {/* {i == 0 && <img src={e.albumImage} alt={`${i}번째 앨범아트`} key={i} />}    */}
-                        </>
+                        </Fragment>
                     )   
                 })}
             </section>
