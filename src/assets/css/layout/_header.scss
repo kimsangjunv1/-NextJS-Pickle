@@ -5,12 +5,12 @@ header {
     transform: translate(-50%, 0);
     height: var(--header-height);
     width: 100%;
-    max-width: var(--pc);
     z-index: 100;
-    padding: 0px 1.2rem 0px 1.2rem;
-    background: linear-gradient(180deg, black 20%, transparent);
-
+    background: linear-gradient(180deg, #13151be6 20%, transparent);
+    
     .header-inner {
+        padding: 0px 1.2rem 0px 1.2rem;
+        max-width: var(--pc);
         position: relative;
         display: flex;
         justify-content: space-between;

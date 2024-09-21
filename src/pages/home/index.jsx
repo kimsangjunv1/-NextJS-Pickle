@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+import TodayWeatherSection from "@/components/pages/home/TodayWeatherSection";
 import PlaylistSection from "@/components/pages/home/PlaylistSection";
 import WeatherSection from "@/components/pages/home/WeatherSection";
 import ArtistSection from "@/components/pages/home/ArtistSection";
@@ -8,10 +9,12 @@ import RecentSection from "@/components/pages/home/RecentSection";
 
 import YahooApi from "@/api/other/yahoo_api";
 import MainApi from "@/api/main/main_api";
+import ImageApi from "@/api/other/image_api";
 
 import useWeather from "@/components/hooks/useWeather";
 
 import { dummyWeather } from "@/components/utils/menulist";
+import { dummyImageList } from "@/components/utils/menulist";
 
 import utilArtist from "@/components/utils/util_artist";
 import IntroSection from "@/components/pages/home/IntroSection";
@@ -25,6 +28,7 @@ const main = () => {
     const { weatherData, loading, error } = useWeather();
     
     const apiMain = new MainApi();
+    const apiImage = new ImageApi();
     
     // 4. 컴포넌트 마운트 시 플레이리스트 가져오기
     const getPlayList = async () => {
@@ -47,6 +51,14 @@ const main = () => {
             setArtistList(data);
         }
     };
+
+    const getImageList = async () => {
+        console.log("이미지 가져오기 시작")
+        // const good = await apiImage.getSearchResult("rain");
+        const good = dummyImageList;
+
+        console.log("이걸 받았어용 : ", good);
+    };
     
     // 7. 컴포넌트 마운트 시 플레이리스트 가져오기 호출
     useEffect(() => {
@@ -62,12 +74,17 @@ const main = () => {
     useEffect(() => {
         getArtistList();
     }, [songList]);
+
+    useEffect(() => {
+        getImageList();
+    }, [weatherData]);
     
     return (
         <Fragment>
-            <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
-            <IntroSection DBPlaylist={ playlist } />
+            {/* <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/> */}
+            <TodayWeatherSection DBWeatherImage={ dummyImageList } />
             <WeatherSection DBWeather={ weatherData } />
+            <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
             <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>

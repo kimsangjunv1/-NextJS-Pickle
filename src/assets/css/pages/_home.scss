@@ -1,7 +1,7 @@
 // 메인 랜딩페이지
 main {
     // padding: calc(var(--header-height) + 3.8rem) 1.2rem 0px 1.2rem !important;
-
+    padding-top: 25vh;
     .main-inner {
         // 인트로 섹션 스타일
         > article {
@@ -15,14 +15,22 @@ main {
                 text-align: center;
             }
 
-            &#marquee {
-                position: fixed;
+            &#image {
+                position: absolute;
                 top: 0;
                 left: 0;
-                width: 100%;
-                // height: ;
-                background: var(--color-gray-900);
-                padding: 0.8rem 0;
+                z-index: -1;
+
+                > div {
+                    width: 100vw;
+                    height: 50vh;
+                    mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
+                    -webkit-mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
+                    background-image: url("https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?auto=compress&cs=tinysrgb&w=750");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: center;
+                }
             }
 
             // 인트로
@@ -55,13 +63,17 @@ main {
                                     text-align: left;
         
                                     p {
-                                        color: var(--color-brand-500);
+                                        font-size: 1.2rem;
                                         margin-bottom: 0.8rem;
+                                        background: linear-gradient(91deg, #DB5DFF 0%, #1D93FF 80.61%);
+                                        background-clip: text;
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
                                     }
         
                                     h5 {
-                                        font-size: 3.2rem;
-                                        margin-bottom: 1.4rem;
+                                        font-size: 1.8rem;
+                                        margin-bottom: 0.4rem;
                                     }
         
                                     figcaption {
@@ -81,8 +93,8 @@ main {
                                 }
             
                                 > .albumart {
-                                    height: 22rem;
-                                    width: 22rem;
+                                    height: 12rem;
+                                    width: 12rem;
                                     /* object-fit: none; */
                                     /* object-position: center; */
                                     aspect-ratio: 1/1;
@@ -98,6 +110,8 @@ main {
 
             // 날씨
             &#weather {
+                padding-top: 25vh;
+
                 > section {
                     &:last-child {
                         display: flex;
@@ -261,12 +275,11 @@ main {
                     width: 100%;
 
                     .item {
-                        width: calc(100vw / 6);
-                        height: 36.0rem;
                         flex: 1;
                         position: relative;
                         border-radius: var(--border-radius);
                         overflow: hidden;
+                        aspect-ratio: 1 / 1;
 
                         &:hover {
                             > .info {
@@ -279,7 +292,6 @@ main {
 
                         &:not(:hover) {
                             > .info {
-                                // background: rgb(0 0 0 / 50%);
                                 border: 0px solid #ffffff70;
                             }
                         }

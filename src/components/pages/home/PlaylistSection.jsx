@@ -15,7 +15,7 @@ const PlaylistSection = ({ DBPlaylist }) => {
     return (
         <Article id={"playlist"}>
             <TitleComponents
-                title={"비오는 날인데 어떤 플레이 리스트가 있을까?"}
+                title={"어떤 플레이 리스트가 있을까?"}
                 desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"}
                 image={"cloth-red"}
             />

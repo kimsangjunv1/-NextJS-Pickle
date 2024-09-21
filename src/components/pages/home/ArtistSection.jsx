@@ -14,7 +14,7 @@ const ArtistSection = ({ songList }) => {
         <Article id={"artist"}>
             {/* 제목 */}
             <TitleComponents
-                title={"누가 불렀을까 ?"}
+                title={"관련된 노래를 누가 불렀을까 ?"}
                 desc={"날씨에 맞는 음악을 불렀던 가수들을 보여드려요!"}
                 image={"hand"}
             />

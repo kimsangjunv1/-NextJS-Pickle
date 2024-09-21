@@ -114,9 +114,9 @@ const MinimizeComponents = ({
     return (
         <Fragment>
             {/* 볼륨 슬라이더 */}
-            <section style={{ display: "none" }}>
+            {/* <section style={{ display: "none" }}>
                 <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" onClick={() => setVolume(refVolumeBar)} ref={refVolumeBar}/>
-            </section>
+            </section> */}
             {/* 볼륨 슬라이더 END */}
 
             {/* 음악 진행률 */}
@@ -127,11 +127,14 @@ const MinimizeComponents = ({
 
             {/* 음악 정보 */}
             <section className="info">
-                <div>
-                    <p className="desc"><img src="/images/icon/ico-deco-lightning.svg" alt="/" /><i>now playing.</i></p>
-                    <h2 className="title">{currentTrack.title}</h2>
+                <img src={`${currentTrack.images.coverart}`} alt="/" loading="lazy" />
+                <div className="contents">
+                    <h6>Now Playing.</h6>
+                    <div>
+                        <h5 className="title">{currentTrack.title}</h5>
+                        <p className="artist">{currentTrack.subtitle}</p>
+                    </div>
                 </div>
-                <p className="artist">{currentTrack.subtitle}</p>
             </section>
             {/* 음악 정보 END */}
 
@@ -172,7 +175,7 @@ const MaximizeComponents = ({
                 {/* 앨범 아트 */}
                 <section className="albumart">
                     <p className="desc">
-                        <img src="/images/icon/ico-deco-lightning.svg" alt="/" />
+                        {/* <img src="/images/icon/ico-deco-lightning.svg" alt="/" /> */}
                         <i>now playing.</i>
                     </p>
 

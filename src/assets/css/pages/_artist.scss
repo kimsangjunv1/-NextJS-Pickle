@@ -65,6 +65,23 @@ main {
                             > article {
                                 &#details {
                                     display: flex;
+
+                                    > section {
+                                        &.image {
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: 1005;
+                                            z-index: -1;
+
+                                            > img {
+                                                width: 100%;
+                                                filter: blur(61px);
+                                                mask-image: linear-gradient(to bottom, #000, #000 12.5%, #00000000 37.5%, #0000);
+                                            }
+                                        }
+                                    }
                                 }
 
                                 &#songs {
