@@ -12,7 +12,6 @@ import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
 const WeatherSection = ({ DBWeather }) => {
-    console.log("날씨 나와라!", DBWeather.forecasts)
     return (
         <Article id={"weather"}>
             <TitleComponents
@@ -22,7 +21,7 @@ const WeatherSection = ({ DBWeather }) => {
             />
             
             <section className="section-playlist-container">
-                {DBWeather.forecasts ? 
+                {DBWeather ? 
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={5}
@@ -44,9 +43,6 @@ const WeatherSection = ({ DBWeather }) => {
 
 // 컴포넌트 : 날씨
 const ItemComponents = ({ data }) => {
-    console.log("띱 : ", data)
-    // data = data.forecasts?.filter((e, i) => i == 0);
-    
     return(
         <Fragment>
             <Link href="/weather" className="item main">

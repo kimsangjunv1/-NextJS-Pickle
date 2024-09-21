@@ -9,64 +9,59 @@ import RecentSection from "@/components/pages/home/RecentSection";
 import YahooApi from "@/api/other/yahoo_api";
 import MainApi from "@/api/main/main_api";
 
-import { dummyWeather } from "@/components/utils/menulist";
+import useWeather from "@/components/hooks/useWeather";
 
-import useSWR from "swr";
-import { fetcherYahoo } from "@/components/utils/fetcher";
+import { dummyWeather } from "@/components/utils/menulist";
 
 import utilArtist from "@/components/utils/util_artist";
 import IntroSection from "@/components/pages/home/IntroSection";
 import NoticeComponents from "@/components/common/NoticeComponents";
 
 const main = () => {
-    const [ weatherData, setWeatherData ] = useState([]);
+    const [playlist, setPlaylist] = useState([]);
+    const [songList, setSongList] = useState([]);
+    const [artistList, setArtistList] = useState([]);
 
-    const [ playlist, setPlaylist ] = useState([]);
-    const [ songList, setSongList ] = useState([]);
-    const [ artistList, setArtistList ] = useState([]);
-
-    const apiMain = new MainApi();
-    const apiYahoo = new YahooApi();
-
-    // 메인 데이터
-    const getWeatherData = async () => {
-        // setWeather(await apiYahoo.getWeatherData());
-        setWeatherData(dummyWeather);
-    }
-
-    // const { data: weatherData, error: weatherError } = useSWR("/weather/seoul", fetcherYahoo);
+    const { weatherData, loading, error } = useWeather();
     
+    const apiMain = new MainApi();
+    
+    // 4. 컴포넌트 마운트 시 플레이리스트 가져오기
     const getPlayList = async () => {
-        setPlaylist(await apiMain.getPlayList());
-    }
-
-    // 섹션 데이터 : 노래 목록
+        const data = await apiMain.getPlayList();
+        setPlaylist(data);
+    };
+    
+    // 5. 플레이리스트가 업데이트되면 노래 목록 가져오기
     const getSongList = async () => {
-        if(playlist.length){
-            setSongList(await apiMain.getSongSearchList(utilArtist.getMainArtistList(playlist)));
+        if (playlist.length) {
+            const data = await apiMain.getSongSearchList(utilArtist.getMainArtistList(playlist));
+            setSongList(data);
         }
-    }
-
-    // 섹션 데이터 : 아티스트
+    };
+    
+    // 6. 노래 목록이 업데이트되면 아티스트 목록 가져오기
     const getArtistList = async () => {
-        if(songList.length){
-            setArtistList(await apiMain.getMultipleArtists(utilArtist.getSongAdamid(songList)));
+        if (songList.length) {
+            const data = await apiMain.getMultipleArtists(utilArtist.getSongAdamid(songList));
+            setArtistList(data);
         }
-    }
-
+    };
+    
+    // 7. 컴포넌트 마운트 시 플레이리스트 가져오기 호출
     useEffect(() => {
-        getWeatherData();
         getPlayList();
-    }, [])
-
+    }, []);
+    
+    // 8. 플레이리스트가 업데이트될 때마다 노래 목록 가져오기 호출
     useEffect(() => {
         getSongList();
-    }, [playlist])
-
+    }, [playlist]);
+    
+    // 9. 노래 목록이 업데이트될 때마다 아티스트 목록 가져오기 호출
     useEffect(() => {
         getArtistList();
-    }, [songList])
-    
+    }, [songList]);
     
     return (
         <Fragment>
