@@ -1,4 +1,4 @@
-import ApiImage from "../api_Image";
+import ApiImage from "../api_stock_image";
 import util from "../util";
 
 export default class ImageApi extends ApiImage {

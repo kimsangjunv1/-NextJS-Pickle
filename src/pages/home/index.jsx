@@ -9,7 +9,7 @@ import RecentSection from "@/components/pages/home/RecentSection";
 
 import YahooApi from "@/api/other/yahoo_api";
 import MainApi from "@/api/main/main_api";
-import ImageApi from "@/api/other/image_api";
+import ImageApi from "@/api/other/stock_image_api";
 
 import useWeather from "@/components/hooks/useWeather";
 
