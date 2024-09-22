@@ -99,6 +99,11 @@
                             grid-column-gap: 1.2rem !important;
                         }
                     }
+
+                    #details {
+                        flex-direction: column !important;
+                        max-height: none !important;
+                    }
                 }
             }
         }

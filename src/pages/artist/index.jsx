@@ -14,12 +14,12 @@ const index = () => {
         let data = []
         data = await apiMain.getArtistList();
         setList(data.map((e) => e.artists[0]));
-    }
+    };
 
     useEffect(() => {
         getApiData();
-    }, [])
-
+    }, []);
+    
     return (
         <SubPageLayout pageTitle={"아티스트"} pagePath={"artist"} detailClassName={"main"}>
             {/* <article id="recommand">

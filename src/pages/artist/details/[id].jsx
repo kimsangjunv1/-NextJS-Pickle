@@ -24,6 +24,7 @@ const ArtistDetailPage = () => {
 
     // 함수 : 현재 가져온 정보 state 저장
     const saveData = (params) => {
+        console.log("상세정보 : ", params)
         setCurrentArtist(params.artists);
         setDataAlbums(params.albums.filter((e) => e.type === "albums"));
         setDataSongs(params.songs);
@@ -75,12 +76,16 @@ const SectionInfoComponents = ({ data = [], albums, songs }) => {
     return(
         <article id="details">
             <section className="image">
-                <img src={`${data[0]?.attributes.artwork.url.replace("{w}x{h}","200x200")}`} alt=""/>
+                <img src={`${data[0]?.attributes.artwork.url.replace("{w}x{h}","200x200")}`} alt="" className="backdrop" aria-label="hidden" />
+                <img src={`${data[0]?.attributes.artwork.url.replace("{w}x{h}","200x200")}`} alt="앨범아트" />
             </section>
 
             <section className="info">
-                <h3>{data[0]?.attributes.name}</h3>
-                
+                <section>
+                    <h5>이름</h5>
+                    <p>{data[0]?.attributes.name}</p>
+                </section>
+
                 <section>
                     <h5>장르</h5>
                     <div>{albums[0]?.attributes.genreNames.map((e, i) => <p>{e}</p>)}</div>
