@@ -120,7 +120,10 @@ const MinimizeComponents = ({
             {/* 볼륨 슬라이더 END */}
 
             {/* 음악 진행률 */}
-            <section className="progress" onClick={() => setProgress(refEstimatedTime, refFinishTime, refProgress, refProgressBar)} ref={refProgress}>
+            <section className="progress" onClick={(e) => {
+                e.stopPropagation();
+                setProgress(refEstimatedTime, refFinishTime, refProgress, refProgressBar)
+            }} ref={refProgress}>
                 <div className="bar" ref={refProgressBar}></div>
             </section>
             {/* 음악 진행률 END */}

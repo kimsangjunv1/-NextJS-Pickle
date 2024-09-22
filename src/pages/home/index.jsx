@@ -7,11 +7,11 @@ import ArtistSection from "@/components/pages/home/ArtistSection";
 import AlbumSection from "@/components/pages/home/AlbumSection";
 import RecentSection from "@/components/pages/home/RecentSection";
 
-import YahooApi from "@/api/other/yahoo_api";
 import MainApi from "@/api/main/main_api";
 import ImageApi from "@/api/other/stock_image_api";
 
 import useWeather from "@/components/hooks/useWeather";
+import useImage from "@/components/hooks/useImage";
 
 import { dummyWeather } from "@/components/utils/menulist";
 import { dummyImageList } from "@/components/utils/menulist";
@@ -25,10 +25,10 @@ const main = () => {
     const [songList, setSongList] = useState([]);
     const [artistList, setArtistList] = useState([]);
 
-    const { weatherData, loading, error } = useWeather();
+    const { weatherData } = useWeather();
+    const { imageData } = useImage(weatherData?.current_observation?.condition.text);
     
     const apiMain = new MainApi();
-    const apiImage = new ImageApi();
     
     // 4. 컴포넌트 마운트 시 플레이리스트 가져오기
     const getPlayList = async () => {
@@ -51,14 +51,6 @@ const main = () => {
             setArtistList(data);
         }
     };
-
-    const getImageList = async () => {
-        console.log("이미지 가져오기 시작")
-        // const good = await apiImage.getSearchResult("rain");
-        const good = dummyImageList;
-
-        console.log("이걸 받았어용 : ", good);
-    };
     
     // 7. 컴포넌트 마운트 시 플레이리스트 가져오기 호출
     useEffect(() => {
@@ -74,15 +66,11 @@ const main = () => {
     useEffect(() => {
         getArtistList();
     }, [songList]);
-
-    useEffect(() => {
-        getImageList();
-    }, [weatherData]);
     
     return (
         <Fragment>
             {/* <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/> */}
-            <TodayWeatherSection DBWeatherImage={ dummyImageList } />
+            <TodayWeatherSection DBWeatherImage={ imageData } />
             <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />

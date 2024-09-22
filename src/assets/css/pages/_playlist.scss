@@ -190,10 +190,16 @@ main {
                                             display: flex;
                                             align-items: center;
                                             justify-content: space-between;
-                                            // padding: 2.4rem;
+                                            gap: 1.6rem;
                 
                                             > section {
                                                 &:first-child {
+                                                    display: flex;
+                                                    align-items: center;
+                                                    gap: 1.2rem;
+                                                    width: 100%;
+                                                    justify-content: space-between;
+
                                                     > p,
                                                     > figcaption {
                                                         cursor: default;
@@ -202,7 +208,6 @@ main {
                                                     > figcaption {
                                                         font-size: 1.6rem;
                                                         font-weight: 700;
-                                                        margin-bottom: 0.4rem;
                                                     }
     
                                                     > a {
@@ -211,6 +216,8 @@ main {
                                                     }
                                                 }
                                                 &:last-child {
+                                                    display: flex;
+
                                                     > button {
                                                         border: none;
                                                         background: none;

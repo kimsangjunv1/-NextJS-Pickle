@@ -12,11 +12,11 @@ const index = () => {
     // 메인 데이터
     const getApiData = async () => {
         setList(await apiMain.getPlayList());
-    }
+    };
 
     useEffect(() => {
         getApiData();
-    }, [])
+    }, []);
 
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"main"}>

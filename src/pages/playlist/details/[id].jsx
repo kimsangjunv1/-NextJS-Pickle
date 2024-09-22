@@ -18,11 +18,15 @@ const AlbumPage = () => {
     const getList = async () => {
         let data = await api.analyzePlayList(id);
         setList(data);
-    }
+    };
     
     useEffect(() => {
         getList();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        console.log("확인 : ",list)
+    }, [list]);
 
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"details"}>
