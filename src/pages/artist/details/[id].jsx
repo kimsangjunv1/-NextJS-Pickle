@@ -8,6 +8,8 @@ import utilArtist from "@/components/utils/util_artist";
 import MainApi from "@/api/main/main_api";
 import OtherApi from "@/api/other/other_api";
 
+import NoticeComponents from "@/components/common/NoticeComponents";
+
 // 메인
 const ArtistDetailPage = () => {
     const apiMain = new MainApi();
@@ -57,6 +59,7 @@ const ArtistDetailPage = () => {
 
     return (
         <SubPageLayout pageTitle={"아티스트 상세정보"} pagePath={"artists | details"} detailClassName={"details"}>
+            <NoticeComponents title={ "본 페이지에서는 아티스트와 관련된 정보만 확인 가능합니다" }/>
             <SectionInfoComponents
                 data={ currentArtist } albums = { dataAlbums } songs = { dataSongs }
             />

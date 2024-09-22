@@ -104,6 +104,12 @@
                         flex-direction: column !important;
                         max-height: none !important;
                     }
+
+                    #albums {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                        grid-row-gap: 3.2rem !important;
+                        grid-column-gap: 1.2rem !important;
+                    }
                 }
             }
         }

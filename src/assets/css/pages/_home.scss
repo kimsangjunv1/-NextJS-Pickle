@@ -1,20 +1,10 @@
 // 메인 랜딩페이지
 main {
-    // padding: calc(var(--header-height) + 3.8rem) 1.2rem 0px 1.2rem !important;
     padding-top: 25vh;
+
     .main-inner {
         // 인트로 섹션 스타일
         > article {
-            // overflow: hidden;
-
-            &#alert {
-                color: white;
-                background: var(--color-brand-500);
-                padding: 1.8rem;
-                border-radius: var(--border-radius);
-                text-align: center;
-            }
-
             &#image {
                 position: absolute;
                 top: 0;
@@ -123,10 +113,6 @@ main {
                             position: relative;
                             border-radius: var(--border-radius);
                             overflow: hidden;
-
-                            .image {
-
-                            }
 
                             .info {
                                 position: absolute;
