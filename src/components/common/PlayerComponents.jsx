@@ -39,7 +39,7 @@ const PlayerComponents = () => {
     return (
         <Fragment>
             {/* 플레이어 : 최소 */}
-            <section id="min" className={`player show`}>
+            <section id="min" className={`player show`} onClick={() => utilPlayer.setPlayerSize(isNeedSizeMax)}>
                 <div className="player-inner">
                     <MinimizeComponents
                         setState={() => utilPlayer.setPlayState(isPlaying)}
@@ -145,15 +145,27 @@ const MinimizeComponents = ({
                     <span className="finished" ref={refFinishTime}>03:50</span>
                 </section>
                 <section className="buttons">
-                    <button type="button"><img src="/images/icon/ico-common-prev.svg" alt="이전 곡" onClick={() => utilPlayer.setCurrentTrack(trackList, "prev")} /></button>
-                    <button type="button" onClick={() => {
-                            setState();
-                            setPlayState();
-                        }}>
+                    <button type="button" onClick={(e) => {
+                        e.stopPropagation();
+                        utilPlayer.setCurrentTrack(trackList, "prev")
+                    }}>
+                        <img src="/images/icon/ico-common-prev.svg" alt="이전 곡" />
+                    </button>
+
+                    <button type="button" onClick={(e) => {
+                        e.stopPropagation();
+                        setState();
+                        setPlayState();
+                    }}>
                         <img src={`/images/icon/ico-common-${isPlaying ? "playonplayer" : "pause"}.svg`} alt="재생" />
                     </button>
-                    <button type="button"><img src="/images/icon/ico-common-next.svg" alt="다음 곡" onClick={() => utilPlayer.setCurrentTrack(trackList, "next")} /></button>
-                    <button type="button" onClick={() => setExpandPlayer()}><img src="/images/icon/ico-common-show.svg" alt="플레이어 보기" /></button>
+
+                    <button type="button" onClick={(e) => {
+                        e.stopPropagation();
+                        utilPlayer.setCurrentTrack(trackList, "next")
+                    }}>
+                        <img src="/images/icon/ico-common-next.svg" alt="다음 곡" />
+                    </button>
                 </section>
             </section>
             {/* 재생/다음/이전/숨김&보임 버튼 END */}
@@ -196,12 +208,16 @@ const MaximizeComponents = ({
                 <h5>내 현재 플레이리스트</h5>
                 <section className="list">
                     {trackList.map((e, i) => 
-                        <div className={`item ${currentTrackIndex == i ? "active" : ""}`} key={i}>
+                        <div 
+                            key={i} 
+                            className={`item ${currentTrackIndex == i ? "active" : ""}`} 
+                            onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}
+                        >
                             <article className="album-art">
                                 <img src={`${e.songId.images.coverart}`} alt="/" />
-                                <button type="button" onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}>
+                                {/* <button type="button">
                                     <img src="/images/icon/ico-common-playonplayer.svg" alt="재생" />
-                                </button>
+                                </button> */}
                             </article>
                             <article className="desc">
                                 <section className="info">
@@ -212,9 +228,6 @@ const MaximizeComponents = ({
                                     <button type="button" onClick={() => utilPlayer.deleteItemOnTrackList(trackList, e._id)}>
                                         <img src="/images/icon/ico-common-close.svg" alt="지우기" />
                                     </button>
-                                    {/* <button type="button" onClick={() => utilPlayer.setCurrentTrack([e], "current", i)}>
-                                        <img src="/images/icon/ico-common-playonplayer.svg" alt="재생" />
-                                    </button> */}
                                 </section>
                             </article>
                         </div>
