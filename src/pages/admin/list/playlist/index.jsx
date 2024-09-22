@@ -25,8 +25,8 @@ const pageAdmin = () => {
         switch (type) {
             // 사전 저장 : 리스트
             case "lists":
-                let test = { songId: props._id, albumImage: props.share.image, adamid: props.artists[0].adamid }
-                setCheckboxValue([...checkboxValue, test]);
+                let options = { songId: props._id, albumImage: props.share.image, adamid: props.artists[0].adamid }
+                setCheckboxValue([...checkboxValue, options]);
                 
                 break;
 

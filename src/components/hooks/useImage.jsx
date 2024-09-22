@@ -3,7 +3,6 @@ import YahooApi from "@/api/other/yahoo_api";
 import ImageApi from "@/api/other/stock_image_api";
 
 const useImage = (keyword) => {
-    console.log("키워드 : ", keyword)
     const [imageData, setImageData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);

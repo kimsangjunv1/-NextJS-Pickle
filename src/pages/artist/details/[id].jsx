@@ -24,7 +24,6 @@ const ArtistDetailPage = () => {
 
     // 함수 : 현재 가져온 정보 state 저장
     const saveData = (params) => {
-        console.log("상세정보 : ", params)
         setCurrentArtist(params.artists);
         setDataAlbums(params.albums.filter((e) => e.type === "albums"));
         setDataSongs(params.songs);

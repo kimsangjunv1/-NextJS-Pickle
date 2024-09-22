@@ -25,13 +25,13 @@ export default class TestApi extends Api {
   }
 
   async getRapidSearchData(params) {
-    const test = {
+    const options = {
       "term" : params,
       "locale" : "ko-KR",
       "offset" : 0,
       "limit" : 5
     }
-    const res = await super.get("/search", test);
+    const res = await super.get("/search", options);
 
     if (util.checkResult(res)) {
       return res.data;

@@ -63,8 +63,7 @@ const util = {
     },
 
     convertCelcius: data => {
-        let test = Math.round((data - 32) * 5 / 9);
-        return test;
+        return Math.round((data - 32) * 5 / 9);
     },
 
     getRealWeatherName: name => {

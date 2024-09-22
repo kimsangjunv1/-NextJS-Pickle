@@ -24,10 +24,6 @@ const AlbumPage = () => {
         getList();
     }, []);
 
-    useEffect(() => {
-        console.log("확인 : ",list)
-    }, [list]);
-
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"details"}>
             <Fragment>

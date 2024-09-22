@@ -4,13 +4,13 @@ import util from "../util";
 export default class OtherApi extends Api {
 
   async getRapidSearchData({ inputValue, pageNum }) {
-    const test = {
+    const options = {
       "term" : inputValue,
       "locale" : "ko-KR",
       "offset" : 4 * pageNum,
       "limit" : 5
     }
-    const res = await super.get("/search", test);
+    const res = await super.get("/search", options);
 
     if (util.checkResult(res)) {
       return res.data;
@@ -20,11 +20,11 @@ export default class OtherApi extends Api {
   }
 
   async getArtistDetail(params) {
-    const test = {
+    const options = {
       "id" : params,
       "l" : "ko-KR"
     }
-    const res = await super.get("/artists/get-summary", test);
+    const res = await super.get("/artists/get-summary", options);
 
     if (util.checkResult(res)) {
       return res.data;

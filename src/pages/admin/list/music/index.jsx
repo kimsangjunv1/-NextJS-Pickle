@@ -31,9 +31,9 @@ const pageAdmin = () => {
     
     const getRapidSearchData = async( pageNum = 0 ) => {
         setCheckboxValue([]);
-        const test = await apiOther.getRapidSearchData({inputValue, pageNum});
+        const data = await apiOther.getRapidSearchData({inputValue, pageNum});
 
-        setList(test.tracks?.hits);
+        setList(data.tracks?.hits);
     }
     
     const setSaveDB = async() => {
