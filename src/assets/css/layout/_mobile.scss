@@ -8,6 +8,7 @@
     // }
 
     main {
+        // 페이지 : 플레이리스트
         &.page-playlist {
             .main-inner {
                 #pageContents {
@@ -81,6 +82,36 @@
 
                         &#zoneList {
                             max-width: none !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 페이지 : 아티스트
+        &.page-artist {
+            .main-inner {
+                #pageContents {
+                    #all {
+                        .list {
+                            grid-template-columns: repeat(2, 1fr) !important;
+                            grid-row-gap: 3.2rem !important;
+                            grid-column-gap: 1.2rem !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 페이지 : 앨범
+        &.page-album {
+            .main-inner {
+                #pageContents {
+                    #all {
+                        .list {
+                            grid-template-columns: repeat(2, 1fr) !important;
+                            grid-row-gap: 3.2rem !important;
+                            grid-column-gap: 1.2rem !important;
                         }
                     }
                 }
