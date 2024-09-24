@@ -27,7 +27,7 @@ const main = () => {
     const [albumList, setAlbumList] = useState([]);
 
     const { weatherData } = useWeather();
-    // const { imageData } = useImage(weatherData?.current_observation?.condition.text);
+    const { imageData } = useImage(weatherData?.current_observation?.condition.text);
     
     const apiMain = new MainApi();
     
@@ -84,7 +84,7 @@ const main = () => {
     return (
         <Fragment>
             {/* <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/> */}
-            <TodayWeatherSection DBWeatherImage={ dummyImageList } />
+            <TodayWeatherSection DBWeatherImage={ imageData } />
             <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />

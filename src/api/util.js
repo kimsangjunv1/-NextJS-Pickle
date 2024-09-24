@@ -72,16 +72,28 @@ const util = {
                 return "비"
 
             case "Sunny":
-                return "맑음"
+                return "맑음, 햇빛"
 
             case "Mostly Sunny":
                 return "대부분 맑음"
+
+            case "Mostly Clear":
+                return "부분 맑음";
 
             case "Partly Cloudy":
                 return "부분 흐림"
 
             case "Cloudy":
                 return "흐림"
+
+            case "Clear":
+                return "맑음"
+            
+            case "Showers":
+                return "소나기"
+
+            case "Thunderstorms":
+                return "천둥번개"
 
             default:
                 return "날씨 정보가 없습니다."

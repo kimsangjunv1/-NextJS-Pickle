@@ -15,7 +15,13 @@ const WeatherSection = ({ DBWeather }) => {
     return (
         <Article id={"weather"}>
             <TitleComponents
-                title={"앗 오늘은 비가 내려요! 비에 관련된 음악을 추천드릴게요!"}
+                title={
+                    <Fragment>
+                        {`${util.getWeatherName(DBWeather?.current_observation?.condition.text)}날이네요`}
+                        <br />
+                        {`${util.getRealWeatherName(DBWeather?.current_observation?.condition.text)} 날씨에 관련된 음악을 추천드릴게요!`}
+                    </Fragment>
+                }
                 desc={"여기에서 날씨에 맞는 음악을 추천해드릴게요!"}
                 image={"cloth-red"}
             />

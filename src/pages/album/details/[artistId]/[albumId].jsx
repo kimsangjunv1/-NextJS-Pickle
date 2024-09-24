@@ -55,9 +55,9 @@ const AlbumPage = () => {
     return (
         <SubPageLayout pageTitle={"앨범 상세정보"} pagePath={"playlist | details"} detailClassName={"details"}>
             <Fragment>
-                <p>다음 아이디를 받아 옵니다.아티스트 : {artistId} 앨범 : {albumId}</p>
                 <SectionInfoComponents
                     data={ currentDetail }
+                    dataSongs={ dataSongs }
                 />
                 <SectionSongsComponents
                     dataSongs={ dataSongs }
@@ -69,7 +69,8 @@ const AlbumPage = () => {
 }
 
 // 섹션 : 현재 앨범 정보
-const SectionInfoComponents = ({ data }) => {
+const SectionInfoComponents = ({ data, dataSongs }) => {
+    console.log("eepdlxj", data)
     return (
         <Fragment>
             {Object.keys(data).length != 0 ? 
@@ -86,33 +87,33 @@ const SectionInfoComponents = ({ data }) => {
                         </section>
         
                         {/* <section>
-                            <h5>장르</h5>
-                            <div>{albums.attributes.genreNames.map((e, i) => <p>{e}</p>)}</div>
-                        </section>
-        
-                        <section>
                             <h5>앨범수</h5>
                             <div>{albums.length}</div>
-                        </section>
+                            </section> */}
         
                         <section>
                             <h5>곡수</h5>
-                            <div>{songs.length}</div>
+                            <p>{dataSongs.length}</p>
                         </section>
         
                         <section>
                             <h5>외부링크</h5>
-                            <div>{data.attributes.url}</div>
+                            <p>{data.url}</p>
+                        </section>
+
+                        <section>
+                            <h5>장르</h5>
+                            <div>{data.genreNames.map((e, i) => <span>{e}</span>)}</div>
                         </section>
         
-                        <section>
+                        {/* <section>
                             <h5>최근 발매한 앨범</h5>
-                            <div>{albums[albums.length - 1]?.attributes.name}</div>
+                            <div>{data[data.length - 1]?.name}</div>
                         </section>
         
                         <section>
                             <h5>최근 발매한 노래</h5>
-                            <div>{songs[songs.length - 1]?.attributes.name}</div>
+                            <div>{data[data.length - 1]?.name}</div>
                         </section> */}
                     </section>
                 </article>
