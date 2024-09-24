@@ -28,7 +28,7 @@ const WeatherSection = ({ DBWeather }) => {
                         // onSlideChange={() => console.log('slide change')}
                         // onSwiper={(swiper) => console.log(swiper)}
                     >
-                        {DBWeather.forecasts.map((e, key) =>
+                        {DBWeather?.forecasts?.map((e, key) =>
                             <SwiperSlide key={key}>
                                 <ItemComponents data={e}/>
                             </SwiperSlide>
