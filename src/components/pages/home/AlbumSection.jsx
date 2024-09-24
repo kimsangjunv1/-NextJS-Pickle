@@ -48,7 +48,7 @@ const AlbumSection = ({ albumList, artistList }) => {
                 {list.length ? 
                     <Swiper
                         spaceBetween={8}
-                        slidesPerView={5}
+                        slidesPerView={6}
                     >   
                         {list.map((data, key) => 
                             <SwiperSlide key={key}>

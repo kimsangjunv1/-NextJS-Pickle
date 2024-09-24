@@ -24,7 +24,7 @@ const WeatherSection = ({ DBWeather }) => {
                 {DBWeather ? 
                     <Swiper
                         spaceBetween={8}
-                        slidesPerView={5}
+                        slidesPerView={6}
                     >
                         {DBWeather?.forecasts?.map((e, key) =>
                             <SwiperSlide key={key}>

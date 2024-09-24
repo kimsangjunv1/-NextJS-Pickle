@@ -50,7 +50,7 @@ const ItemComponents = ({ desc, keywords, list, title, id, date }) => {
                     <figcaption>{desc}</figcaption>
                 </div>
 
-                <img src={list[0].albumImage} alt="/" className="albumart" />
+                <img src={list[0].albumImage.replace("800x800","150x150").replace("400x400","150x150")} alt="/" className="albumart" />
                 {/* <Image
                     src="/images/common/img-dummy-playlistart.png"
                     layout="fill"

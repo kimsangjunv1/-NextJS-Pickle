@@ -24,7 +24,7 @@ const PlaylistSection = ({ DBPlaylist }) => {
                 {DBPlaylist.length ? 
                     <Swiper
                         spaceBetween={8}
-                        slidesPerView={5}
+                        slidesPerView={6}
                     >
 
                         {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>
@@ -49,7 +49,7 @@ const ItemComponents = ({ title, desc, keywords, id, image }) => {
                     return (
                         <Fragment key={i}>
                             {i == 0 && <Image
-                                src={e.albumImage}
+                                src={e.albumImage.replace("800x800","200x200").replace("400x400","200x200")}
                                 // src="/images/common/img-dummy-playlistart.png"
                                 layout="fill"
                                 alt="더미"

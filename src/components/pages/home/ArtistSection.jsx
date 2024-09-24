@@ -24,7 +24,7 @@ const ArtistSection = ({ songList }) => {
             <section className="section-artist-container">
                 <Swiper
                     spaceBetween={8}
-                    slidesPerView={5}
+                    slidesPerView={6}
                 >    
                     {songList.length ? songList.map((e, i) => 
                         <SwiperSlide key={i}>
@@ -40,6 +40,7 @@ const ArtistSection = ({ songList }) => {
 
 // 공통 : 아티스트
 const ItemComponents = ({ data }) => {
+    console.log("들어온 값 ",data)
     return (
         <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
             <div className="info">
@@ -53,12 +54,12 @@ const ItemComponents = ({ data }) => {
                     <h5>View</h5>
                 </section>
             </div>
-            <Image
-                src={`${data.images.background}`}
+            {/* <Image
+                src={`${data.images.background.replace("400x400","200x200")}`}
                 layout="fill"
                 alt={`${data.subtitle}`}
-            />
-            {/* <img src={`${data.images.background}`} alt="/" /> */}
+            /> */}
+            <img src={`${data.images.background.replace("800x800","200x200").replace("400x400","200x200")}`} alt="/" />
         </Link>
     )
 }
