@@ -35,8 +35,6 @@ const utilPlayer = {
 
         const isPlaying = usePlayerStore.getState().isPlaying;
         const setIsPlaying = usePlayerStore.getState().setIsPlaying;
-        
-        // let index = getIndex;
 
         switch (type) {
             case "current":
@@ -201,6 +199,29 @@ const utilPlayer = {
         elementVolume.addEventListener("input", (e) => {
             elementAudio.volume = e.target.value;
         });
+    },
+
+    setCompressOnMusic: ({ id, title, artist, source, artwork }) => {
+        return {
+            "songId": {
+                "title": title,
+                "subtitle": artist,
+                "images": {
+                    "coverart": artwork
+                },
+                "hub": {
+                    "actions": [
+                        {
+                            "id": "a9200d029d"
+                        },
+                        {
+                            "uri": source
+                        }
+                    ]
+                }
+            },
+            "_id": id
+        }
     }
 };
 

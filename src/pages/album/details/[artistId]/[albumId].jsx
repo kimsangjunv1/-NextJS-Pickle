@@ -1,37 +1,51 @@
 import React, { Fragment, useEffect, useState } from "react";
-
 import { useRouter } from "next/router";
 
 import SubPageLayout from "@/components/layout/SubPageLayout";
-
 import MainApi from "@/api/main/main_api";
+import OtherApi from "@/api/other/other_api";
+import utilPlayer from "@/components/utils/util_player";
+
+import Link from "next/link";
 
 const AlbumPage = () => {
     const router = useRouter();
 
     const { artistId, albumId } = router.query;
 
-    const [ currentAlbum, setCurrentAlbum ] = useState({});
+    const [ currentDetail, setCurrentDetail ] = useState({});
+    const [ dataArtists, setDataArtists ] = useState([]);
+    const [ dataSongs, setDataSongs ] = useState([]);
 
-    const [ dataArtists, setDataArtists ] = useState({});
-    const [ dataAlbums, setDataAlbums ] = useState({});
-    const [ dataSongs, setDataSongs ] = useState({});
+    const apiMain = new MainApi();
+    const apiRapid = new OtherApi();
 
-    const apiMain = new MainApi;
-
+    // 함수 : 현재 가져온 정보 state 저장
     const saveData = (params) => {
-        setDataArtists(params.artists);
-        setDataAlbums(params.albums);
-        setDataSongs(params.songs);
+        setCurrentDetail(params.attributes);
+        setDataArtists(params.relationships.artists.data);
+        setDataSongs(params.relationships.tracks.data);
     }
 
-    const getData = async() => {
-        let info = [];
+    // 함수 : 정보 가져옴
+    const getData = async () => {
+        let result = await apiMain.getAlbumSearchList(albumId);
+        let final;
 
-        info = await apiMain.getArtistSearchList(artistId);
+        if ( !result ) {
+            let details = await apiRapid.getAlbumDetail(albumId);
+            
+            // 찾은 정보로 아티스트 정보 생성
+            apiMain.createAlbumList(details.data[0]);
 
-        saveData(info);
-        setCurrentAlbum(info.albums.filter((e) => e.id == albumId));
+            // 현재 페이지 이용을 위해 가져온 정보를 최종 변수에 삽입
+            final = details.data[0];
+        } else {
+            // 현재 페이지 이용을 위해 가져온 정보를 최종 변수에 삽입
+            final = result;
+        }
+
+        saveData(final)
     }
 
     useEffect(() => {
@@ -39,61 +53,111 @@ const AlbumPage = () => {
     }, [])
 
     return (
-        <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist | details"} detailClassName={"details"}>
+        <SubPageLayout pageTitle={"앨범 상세정보"} pagePath={"playlist | details"} detailClassName={"details"}>
             <Fragment>
                 <p>다음 아이디를 받아 옵니다.아티스트 : {artistId} 앨범 : {albumId}</p>
                 <SectionInfoComponents
-                    data={ currentAlbum }
-                />
-                <SectionAlbumComponents
-                    data={ dataAlbums }
+                    data={ currentDetail }
                 />
                 <SectionSongsComponents
-                    data={ dataSongs }
+                    dataSongs={ dataSongs }
+                    dataArtists={ dataArtists }
                 />
-                {/* <SectionListComponents list={ list.list }/> */}
             </Fragment>
         </SubPageLayout>
     )
 }
 
 // 섹션 : 현재 앨범 정보
-const SectionInfoComponents = ({ data = [] }) => {
+const SectionInfoComponents = ({ data }) => {
     return (
-        <article id="details">
-            <section>
-                <h5>{data[0]?.attributes.artistName}</h5>
-                <h5>{data[0]?.attributes.name}</h5>
-                <h5>{data[0]?.attributes.releaseDate}</h5>
-                <img src={data[0]?.attributes.artwork.url.replace("{w}x{h}", "200x200")} alt="/" />
-                <div>
-                    {data[0]?.attributes.genreNames.map((e, i) => 
-                        <p>{e}</p>
-                    )}
-                </div>
-                <div>
-                    <h5>apple music</h5>
-                    <p>https://music.apple.com/kr/album/%EC%9D%B4%EB%9F%B0-%EA%B2%8C-%EC%82%AC%EB%9E%91%EC%9D%B4%EB%9D%BC%EB%A9%B4/1537366139?i=1537366142</p>
-                </div>
-            </section>
-        </article>
-    )
-}
-
-// 섹션 : 현재 모든 앨범 정보
-const SectionAlbumComponents = ({ data = [] }) => {
-    return (
-        <article id="albums">
-            <div></div>
-        </article>
+        <Fragment>
+            {Object.keys(data).length != 0 ? 
+                <article id="details">
+                    <section className="image">
+                        <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="" className="backdrop" aria-label="hidden" />
+                        <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="앨범아트" />
+                    </section>
+        
+                    <section className="info">
+                        <section>
+                            <h5>이름</h5>
+                            <p>{data.name}</p>
+                        </section>
+        
+                        {/* <section>
+                            <h5>장르</h5>
+                            <div>{albums.attributes.genreNames.map((e, i) => <p>{e}</p>)}</div>
+                        </section>
+        
+                        <section>
+                            <h5>앨범수</h5>
+                            <div>{albums.length}</div>
+                        </section>
+        
+                        <section>
+                            <h5>곡수</h5>
+                            <div>{songs.length}</div>
+                        </section>
+        
+                        <section>
+                            <h5>외부링크</h5>
+                            <div>{data.attributes.url}</div>
+                        </section>
+        
+                        <section>
+                            <h5>최근 발매한 앨범</h5>
+                            <div>{albums[albums.length - 1]?.attributes.name}</div>
+                        </section>
+        
+                        <section>
+                            <h5>최근 발매한 노래</h5>
+                            <div>{songs[songs.length - 1]?.attributes.name}</div>
+                        </section> */}
+                    </section>
+                </article>
+                : "asd"
+            }
+        </Fragment>
     )
 }
 
 // 섹션 : 현재 노래 정보
-const SectionSongsComponents = ({ data = [] }) => {
+const SectionSongsComponents = ({ dataSongs, dataArtists }) => {
     return (
         <article id="songs">
-            <div></div>
+            {dataSongs.map((e, i) => 
+                <figure className="item" key={i}>
+                    <img src={`${e.attributes.artwork.url.replace("{w}x{h}","200x200")}`} alt={e.attributes.name} />
+
+                    <div className="info">
+                        <section>
+                            <figcaption>{e.attributes.name}</figcaption>
+                            <Link href={`/artist/details/${dataArtists.id}`}>{e.attributes.artistName}</Link>
+                        </section>
+                        <section>
+                            <button><img src="/images/icon/ico-common-addfolder.svg" alt="재생목록 추가" /></button>
+                            <button><img src="/images/icon/ico-common-download.svg" alt="다운로드" /></button>
+                            <button>
+                                <img
+                                    src="/images/icon/ico-common-play.svg"
+                                    alt="재생"
+                                    onClick={() => {
+                                        let id = e.id;
+                                        let artist = e.attributes.artistName;
+                                        let title = e.attributes.name;
+                                        let source = e.attributes.previews[0].url;
+                                        let artwork = e.attributes.artwork.url.replace("{w}x{h}","200x200");
+
+                                        let final = utilPlayer.setCompressOnMusic({ id, title, artist, source, artwork });
+                                        utilPlayer.setCurrentTrack([final], "list");
+                                    }
+                                }/>
+                            </button>
+                        </section>
+                    </div>
+                </figure>
+            )}
         </article>
     )
 }

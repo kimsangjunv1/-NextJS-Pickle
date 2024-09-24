@@ -32,4 +32,18 @@ export default class OtherApi extends Api {
       util.handleFailedMsg(res);
     }
   }
+
+  async getAlbumDetail(params) {
+    const options = {
+      "id" : params,
+      "l" : "ko-KR"
+    }
+    const res = await super.get("/albums/get-details", options);
+
+    if (util.checkResult(res)) {
+      return res.data;
+    } else {
+      util.handleFailedMsg(res);
+    }
+  }
 }

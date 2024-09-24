@@ -8,6 +8,8 @@ import utilArtist from "@/components/utils/util_artist";
 import MainApi from "@/api/main/main_api";
 import OtherApi from "@/api/other/other_api";
 
+import Link from "next/link";
+
 import NoticeComponents from "@/components/common/NoticeComponents";
 
 // 메인
@@ -67,6 +69,7 @@ const ArtistDetailPage = () => {
                 data={ dataSongs }
             />
             <SectionAlbumComponents
+                id={ id }
                 data={ dataAlbums }
             />
         </SubPageLayout>
@@ -152,11 +155,11 @@ const SectionSongsComponents = ({ data = [] }) => {
 }
 
 // 섹션 : 아티스트가 소유한 앨범
-const SectionAlbumComponents = ({ data = [] }) => {
+const SectionAlbumComponents = ({ data = [], id }) => {
     return (
         <article id="albums">
             {data.map((e, i) => 
-                <div className="item" key={i}>
+                <Link href={`/album/details/${id}/${e.id}`} className="item" key={i}>
                     <img src={`${e.attributes.artwork.url.replace("{w}x{h}", "200x200")}`} alt="앨범아트" />
 
                     <div className="album_desc" style={{ background: `#${e.attributes.artwork.bgColor}cc` }}>
@@ -170,7 +173,7 @@ const SectionAlbumComponents = ({ data = [] }) => {
                         </div>
                         <p className="copyright">{e.attributes.copyright}</p>
                     </div>
-                </div>
+                </Link>
             )}
         </article>
     )

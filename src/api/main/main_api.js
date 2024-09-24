@@ -114,4 +114,49 @@ export default class MainApi extends ApiPickle {
       util.handleFailedMsg(res);
     }
   }
+
+  // 앨범
+  // 목록
+  async getAlbumList() {
+    const res = await super.get(`/album/get`);
+
+    if (util.checkResult(res)) {
+      return res.data;
+    } else {
+      util.handleFailedMsg(res);
+    }
+  }
+
+  // 생성
+  async createAlbumList(params) {
+    const res = await super.post(`/album/post`, params);
+
+    if (util.checkResult(res)) {
+      return res.data;
+    } else {
+      util.handleFailedMsg(res);
+    }
+  }
+
+  // 조회
+  async getAlbumSearchList(params) {
+    const res = await super.get(`/album/${params}`);
+
+    if (util.checkResult(res)) {
+      return res.data;
+    } else {
+      util.handleFailedMsg(res);
+    }
+  }
+
+  // 다량 조회
+  async getMultipleAlbum(params) {
+    const res = await super.post("/album/findByIds", {id: params});
+
+    if (util.checkResult(res)) {
+      return res.data;
+    } else {
+      util.handleFailedMsg(res);
+    }
+  }
 }
