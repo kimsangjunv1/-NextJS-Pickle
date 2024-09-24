@@ -71,11 +71,11 @@ const main = () => {
         <Fragment>
             {/* <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/> */}
             {/* <TodayWeatherSection DBWeatherImage={ dummyImageList } />
-            <WeatherSection DBWeather={ weatherData } /> */}
+            <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
-            <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>
+            <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/> */}
             {/* <RecentSection /> */}
         </Fragment>
     )
