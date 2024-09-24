@@ -6,12 +6,17 @@ const utilArtist = {
     // 설명 : 검색된 플레이스트의 속 아티스트를 검색하기 위한 songId만 반환해줌
     // 필수 : 플레이리스트 정보
     getMainArtistList: ( props ) => {
-        const mappingData = props.flatMap(e => e.list).filter((value, index, self) => {
-            // self는 filter로 처리 중인 배열
+        const mappingData = props.flatMap(e => e.list).map(id => id.songId);
+        const final = [...new Set(mappingData)];
+
+        let testList = props.flatMap(e => e.list);
+
+        let uniqueList = testList.filter((value, index, self) => {
+            // self는 filter로 처리 중인 배열(testList)
             return self.findIndex(item => item.adamid === value.adamid) === index;
         });
 
-        const final = mappingData.map(id => id.songId);
+        console.log("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ",uniqueList);
 
         const convertData = (target) => {
             let mappingData = [];
@@ -22,11 +27,13 @@ const utilArtist = {
                     mappingData.push(target[rand]);
                 }
             }
-
+    
+            console.log("완료 : ",mappingData)
             return mappingData;
         }
 
         return convertData(final);
+        // return props.flatMap(e => e.list).map(id => id.songId).filter((e, i) => i <= 9)
     },
 
     getSongAdamid: ( props ) => {
