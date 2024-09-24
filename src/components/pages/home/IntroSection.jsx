@@ -22,8 +22,6 @@ const IntroSection = ({ DBPlaylist }) => {
                     spaceBetween={8}
                     slidesPerView={2}
                     // slidesPerView={"auto"}
-                    // onSlideChange={() => console.log('slide change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
                     pagination={{
                         type: "progressbar",
                     }}

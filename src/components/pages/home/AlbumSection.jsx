@@ -12,28 +12,26 @@ import util from "@/api/util";
 
 
 // 섹션 : 앨범
-const AlbumSection = ({ artistDetailsList }) => {
+const AlbumSection = ({ albumList, artistList }) => {
     const [ list, setList ] = useState([]);
 
-    const mappingData = () => {
-        if(artistDetailsList.length){
-            const good = artistDetailsList.map(target => {
-                let rand = util.getRandomNum(target.albums.length - 1);
-                let final = target.albums[rand].attributes;
+    // 함수 : 랜덤으로 10개 데이터 재가공
+    const convertData = (target) => {
+        let mappingData = [];
 
-                final.albumId = target.albums[rand].id;
-                final.pathId = target.artists[0].id;
-
-                return final;
-            })
-
-            setList(good);
+        if(target.length){
+            for (let i=0; i<10; i++) {
+                let rand = util.getRandomNum(target.length - 1);
+                mappingData.push(target[rand]);
+            }
         }
+
+        return mappingData;
     }
 
     useEffect(() => {
-        mappingData();
-    }, [artistDetailsList])
+        setList(convertData(albumList));
+    }, [albumList])
 
     return (
         <Article id={"album"}>
@@ -51,8 +49,6 @@ const AlbumSection = ({ artistDetailsList }) => {
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={5}
-                        // onSlideChange={() => console.log('slide change')}
-                        // onSwiper={(swiper) => console.log(swiper)}
                     >   
                         {list.map((data, key) => 
                             <SwiperSlide key={key}>
@@ -71,18 +67,17 @@ const AlbumSection = ({ artistDetailsList }) => {
 // 공통 : 앨범 항목
 const ItemComponents = ({ data }) => {
     return (
-        <Link href={`/album/details/${data.pathId}/${data.albumId}`} className="item">
-            {/* <img src={`${data.artwork.url.replace("{w}x{h}","200x200")}`} alt="/" /> */}
+        <Link href={`/album/details/${data.artistId}/${data.id}`} className="item">
             <Image
-                src={`${data.artwork.url.replace("{w}x{h}","200x200")}`}
+                src={`${data.attributes.artwork.url.replace("{w}x{h}","200x200")}`}
                 // layout="fill"
                 width={216}
                 height={216}
-                alt={`${data.name}`}
+                alt={`${data.attributes.name}`}
             />
             <div className="info">
-                <figcaption>{data.name}</figcaption>
-                <p>{data.artistName}</p>
+                <figcaption>{data.attributes.name}</figcaption>
+                <p>{data.attributes.artistName}</p>
             </div>
         </Link>
     )

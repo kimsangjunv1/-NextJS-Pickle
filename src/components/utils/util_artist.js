@@ -12,6 +12,19 @@ const utilArtist = {
         return props.flatMap(e => e.artists).map(key => key.adamid);
     },
 
+    getArtistAlbumId: ( props ) => {
+        const setArtistId = ( target ) => {
+            return target.flatMap(e => 
+                e.albums.map(album => ({
+                    ...album,            // album의 모든 속성을 유지
+                    artistId: e.artists[0].id // artistId라는 키에 e.artists.id 추가
+                }))
+            )
+        }
+
+        return setArtistId(props).filter(e => e.type == "albums");
+    },
+
     // 설명 : 아티스트 정보를 저장하기 위한 파라미터를 가공해줌
     // 필수 : 아티스트 정보
     getArtistParameter: ( props ) => {

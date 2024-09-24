@@ -25,8 +25,6 @@ const PlaylistSection = ({ DBPlaylist }) => {
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={5}
-                        // onSlideChange={() => console.log('slide change')}
-                        // onSwiper={(swiper) => console.log(swiper)}
                     >
 
                         {DBPlaylist.filter((e, i) => i <= 4).map((e, key) =>

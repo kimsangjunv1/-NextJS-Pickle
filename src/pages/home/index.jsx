@@ -24,6 +24,7 @@ const main = () => {
     const [playlist, setPlaylist] = useState([]);
     const [songList, setSongList] = useState([]);
     const [artistList, setArtistList] = useState([]);
+    const [albumList, setAlbumList] = useState([]);
 
     const { weatherData } = useWeather();
     // const { imageData } = useImage(weatherData?.current_observation?.condition.text);
@@ -51,6 +52,14 @@ const main = () => {
             setArtistList(data);
         }
     };
+
+    // 6. 노래 목록이 업데이트되면 아티스트 목록 가져오기
+    const getAlbumList = async () => {
+        if (artistList.length) {
+            const data = utilArtist.getArtistAlbumId(artistList);
+            setAlbumList(data);
+        }
+    };
     
     // 7. 컴포넌트 마운트 시 플레이리스트 가져오기 호출
     useEffect(() => {
@@ -66,6 +75,11 @@ const main = () => {
     useEffect(() => {
         getArtistList();
     }, [songList]);
+
+    // 9. 노래 목록이 업데이트될 때마다 아티스트 목록 가져오기 호출
+    useEffect(() => {
+        getAlbumList();
+    }, [artistList]);
     
     return (
         <Fragment>
@@ -75,7 +89,7 @@ const main = () => {
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />
             <ArtistSection DBPlaylist={ playlist } songList={ songList }/>
-            <AlbumSection DBPlaylist={ playlist } artistDetailsList={ artistList }/>
+            <AlbumSection DBPlaylist={ playlist } albumList={ albumList } artistList={ artistList }/>
             {/* <RecentSection /> */}
         </Fragment>
     )

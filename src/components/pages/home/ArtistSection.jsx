@@ -22,14 +22,9 @@ const ArtistSection = ({ songList }) => {
 
             {/* 내용 */}
             <section className="section-artist-container">
-                {/* {Array(8).fill(0).map((i, key) => 
-                    <ItemComponents korName={""} engName={""} count={""} key={key} />
-                )} */}
                 <Swiper
                     spaceBetween={8}
                     slidesPerView={5}
-                    // onSlideChange={() => console.log('slide change')}
-                    // onSwiper={(swiper) => console.log(swiper)}
                 >    
                     {songList.length ? songList.map((e, i) => 
                         <SwiperSlide key={i}>

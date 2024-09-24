@@ -25,8 +25,6 @@ const WeatherSection = ({ DBWeather }) => {
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={5}
-                        // onSlideChange={() => console.log('slide change')}
-                        // onSwiper={(swiper) => console.log(swiper)}
                     >
                         {DBWeather?.forecasts?.map((e, key) =>
                             <SwiperSlide key={key}>
