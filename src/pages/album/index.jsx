@@ -14,7 +14,7 @@ const index = () => {
 
     // 메인 데이터
     const getApiData = async () => {
-        setList(await apiMain.getArtistList());
+        setList(await apiMain.getAlbumList());
     }
 
     useEffect(() => {
@@ -37,19 +37,14 @@ const index = () => {
                 {/* <TitleComponents title={"모든 아티스트"} /> */}
                 <section className="list">
                     {list.map((item, i) =>
-                        <>
-                            {item.albums.map((data, i) => 
-                                <Link href={`/album/details/${item.artists[0].id}/${data.id}`} className="item" key={i}>
-                                    <div className="image">
-                                        <img src={data.attributes.artwork.url.replace("{w}x{h}","200x200")} alt="" />
-                                    </div>
-                                    <div className="info">
-                                        <p>{data.attributes.name}</p>
-                                        {/* <figcaption>{e.title}</figcaption> */}
-                                    </div>
-                                </Link>
-                            )}
-                        </>
+                        <Link href={`/album/details/${item.relationships.artists.data[0].id}/${item.id}`} className="item" key={i}>
+                            <div className="image">
+                                <img src={item.attributes.artwork.url.replace("{w}x{h}","200x200")} alt="" />
+                            </div>
+                            <div className="info">
+                                <p>{item.attributes.name}</p>
+                            </div>
+                        </Link>
                     )}
                 </section>
             </article>
