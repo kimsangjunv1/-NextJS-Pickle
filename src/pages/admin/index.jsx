@@ -55,14 +55,13 @@ const ItemDBComponents = ({ data, iconType, index }) => {
         <Fragment>
             <input type="checkbox" id={index} className="item" />
             <label htmlFor={index}>
-                <img src={data.images?.coverart} alt={data.title} />
-                <div className="info">
+                <img src={data.images?.coverart.replace("400x400", "100x100").replace("800x800", "100x100")} alt={data.title} />
+                <div>
                     <div className="info">
                         <h5>{data.title}</h5>
                         <p>{data.subtitle}</p>
                     </div>
                     <div className="action">
-                        <img src={`/images/icon/ico-common-${iconType}.svg`} alt={`${iconType}`} />
                         <button type="button" onClick={() => utilPlayer.addTrackOnList([{songId: data}])}>재생</button>
                     </div>
                 </div>

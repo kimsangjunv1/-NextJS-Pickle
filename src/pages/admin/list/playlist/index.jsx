@@ -189,7 +189,7 @@ const ItemDBComponents = ({ data, iconType, index, thumbnail, saveList }) => {
                 {/* {thumbnail.map((e, i) => 
                     <img src={e} alt={`${i}번째 앨범 이미지`} />
                 )} */}
-                <div className="info">
+                <div>
                     <div className="info">
                         <h5>{data.title}</h5>
                         <p>{data.subtitle}</p>
