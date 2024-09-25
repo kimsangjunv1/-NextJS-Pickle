@@ -33,7 +33,7 @@ const WeatherSection = ({ DBWeather }) => {
                         slidesPerView={6}
                     >
                         {DBWeather?.forecasts?.map((e, key) =>
-                            <SwiperSlide key={key}>
+                            <SwiperSlide key={key} className="item">
                                 <ItemComponents data={e}/>
                             </SwiperSlide>
                         )}
@@ -49,13 +49,12 @@ const WeatherSection = ({ DBWeather }) => {
 const ItemComponents = ({ data }) => {
     return(
         <Fragment>
-            <Link href="/home" className="item main">
-                <section className="info">
-                    <p>{util.getDayName(data.day)}</p>
-                    <p className="degree">{util.convertCelcius(data.low)}° | {util.convertCelcius(data.high)}°</p>
-                    <figcaption className="desc">{util.getRealWeatherName(data.text)}</figcaption>
-                </section>
-            </Link>
+            <h6>{util.getDayName(data.day)}</h6>
+            <div className="degree">
+                <p className="low">{util.convertCelcius(data.low)}°</p>
+                <p className="high">{util.convertCelcius(data.high)}°</p>
+            </div>
+            <p>{util.getRealWeatherName(data.text)}</p>
         </Fragment>
     )
 }

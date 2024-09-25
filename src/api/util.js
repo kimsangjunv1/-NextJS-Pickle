@@ -80,8 +80,11 @@ const util = {
             case "Mostly Clear":
                 return "부분 맑음";
 
-            case "Partly Cloudy":
+            case "Mostly Cloudy":
                 return "부분 흐림"
+
+            case "Partly Cloudy":
+                return "대체로 흐림"
 
             case "Cloudy":
                 return "흐림"

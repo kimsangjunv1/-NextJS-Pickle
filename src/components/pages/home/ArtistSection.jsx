@@ -42,23 +42,13 @@ const ArtistSection = ({ songList }) => {
 const ItemComponents = ({ data }) => {
     return (
         <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
-            <div className="info">
-                <section className="artist">
-                    {/* <p>GIRI BOY</p> */}
+            <figure>
+                <img src={data.images.background.replace("800x800","200x200").replace("400x400","200x200")} alt={data.subtitle} />
+                
+                <section className="info">
                     <figcaption>{data.subtitle}</figcaption>
                 </section>
-                <section className="view">
-                    <img src="/images/icon/ico-common-rise.svg" alt="/" />
-                    <p>5,677</p>
-                    <h5>View</h5>
-                </section>
-            </div>
-            {/* <Image
-                src={`${data.images.background.replace("400x400","200x200")}`}
-                layout="fill"
-                alt={`${data.subtitle}`}
-            /> */}
-            <img src={`${data.images.background.replace("800x800","200x200").replace("400x400","200x200")}`} alt="/" />
+            </figure>
         </Link>
     )
 }

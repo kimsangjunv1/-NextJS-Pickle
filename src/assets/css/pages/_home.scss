@@ -2,486 +2,380 @@
 main {
     padding-top: 25vh;
 
-    .main-inner {
-        // 인트로 섹션 스타일
-        > article {
-            &#image {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: -1;
+    &.page-home {
+        .main-inner {
+            gap: var(--section-space);
 
-                > div {
-                    width: 100vw;
-                    height: 50vh;
-                    mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
-                    -webkit-mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
-                    background-image: url("https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?auto=compress&cs=tinysrgb&w=750");
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center;
+            // 인트로 섹션 스타일
+            > article {
+                &#image {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+    
+                    > div {
+                        width: 100vw;
+                        height: 50vh;
+                        mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
+                        -webkit-mask-image: linear-gradient(to bottom,#000,#000 12.5%,#000 57.5%,#0000);
+                        background-image: url("https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?auto=compress&cs=tinysrgb&w=750");
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: center;
+                    }
                 }
-            }
-
-            // 인트로
-            &#intro {
-                // height: calc(50vh - var(--header-height));
-
-                .swiper-wrapper {
-                    height: 100%;
-
-                    .swiper-slide {
-                        // width: 100% !important;
-
-                        .item {
-                            width: 50vw;
-                            display: block;
-                            position: relative;
-                            overflow: hidden;
-                            height: 100%;
-                            border: 1px solid var(--color-gray-800);
-                            padding: 20px;
-                            border-radius: var(--border-radius);
-                            
-                            > figure {
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
+    
+                // 인트로
+                &#intro {
+                    // height: calc(50vh - var(--header-height));
+    
+                    .swiper-wrapper {
+                        height: 100%;
+    
+                        .swiper-slide {
+                            // width: 100% !important;
+    
+                            .item {
+                                width: 50vw;
+                                display: block;
+                                position: relative;
+                                overflow: hidden;
                                 height: 100%;
+                                border: 1px solid var(--color-gray-800);
+                                padding: 20px;
+                                border-radius: var(--border-radius);
+                                
+                                > figure {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    height: 100%;
+                
+                                    > .info {
+                                        text-align: left;
             
-                                > .info {
-                                    text-align: left;
-        
-                                    p {
-                                        font-size: 1.2rem;
-                                        margin-bottom: 0.8rem;
-                                        background: linear-gradient(91deg, #DB5DFF 0%, #1D93FF 80.61%);
-                                        background-clip: text;
-                                        -webkit-background-clip: text;
-                                        -webkit-text-fill-color: transparent;
+                                        p {
+                                            font-size: 1.2rem;
+                                            margin-bottom: 0.8rem;
+                                            background: linear-gradient(91deg, #DB5DFF 0%, #1D93FF 80.61%);
+                                            background-clip: text;
+                                            -webkit-background-clip: text;
+                                            -webkit-text-fill-color: transparent;
+                                        }
+            
+                                        h5 {
+                                            font-size: 1.8rem;
+                                            margin-bottom: 0.4rem;
+                                        }
+            
+                                        figcaption {
+                                            color: var(--color-gray-500);
+                                        }
+            
+                                        &::after {
+                                            content: "";
+                                            position: absolute;
+                                            top: 0;
+                                            left: 0;
+                                            background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0));
+                                            width: 100%;
+                                            height: 100%;
+                                            z-index: -1;
+                                        }
                                     }
-        
-                                    h5 {
+                
+                                    > .albumart {
+                                        height: 12rem;
+                                        width: 12rem;
+                                        aspect-ratio: 1/1;
+                                        border-radius: 0.8rem;
+                                    }
+                                }
+                            }
+                        }
+    
+                    }
+                    
+                }
+    
+                // 날씨
+                &#weather {
+                    padding-top: 25vh;
+    
+                    .item {
+                        cursor: default;
+                        flex-direction: column;
+                        border: 1px solid rgba(255, 255, 255, 0.1019607843);
+                        border-radius: var(--border-radius);
+                        padding: 1.6rem;
+                        gap: 0.8rem;
+    
+                        > h6 {
+                            font-size: 1.8rem;
+                        }
+    
+                        > .degree {
+                            display: flex;
+                            gap: 0.8rem;
+    
+                            p {
+                                &.high {
+                                    // color: var(--color-red-500);
+                                }
+    
+                                &.low {
+                                    color: rgba(255, 255, 255, 0.5);
+                                }
+                            }
+                        }
+    
+                        > p {
+                            border-top: 1px solid #ffffff1a;
+                            padding-top: 1rem;
+                        }
+                    }
+                }
+    
+                // 플레이리스트
+                &#playlist {
+                    > section {
+                        &:last-child {
+                            display: flex;
+                            gap: 2.4rem;
+    
+                            .item {
+                                height: 13.5rem;
+                                width: calc(100vw / 3);
+                                position: relative;
+                                border-radius: var(--border-radius);
+                                overflow: hidden;
+    
+                                .image {
+    
+                                }
+    
+                                .info {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: flex-start;
+                                    // color: white;
+                                    padding: 2.4rem;
+    
+                                    // background-image: url("/images/common/img-common-cover-tile.png");
+                                    // background-size: 100% 100%;
+    
+                                    > p,
+                                    > figcaption {
+                                        text-align: left;
+                                        z-index: 10;
+                                    }
+    
+                                    > p {
                                         font-size: 1.8rem;
-                                        margin-bottom: 0.4rem;
+                                        font-weight: 600;
+                                        margin-bottom: 0.8rem;
+    
+                                        > strong {
+                                            font-family: "dotmatrix";
+                                            font-size: 2.0rem;
+                                            line-height: 150%;
+                                        }
                                     }
-        
-                                    figcaption {
-                                        color: var(--color-gray-500);
+    
+                                    > figcaption {
+                                        // color: var(--color-gray-500);
+                                        font-size: 1.4rem;
+                                        line-height: 150%;
                                     }
-        
+    
                                     &::after {
                                         content: "";
                                         position: absolute;
                                         top: 0;
                                         left: 0;
-                                        background: linear-gradient(90deg, #000, rgba(0, 0, 0, 0));
                                         width: 100%;
                                         height: 100%;
-                                        z-index: -1;
+                                        background: linear-gradient(0deg, #0000007d, #00000000 50%);
+                                        backdrop-filter: blur(45px);
+                                        -webkit-backdrop-filter: blur(45px);
                                     }
-                                }
-            
-                                > .albumart {
-                                    height: 12rem;
-                                    width: 12rem;
-                                    /* object-fit: none; */
-                                    /* object-position: center; */
-                                    aspect-ratio: 1/1;
-                                    border-radius: 0.8rem;
                                 }
                             }
                         }
                     }
-
                 }
-                
-            }
-
-            // 날씨
-            &#weather {
-                padding-top: 25vh;
-
-                > section {
-                    &:last-child {
+    
+                // 이벤트
+                &#event {
+                    > img {
+                        width: 100%;
+                    }
+                }
+    
+                // 아티스트
+                &#artist {
+                    > .section-artist-container {
                         display: flex;
                         gap: 2.4rem;
-
+                        width: 100%;
+    
                         .item {
-                            height: 13.5rem;
-                            width: calc(100vw / 3);
-                            position: relative;
-                            border-radius: var(--border-radius);
-                            overflow: hidden;
-
-                            .info {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: flex-start;
-                                // color: white;
-                                padding: 2.4rem;
-
-                                // background-image: url("/images/common/img-common-cover-tile.png");
-                                // background-size: 100% 100%;
-
-                                > p,
-                                > figcaption {
-                                    text-align: left;
-                                    z-index: 10;
-                                }
-
-                                > p {
-                                    font-size: 1.8rem;
-                                    font-weight: 600;
-                                    margin-bottom: 0.8rem;
-
-                                    > strong {
-                                        font-family: "dotmatrix";
-                                        font-size: 2.0rem;
-                                        line-height: 150%;
-                                    }
-                                }
-
-                                > figcaption {
-                                    // color: var(--color-gray-500);
-                                    font-size: 1.4rem;
-                                    line-height: 150%;
-                                }
-
-                                &::after {
-                                    content: "";
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
+                            
+                            > figure {
+                                > img {
+                                    object-fit: cover;
                                     width: 100%;
-                                    height: 100%;
-                                    background: linear-gradient(0deg, #0000007d, #00000000 50%);
-                                    backdrop-filter: blur(45px);
-                                    -webkit-backdrop-filter: blur(45px);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // 플레이리스트
-            &#playlist {
-                > section {
-                    &:last-child {
-                        display: flex;
-                        gap: 2.4rem;
-
-                        .item {
-                            height: 13.5rem;
-                            width: calc(100vw / 3);
-                            position: relative;
-                            border-radius: var(--border-radius);
-                            overflow: hidden;
-
-                            .image {
-
-                            }
-
-                            .info {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: flex-start;
-                                // color: white;
-                                padding: 2.4rem;
-
-                                // background-image: url("/images/common/img-common-cover-tile.png");
-                                // background-size: 100% 100%;
-
-                                > p,
-                                > figcaption {
-                                    text-align: left;
-                                    z-index: 10;
-                                }
-
-                                > p {
-                                    font-size: 1.8rem;
-                                    font-weight: 600;
+                                    aspect-ratio: 1/1.2;
+                                    border-radius: var(--border-radius);
                                     margin-bottom: 0.8rem;
-
-                                    > strong {
-                                        font-family: "dotmatrix";
-                                        font-size: 2.0rem;
-                                        line-height: 150%;
-                                    }
                                 }
 
-                                > figcaption {
-                                    // color: var(--color-gray-500);
-                                    font-size: 1.4rem;
-                                    line-height: 150%;
-                                }
-
-                                &::after {
-                                    content: "";
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                    background: linear-gradient(0deg, #0000007d, #00000000 50%);
-                                    backdrop-filter: blur(45px);
-                                    -webkit-backdrop-filter: blur(45px);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // 이벤트
-            &#event {
-                > img {
-                    width: 100%;
-                }
-            }
-
-            // 아티스트
-            &#artist {
-                > .section-artist-container {
-                    display: flex;
-                    gap: 2.4rem;
-                    width: 100%;
-
-                    .item {
-                        flex: 1;
-                        position: relative;
-                        border-radius: var(--border-radius);
-                        overflow: hidden;
-                        aspect-ratio: 1 / 1;
-
-                        &:hover {
-                            > .info {
-                                background: rgb(0 0 0 / 0%);
-                                border: 8px solid rgba(255, 255, 255, 0.4392156863);
-                                backdrop-filter: blur(10px);
-                                -webkit-backdrop-filter: blur(10px);
-                            }
-                        }
-
-                        &:not(:hover) {
-                            > .info {
-                                border: 0px solid #ffffff70;
-                            }
-                        }
-
-                        // 장식
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            right: 0;
-                            background: var(--color-gray-900);
-                            width: 0.4rem;
-                            height: 2.4rem;
-                            transform: rotate(45deg);
-                        }
-
-                        > img {
-                            object-fit: cover;
-                            height: 240px;
-                            width: 100%;
-                            // border-radius: 10.0rem;
-                        }
-
-                        > .info {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            // background: #0000000e;
-                            color: white;
-                            // border-radius: var(--border-radius);
-                            transition: 0.25s;
-                            backdrop-filter: blur(0px);
-                            -webkit-backdrop-filter: blur(0px);
-                            z-index: 100;
-
-                            > section {
-                                position: absolute;
-
-                                &.artist {
-                                    top: 50%;
-                                    left: 0.8rem;
-                                    transform: translate(0, -50%);
-
-                                    > p {
-                                        font-size: 1.4rem;
-                                        color: rgba(255, 255, 255, 0.5);
-                                        font-weight: 900;
-                                    }
-
+                                .info {
                                     > figcaption {
-                                        font-size: 2.0rem;
-                                        font-weight: 600;
+                                        font-size: 1.8rem;
+                                        font-weight: 700;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-line-clamp: 2; 
+                                        -webkit-box-orient: vertical;
+                                        text-align: left;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                // 앨범
+                &#album {
+                    > .section-album-container {
+                        display: flex;
+                        gap: 2.4rem;
+    
+                        .item {
+                            width: calc(100vw / 6);
+                            position: relative;
+                            text-decoration: none;
+                            flex: 1;
+                            transition: 0.25s transform;
+    
+                            > img {
+                                width: 100%;
+                                margin-bottom: 1.2rem;
+                                border-radius: var(--border-radius);
+                            }
+    
+                            > .info {
+                                text-align: left;
+
+                                > figcaption {
+                                    font-size: 1.6rem;
+                                    font-weight: 700;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 1; 
+                                    -webkit-box-orient: vertical;
+                                    margin-bottom: 0.8rem;
+                                }
+    
+                                > p {
+                                    font-size: 1.4rem;
+                                    color: var(--color-gray-500);
+                                }
+                            }
+    
+                            &:hover {
+                                transform: scale(0.97);
+                            }
+                        }
+                    }
+                }
+    
+                // 최근 재생목록
+                &#recent {
+                    > .section-recent-container {
+                        display: flex;
+                        flex-wrap: wrap;
+                        row-gap: 0.8rem;
+                        column-gap: 1.2rem;
+    
+                        > figure {
+                            display: flex;
+                            align-items: center;
+                            width: calc(50% - 0.6rem);
+                            
+                            > img {
+                                border-radius: 1.2rem;
+                                height: 7.2rem;
+                                width: 7.2rem;
+                            }
+                            
+                            > .info {
+                                flex: 1;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                padding: 0 2.4rem;
+    
+                                > section {
+                                    &:first-child {
+                                        cursor: default;
+                                        
+                                        > figcaption {
+                                            font-size: 1.8rem;
+                                            font-weight: 600;
+                                            margin-bottom: 0.4rem;
+                                        }
+    
+                                        > p {
+                                            color: var(--color-gray-500);
+                                            font-size: 1.4rem;
+                                        }
+                                    }
+                                    &:last-child {
+                                        > button {
+                                            border: none;
+                                            background: none;
+                                            cursor: pointer;
+                                        }
                                     }
                                 }
     
-                                &.view {
-                                    bottom: 2.4rem;
-                                    left: 50%;
-                                    transform: translate(-50%, 0);
-
-                                    > h5 {
-                                        color: rgba(255, 255, 255, 0.5);
-                                    }
-                                }
-
                             }
                         }
                     }
                 }
-            }
-
-            // 앨범
-            &#album {
-                > .section-album-container {
-                    display: flex;
-                    gap: 2.4rem;
-
-                    .item {
-                        width: calc(100vw / 6);
-                        position: relative;
-                        text-decoration: none;
-                        flex: 1;
-                        transition: 0.25s transform;
-
-                        // 장식
-                        &::before {
-                            content: '';
-                            position: absolute;
-                            top: 1.2rem;
-                            right: calc(1.2rem * 2);
-                            background: white;
-                            width: 0.4rem;
-                            height: 2.4rem;
-                            transform: rotate(45deg);
-                        }
-
-                        > img {
-                            width: 100%;
-                            margin-bottom: 1.2rem;
-                            border-radius: var(--border-radius);
-                        }
-
-                        > .info {
-                            > figcaption {
-                                font-size: 1.6rem;
-                                font-weight: 700;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                display: -webkit-box;
-                                -webkit-line-clamp: 1; 
-                                -webkit-box-orient: vertical;
-                                margin-bottom: 0.8rem;
-                            }
-
-                            > p {
-                                font-size: 1.4rem;
-                                color: var(--color-gray-500);
-                            }
-                        }
-
-                        &:hover {
-                            transform: scale(0.97);
-                        }
-                    }
-                }
-            }
-
-            // 최근 재생목록
-            &#recent {
-                > .section-recent-container {
-                    display: flex;
-                    flex-wrap: wrap;
-                    row-gap: 0.8rem;
-                    column-gap: 1.2rem;
-
-                    > figure {
+    
+                // 각 섹션별 타이틀
+                > .section-title-container {
+                    margin-bottom: 1.6rem;
+    
+                    > h5 {
                         display: flex;
                         align-items: center;
-                        width: calc(50% - 0.6rem);
-                        
+                        gap: 0.4rem;
+                        font-weight: 700;
+                        font-size: 3.2rem;
+                        line-height: 1.5;
+    
                         > img {
-                            border-radius: 1.2rem;
-                            height: 7.2rem;
-                            width: 7.2rem;
-                        }
-                        
-                        > .info {
-                            flex: 1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            padding: 0 2.4rem;
-
-                            > section {
-                                &:first-child {
-                                    cursor: default;
-                                    
-                                    > figcaption {
-                                        font-size: 1.8rem;
-                                        font-weight: 600;
-                                        margin-bottom: 0.4rem;
-                                    }
-
-                                    > p {
-                                        color: var(--color-gray-500);
-                                        font-size: 1.4rem;
-                                    }
-                                }
-                                &:last-child {
-                                    > button {
-                                        border: none;
-                                        background: none;
-                                        cursor: pointer;
-                                    }
-                                }
-                            }
-
+                            width: 3.2rem;
                         }
                     }
-                }
-            }
-
-            // 각 섹션별 타이틀
-            > .section-title-container {
-                margin-bottom: 1.6rem;
-
-                > h5 {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.4rem;
-                    font-weight: 700;
-                    font-size: 3.2rem;
-                    line-height: 1.5;
-
-                    > img {
-                        width: 3.2rem;
+    
+                    > p {
+                        color: var(--color-gray-500);
+                        font-size: 1.6rem;
                     }
-                }
-
-                > p {
-                    color: var(--color-gray-500);
-                    font-size: 1.6rem;
                 }
             }
         }
