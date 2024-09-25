@@ -20,7 +20,10 @@ import utilArtist from "@/components/utils/util_artist";
 import IntroSection from "@/components/pages/home/IntroSection";
 import NoticeComponents from "@/components/common/NoticeComponents";
 
+import util from "@/api/util";
+
 const main = () => {
+    const [randNum, setRandNum] = useState(util.getRandomNum(10));
     const [playlist, setPlaylist] = useState([]);
     const [songList, setSongList] = useState([]);
     const [artistList, setArtistList] = useState([]);
@@ -84,7 +87,7 @@ const main = () => {
     return (
         <Fragment>
             {/* <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/> */}
-            <TodayWeatherSection DBWeatherImage={ imageData } />
+            <TodayWeatherSection DBWeatherImage={ imageData } select={randNum}/>
             <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } />
             <PlaylistSection DBPlaylist={ playlist } />

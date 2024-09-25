@@ -49,10 +49,7 @@ const WeatherSection = ({ DBWeather }) => {
 const ItemComponents = ({ data }) => {
     return(
         <Fragment>
-            <Link href="/weather" className="item main">
-                {/* <section className="image">
-                    <img src="https://t3.ftcdn.net/jpg/01/22/14/82/360_F_122148268_Q8WEYYO1hP83PLGlIKAP8VSHnGHbTfpk.jpg" alt="앨범아트" />
-                </section> */}
+            <Link href="/home" className="item main">
                 <section className="info">
                     <p>{util.getDayName(data.day)}</p>
                     <p className="degree">{util.convertCelcius(data.low)}° | {util.convertCelcius(data.high)}°</p>
