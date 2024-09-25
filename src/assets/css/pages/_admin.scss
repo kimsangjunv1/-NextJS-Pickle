@@ -46,8 +46,10 @@ main {
                             backdrop-filter: blur(80px);
                             
                             &#register {
-                                max-width: 20.0rem;
+                                max-width: 20rem;
                                 width: 100%;
+                                padding: 0;
+                                background: none;
 
                                 > .container-inner {
                                     position: sticky;
@@ -65,6 +67,17 @@ main {
 
                                             // 섹션 별 input
                                             > section {
+                                                width: 100%;
+                                                color: white;
+                                                background: rgba(0, 0, 0, 0.4196078431);
+                                                padding: 1.8rem;
+                                                border-radius: var(--border-radius);
+                                                text-align: center;
+                                                -webkit-backdrop-filter: blur(80px);
+                                                backdrop-filter: blur(80px);
+                                                border: none;
+                                                mix-blend-mode: soft-light;
+
                                                 &.title {
         
                                                 }
@@ -97,8 +110,15 @@ main {
         
                                                 > input {
                                                     width: 100%;
+                                                    color: white;
+                                                    background: rgba(73, 74, 96, 0.42);
+                                                    padding: 1.8rem;
+                                                    border-radius: var(--border-radius);
+                                                    text-align: center;
+                                                    -webkit-backdrop-filter: blur(80px);
+                                                    backdrop-filter: blur(80px);
                                                     border: none;
-                                                    border-bottom: 1px solid var(--color-gray-100);
+                                                    mix-blend-mode: soft-light;
                                                 }
                                             }
         
@@ -119,9 +139,16 @@ main {
 
                                         // 미리보기 섹션
                                         &:last-child {
-                                            background: var(--color-gray-50);
-                                            padding: 1.2rem;
-                                            color: var(--color-gray-500);
+                                            color: white;
+                                            background: rgba(73, 74, 96, 0.42);
+                                            padding: 1.8rem;
+                                            border-radius: var(--border-radius);
+                                            text-align: center;
+                                            -webkit-backdrop-filter: blur(80px);
+                                            backdrop-filter: blur(80px);
+                                            border: none;
+                                            mix-blend-mode: soft-light;
+                                            text-align: left;
 
                                             > h5 {
                                                 margin-bottom: 1.2rem;

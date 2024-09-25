@@ -85,11 +85,6 @@ const SectionInfoComponents = ({ data, dataSongs }) => {
                             <p>{data.name}</p>
                         </section>
         
-                        {/* <section>
-                            <h5>앨범수</h5>
-                            <div>{albums.length}</div>
-                            </section> */}
-        
                         <section>
                             <h5>곡수</h5>
                             <p>{dataSongs.length}</p>
@@ -104,19 +99,9 @@ const SectionInfoComponents = ({ data, dataSongs }) => {
                             <h5>장르</h5>
                             <div>{data.genreNames.map((e, i) => <span>{e}</span>)}</div>
                         </section>
-        
-                        {/* <section>
-                            <h5>최근 발매한 앨범</h5>
-                            <div>{data[data.length - 1]?.name}</div>
-                        </section>
-        
-                        <section>
-                            <h5>최근 발매한 노래</h5>
-                            <div>{data[data.length - 1]?.name}</div>
-                        </section> */}
                     </section>
                 </article>
-                : "asd"
+                : "정보를 가져오고 있어요..."
             }
         </Fragment>
     )

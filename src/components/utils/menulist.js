@@ -55,6 +55,18 @@ export const menuListAdmin = [
     // },
 ]
 
+export const weatherList = [
+    "Showers",
+    "Scattered Showers",
+    "Sunny",
+    "Mostly Sunny",
+    "Clear",
+    "Mostly Clear",
+    "Cloudy",
+    "Partly Cloudy",
+    "Thunderstorms"
+]
+
 export const dummySearchList = {
     "tracks": {
         "hits": [
@@ -775,7 +787,7 @@ export const dummyWeather = {
         "code": 26
       }
     ]
-  }
+}
 
 export const dummyArtistDetail = {
     "data": [

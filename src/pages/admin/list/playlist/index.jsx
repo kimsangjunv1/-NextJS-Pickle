@@ -1,9 +1,11 @@
 import React, { Fragment, useEffect, useState, useRef } from "react";
 
 import { menuListAdmin } from "@/components/utils/menulist";
+import { weatherList } from "@/components/utils/menulist";
 
 import SubPageLayout from "@/components/layout/SubPageLayout";
 import TitleComponents from "@/components/common/TitleComponents";
+
 import util from "@/api/util";
 import MainApi from "@/api/main/main_api";
 
@@ -32,9 +34,7 @@ const pageAdmin = () => {
 
             // 사전 저장 : 키워드
             case "keywords":
-                let value = props.current.value;
-                setKeywords([...keywords, value]);
-                props.current.value = "";
+                setKeywords([...keywords, props.value]);
 
                 break;
             
@@ -80,6 +80,8 @@ const pageAdmin = () => {
                 title={ title }
                 desc={ desc }
                 keywords={ keywords }
+
+                weatherList={ weatherList }
             />
 
             <SectionSearchComponents 
@@ -97,11 +99,9 @@ const pageAdmin = () => {
 
 // 섹션 : 등록
 const SectionRegisterComponents = ({
-        setTitle, setDesc, setKeywords, saveKeyword, confirm,
+        setTitle, setDesc, setKeywords, saveKeyword, confirm, weatherList,
         title, desc, keywords = [], setDelete
     }) => {
-
-    const keywordRef = useRef(null);
     const titleRef = useRef(null);
     const descRef = useRef(null);
 
@@ -120,9 +120,13 @@ const SectionRegisterComponents = ({
                     </section>
                     <section className="keyword">
                         <TitleComponents title={"키워드"} />
-                        {/* <input type="text" onChange={(e) => setKeywords(e.target.value)} ref={keywordRef}/> */}
-                        <input type="text" ref={keywordRef}/>
-                        <button type="button" onClick={() => saveKeyword(keywordRef, "keywords")}>삽입</button>
+                        <div>
+                            {weatherList.map((e, i) => 
+                                <button style={{color: "white"}} value={util.getRealWeatherName(e)} key={i} onClick={(e) => saveKeyword(e.target, "keywords")}>
+                                    {util.getRealWeatherName(e)}
+                                </button>
+                            )}
+                        </div>
                     </section>
                     <button onClick={() => confirm()}>저장</button>
                 </div>
