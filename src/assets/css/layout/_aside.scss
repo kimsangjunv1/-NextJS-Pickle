@@ -1,4 +1,13 @@
 aside {
+    color: white;
+    background: #0000006b;
+    padding: 1.8rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    backdrop-filter: blur(80px);
+    border: 1px solid #ffffff24;
+    mix-blend-mode: soft-light;
+    
     .side-menu-inner {
         position: sticky;
         top: var(--header-height);

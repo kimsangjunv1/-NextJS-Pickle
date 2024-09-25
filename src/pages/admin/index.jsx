@@ -25,8 +25,8 @@ const pageAdmin = () => {
         getList();
     }, []);
   return (
-    <SubPageLayout pageTitle={"음악관리"} pagePath={"admin"} menuList={menuListAdmin}>
-        <SectionDBComponents 
+    <SubPageLayout pageTitle={"관리자"} pagePath={"admin"} menuList={menuListAdmin} detailClassName={"admin"}>
+        <SectionDBComponents
             list={listDB}
         />
     </SubPageLayout>
@@ -37,15 +37,17 @@ const SectionDBComponents = ({ list }) => {
     return (
         <article>
             <TitleComponents title={"DB에 추가 되어있는 음악"} desc={`총 ${list.length}건이 검색되었어요`} />
-            <div className="list">
-                {list.map((e, i) =>
-                    <ItemDBComponents
-                        data={e}
-                        iconType={"rise"}
-                        index={i}
-                    />
-                )}
-            </div>
+            <section className="list">
+                <div className="contents">
+                    {list.map((e, i) =>
+                        <ItemDBComponents
+                            data={e}
+                            iconType={"rise"}
+                            index={i}
+                        />
+                    )}
+                </div>
+            </section>
         </article>
     )
 }
@@ -62,7 +64,20 @@ const ItemDBComponents = ({ data, iconType, index }) => {
                         <p>{data.subtitle}</p>
                     </div>
                     <div className="action">
-                        <button type="button" onClick={() => utilPlayer.addTrackOnList([{songId: data}])}>재생</button>
+                        <button 
+                            type="button"
+                            // onClick={() => utilPlayer.addTrackOnList([{songId: data}])}
+                            onClick={() => {
+                                let id = data.artists[0].adamid;
+                                let artist = data.subtitle;
+                                let title = data.title;
+                                let source = data.hub.actions[1].uri;
+                                let artwork = data.images?.coverart.replace("800x800","200x200").replace("400x400","200x200");
+
+                                let final = utilPlayer.setCompressOnMusic({ id, title, artist, source, artwork });
+                                utilPlayer.setCurrentTrack([final], "list");
+                            }}
+                        >재생</button>
                     </div>
                 </div>
             </label>

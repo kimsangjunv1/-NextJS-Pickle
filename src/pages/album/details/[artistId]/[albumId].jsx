@@ -70,7 +70,6 @@ const AlbumPage = () => {
 
 // 섹션 : 현재 앨범 정보
 const SectionInfoComponents = ({ data, dataSongs }) => {
-    console.log("eepdlxj", data)
     return (
         <Fragment>
             {Object.keys(data).length != 0 ? 

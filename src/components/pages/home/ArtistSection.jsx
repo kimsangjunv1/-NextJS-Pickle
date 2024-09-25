@@ -40,7 +40,6 @@ const ArtistSection = ({ songList }) => {
 
 // 공통 : 아티스트
 const ItemComponents = ({ data }) => {
-    console.log("들어온 값 ",data)
     return (
         <Link href={`/artist/details/${data.artists[0].adamid}`} className="item">
             <div className="info">

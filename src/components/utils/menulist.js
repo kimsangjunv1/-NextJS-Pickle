@@ -1,22 +1,22 @@
 export const menuListAdmin = [
-    {
-        title: "회원관리",
-        href: "account",
-        group: [
-            {
-                title: "가입한사람",
-                href: "",
-            },
-            {
-                title: "생성일자",
-                href: "",
-            },
-            {
-                title: "탈퇴멤버",
-                href: "",
-            }
-        ]
-    },
+    // {
+    //     title: "회원관리",
+    //     href: "account",
+    //     group: [
+    //         {
+    //             title: "가입한사람",
+    //             href: "",
+    //         },
+    //         {
+    //             title: "생성일자",
+    //             href: "",
+    //         },
+    //         {
+    //             title: "탈퇴멤버",
+    //             href: "",
+    //         }
+    //     ]
+    // },
     {
         title: "목록관리",
         href: "list",
@@ -25,34 +25,34 @@ export const menuListAdmin = [
                 title: "음악",
                 href: "list/music",
             },
-            {
-                title: "뮤직비디오",
-                href: "list/musicvideo",
-            },
+            // {
+            //     title: "뮤직비디오",
+            //     href: "list/musicvideo",
+            // },
             {
                 title: "플레이리스트",
                 href: "list/playlist",
             }
         ]
     },
-    {
-        title: "키워드 관리",
-        href: "keyword",
-        group: [
-            {
-                title: "날씨",
-                href: "",
-            },
-            {
-                title: "계절",
-                href: "",
-            },
-            {
-                title: "시간",
-                href: "",
-            }
-        ]
-    },
+    // {
+    //     title: "키워드 관리",
+    //     href: "keyword",
+    //     group: [
+    //         {
+    //             title: "날씨",
+    //             href: "",
+    //         },
+    //         {
+    //             title: "계절",
+    //             href: "",
+    //         },
+    //         {
+    //             title: "시간",
+    //             href: "",
+    //         }
+    //     ]
+    // },
 ]
 
 export const dummySearchList = {

@@ -68,7 +68,7 @@ const pageAdmin = () => {
     }, [])
 
     return (
-        <SubPageLayout pageTitle={"음악관리"} pagePath={"admin"} menuList={menuListAdmin}>
+        <SubPageLayout pageTitle={"관리자"} pagePath={"admin"} menuList={menuListAdmin} detailClassName={"admin"}>
             <SectionRegisterComponents
                 setTitle={(e) => setTitle(e)}
                 setDesc={(e) => setDesc(e)}
@@ -157,11 +157,13 @@ const SectionSearchComponents = ({ list, saveList }) => {
         <article id="songList">
             <TitleComponents title={`총 ${list.length}건이 검색되었어요`} />
 
-            <div className="list">
-                {list.map((e, i) =>
-                    <ItemDBComponents data={e} iconType={"rise"} index={i} saveList={(e, i) => saveList(e, i)}/>
-                )}
-            </div>
+            <section className="list">
+                <div className="contents">
+                    {list.map((e, i) =>
+                        <ItemDBComponents data={e} iconType={"rise"} index={i} saveList={(e, i) => saveList(e, i)}/>
+                    )}
+                </div>
+            </section>
         </article>
     )
 }
@@ -171,11 +173,13 @@ const SectionDBComponents = ({ list }) => {
     return (
         <article id="playList">
             <TitleComponents title={`총 ${list.length}건이 검색되었어요`} />
-            <div className="list">
-                {list.map((e, i) =>
-                    <ItemPlaylistComponents data={e} iconType={"rise"} index={i}/>
-                )}
-            </div>
+            <section className="list">
+                <div className="contents">
+                    {list.map((e, i) =>
+                        <ItemPlaylistComponents data={e} iconType={"rise"} index={i}/>
+                    )}
+                </div>
+            </section>
         </article>
     )
 }
@@ -186,16 +190,29 @@ const ItemDBComponents = ({ data, iconType, index, thumbnail, saveList }) => {
         <Fragment>
             <input type="checkbox" id={index} className="item" />
             <label htmlFor={index} onClick={() => saveList(data, "lists")}>
-                {/* {thumbnail.map((e, i) => 
-                    <img src={e} alt={`${i}번째 앨범 이미지`} />
-                )} */}
+                
+                <img src={data.images?.coverart.replace("400x400", "100x100").replace("800x800", "100x100")} alt={data.title} />
                 <div>
                     <div className="info">
                         <h5>{data.title}</h5>
                         <p>{data.subtitle}</p>
                     </div>
                     <div className="action">
-                        <img src={`/images/icon/ico-common-${iconType}.svg`} alt={`${iconType}`} />
+                        <button 
+                            type="button"
+                            onClick={() => {
+                                let id = data.artists[0].adamid;
+                                let artist = data.subtitle;
+                                let title = data.title;
+                                let source = data.hub.actions[1].uri;
+                                let artwork = data.images?.coverart.replace("800x800","200x200").replace("400x400","200x200");
+
+                                let final = utilPlayer.setCompressOnMusic({ id, title, artist, source, artwork });
+                                utilPlayer.setCurrentTrack([final], "list");
+                            }}
+                        >
+                            재생
+                        </button>
                     </div>
                 </div>
             </label>
@@ -217,9 +234,6 @@ const ItemPlaylistComponents = ({ data, iconType, index }) => {
                                 <span key={i}>{e}</span>
                             )}
                         </div>
-                    </div>
-                    <div className="action">
-                        <img src={`/images/icon/ico-common-${iconType}.svg`} alt={`${iconType}`} />
                     </div>
                 </div>
             </label>
