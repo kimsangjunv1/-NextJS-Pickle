@@ -44,7 +44,9 @@ export default class MainApi extends ApiPickle {
     if (util.checkResult(res)) {
       return res.data;
     } else {
+      // 실패 시 기본값을 반환하거나 에러 처리
       util.handleFailedMsg(res);
+      // return [];  // 빈 배열 또는 기본 객체를 반환
     }
   }
 

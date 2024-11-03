@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment, useState, useMemo, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Link from "next/link";
@@ -12,6 +12,13 @@ import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
 const PlaylistSection = ({ DBPlaylist }) => {
+    const [ list, setList ] = useState([]);
+
+    const memoizedList = useMemo(() => DBPlaylist ? DBPlaylist : DBPlaylist = [], [DBPlaylist]);
+
+    useEffect(() => {
+        setList(memoizedList);
+    }, [memoizedList]);
     return (
         <Article id={"playlist"}>
             <TitleComponents
@@ -21,7 +28,7 @@ const PlaylistSection = ({ DBPlaylist }) => {
             />
             
             <section className="section-playlist-container">
-                {DBPlaylist.length ? 
+                {list.length ? 
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={6}

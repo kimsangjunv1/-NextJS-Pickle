@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Article from "@/components/layout/Article";
@@ -9,12 +9,15 @@ import Image from "next/image";
 
 import util from "@/api/util";
 
-const IntroSection = ({ DBPlaylist }) => {
+const IntroSection = ({ DBPlaylist}) => {
     const [ list, setList ] = useState([]);
 
+    const memoizedList = useMemo(() => DBPlaylist ? DBPlaylist.filter((e, i) => i <= 3) : DBPlaylist = [], [DBPlaylist]);
+
     useEffect(() => {
-        setList(DBPlaylist.filter((e, i) => i <= 3));
-    }, [DBPlaylist])
+        setList(memoizedList);
+    }, [memoizedList]);
+
     return (
         <Article id={"intro"}>
             {list.length ?

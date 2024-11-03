@@ -9,7 +9,7 @@ import TitleComponents from "@/components/common/TitleComponents";
 import SkeletonComponents from "@/components/common/SkeletonComponents";
 
 // 섹션 : 아티스트
-const ArtistSection = ({ songList }) => {
+const ArtistSection = ({ songList = [] }) => {
     return (
         <Article id={"artist"}>
             {/* 제목 */}

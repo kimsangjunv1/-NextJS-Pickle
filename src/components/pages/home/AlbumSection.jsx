@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import TitleComponents from "@/components/common/TitleComponents";
@@ -12,7 +12,7 @@ import util from "@/api/util";
 
 
 // 섹션 : 앨범
-const AlbumSection = ({ albumList, artistList }) => {
+const AlbumSection = ({ albumList }) => {
     const [ list, setList ] = useState([]);
 
     // 함수 : 랜덤으로 10개 데이터 재가공
@@ -29,9 +29,11 @@ const AlbumSection = ({ albumList, artistList }) => {
         return mappingData;
     }
 
+    const memoizedList = useMemo(() => albumList ? albumList : albumList = [], [albumList]);
+
     useEffect(() => {
-        setList(convertData(albumList));
-    }, [albumList])
+        setList(convertData(memoizedList));
+    }, [memoizedList]);
 
     return (
         <Article id={"album"}>
