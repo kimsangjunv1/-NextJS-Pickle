@@ -52,4 +52,14 @@ const index = () => {
     )
 }
 
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "플레이리스트",
+            description: "플레이리스트 페이지 입니다.",
+            currentPage: "playlist",
+        },
+    };
+}
+
 export default index

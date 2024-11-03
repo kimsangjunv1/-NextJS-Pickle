@@ -49,4 +49,14 @@ const index = () => {
     )
 }
 
+export async function getStaticProps() {
+    return {
+        props: {
+            title: "아티스트",
+            description: "아티스트 페이지 입니다.",
+            currentPage: "artist",
+        },
+    };
+}
+
 export default index
