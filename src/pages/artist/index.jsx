@@ -32,17 +32,21 @@ const index = () => {
             <article id="all">
                 {/* <TitleComponents title={"모든 아티스트"} /> */}
                 <section className="list">
-                    {list.map((e, i) =>
-                        <Link href={`/artist/details/${e.id}`} className="item" key={i}>
-                            <div className="image">
-                                <img src={e.attributes.artwork.url.replace("{w}x{h}","200x200")} alt="" />
-                            </div>
-                            <div className="info">
-                                <p>{e.attributes.name}</p>
-                                {/* <figcaption>{e.title}</figcaption> */}
-                            </div>
-                        </Link>
-                    )}
+                    {Object.keys(list).length != 0 ? 
+                    <Fragment>
+                        {list.map((e, i) =>
+                            <Link href={`/artist/details/${e.id}`} className="item" key={i}>
+                                <div className="image">
+                                    <img src={e.attributes.artwork.url.replace("{w}x{h}","200x200")} alt="" />
+                                </div>
+                                <div className="info">
+                                    <p>{e.attributes.name}</p>
+                                    {/* <figcaption>{e.title}</figcaption> */}
+                                </div>
+                            </Link>
+                        )}
+                    </Fragment>
+                    : "정보를 가져오는 중입니다.."}
                 </section>
             </article>
         </SubPageLayout>

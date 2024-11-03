@@ -43,17 +43,26 @@ main {
                                             -webkit-backdrop-filter: blur(20px);
                                             mix-blend-mode: hard-light;
                                             // color: white;
+
+                                            > p,
+                                            > figcaption {
+                                                line-height: 1.5;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                display: -webkit-box;
+                                                -webkit-line-clamp: 2;
+                                                -webkit-box-orient: vertical;
+                                            }
         
                                             > p {
-                                                font-weight: 700;
                                                 font-size: 1.6rem;
+                                                font-weight: 700;
                                                 margin-bottom: 0.4rem;
                                             }
                                             
                                             > figcaption {
                                                 font-size: 1.2rem;
-                                                color: rgb(0 0 0 / 50%);
-                                                font-weight: 700;
+                                                color: var(--color-gray-300);
                                             }
                                         }
                                     }

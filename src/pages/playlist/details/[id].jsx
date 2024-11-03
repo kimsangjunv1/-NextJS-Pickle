@@ -27,8 +27,13 @@ const AlbumPage = () => {
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"details"}>
             <Fragment>
-                <SectionInfoComponents desc={ list.desc } keywords={ list.keywords } title={ list.title } list={ list.list }/>
-                <SectionListComponents list={ list.list }/>
+                {Object.keys(list).length != 0 ?
+                    <Fragment>
+                        <SectionInfoComponents desc={ list.desc } keywords={ list.keywords } title={ list.title } list={ list.list }/>
+                        <SectionListComponents list={ list.list }/>
+                    </Fragment>
+                    : "정보를 가져오고 있어요.."
+                }
             </Fragment>
         </SubPageLayout>
     )
@@ -52,6 +57,7 @@ const SectionInfoComponents = ({ desc, keywords = [], title, list = [] }) => {
                     </button>
                 </section>
             </section>
+
             <section className="description">
                 <section>
                     <h5>플레이리스트 이름</h5>

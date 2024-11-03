@@ -29,23 +29,27 @@ const index = () => {
             <article id="all">
                 {/* <TitleComponents title={"모든 플레이리스트"} /> */}
                 <section className="list">
-                    {list.map((e, i) =>
-                        <Link href={`/playlist/details/${e._id}`} className="item" key={i}>
-                            <div className="image">
-                                {e.list.map((e, i) => {
-                                    return(
-                                        <Fragment key={i}>
-                                            {i <= 3 && <img src={e.albumImage} alt="" />}
-                                        </Fragment>
-                                    )
-                                })}
-                            </div>
-                            <div className="info">
-                                <p>{e.desc}</p>
-                                <figcaption>{e.title}</figcaption>
-                            </div>
-                        </Link>
-                    )}
+                    {Object.keys(list).length != 0 ? 
+                    <Fragment>
+                        {list.map((e, i) =>
+                            <Link href={`/playlist/details/${e._id}`} className="item" key={i}>
+                                <div className="image">
+                                    {e.list.map((e, i) => {
+                                        return(
+                                            <Fragment key={i}>
+                                                {i <= 3 && <img src={e.albumImage} alt="" />}
+                                            </Fragment>
+                                        )
+                                    })}
+                                </div>
+                                <div className="info">
+                                    <p>{e.desc}</p>
+                                    <figcaption>{e.title}</figcaption>
+                                </div>
+                            </Link>
+                        )}
+                    </Fragment>
+                    : "정보를 가져오는 중입니다.."}
                 </section>
             </article>
         </SubPageLayout>
