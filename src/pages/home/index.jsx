@@ -59,10 +59,10 @@ const main = () => {
             <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
             <TodayWeatherSection DBWeatherImage={ imageData } select={ util.getRandomNum(10) }/>
             <WeatherSection DBWeather={ weatherData } />
-            <IntroSection DBPlaylist={ playlist } />
-            <PlaylistSection DBPlaylist={ playlist } />
-            <ArtistSection songList={ songList }/>
-            <AlbumSection albumList={ artistList && utilArtist.getArtistAlbumId(artistList) }/>
+            <IntroSection DBPlaylist={ playlist } loading={ playlistLoading }/>
+            <PlaylistSection DBPlaylist={ playlist } loading={ playlistLoading }/>
+            <ArtistSection songList={ songList } loading={ songListLoading }/>
+            <AlbumSection albumList={ artistList && utilArtist.getArtistAlbumId(artistList) } loading={ artistListLoading }/>
             {/* <RecentSection /> */}
         </Fragment>
     )

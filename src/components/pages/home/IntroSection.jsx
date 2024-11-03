@@ -9,7 +9,7 @@ import Image from "next/image";
 
 import util from "@/api/util";
 
-const IntroSection = ({ DBPlaylist}) => {
+const IntroSection = ({ DBPlaylist, loading }) => {
     const [ list, setList ] = useState([]);
 
     const memoizedList = useMemo(() => DBPlaylist ? DBPlaylist.filter((e, i) => i <= 3) : DBPlaylist = [], [DBPlaylist]);
@@ -20,11 +20,10 @@ const IntroSection = ({ DBPlaylist}) => {
 
     return (
         <Article id={"intro"}>
-            {list.length ?
+            {!loading ?
                 <Swiper
                     spaceBetween={8}
                     slidesPerView={2}
-                    // slidesPerView={"auto"}
                     pagination={{
                         type: "progressbar",
                     }}
@@ -54,13 +53,6 @@ const ItemComponents = ({ desc, keywords, list, title, id, date }) => {
                 </div>
 
                 <img src={list[0].albumImage.replace("800x800","150x150").replace("400x400","150x150")} alt="/" className="albumart" />
-                {/* <Image
-                    src="/images/common/img-dummy-playlistart.png"
-                    layout="fill"
-                    alt="더미"
-                    className="albumart"
-                /> */}
-                {/* <img src="/images/common/img-dummy-playlistart.png" alt="/" className="albumart" /> */}
             </figure>
         </Link>
     )

@@ -11,7 +11,7 @@ import SkeletonComponents from "@/components/common/SkeletonComponents";
 import util from "@/api/util";
 
 // 섹션 : 메인 - 플레이리스트
-const PlaylistSection = ({ DBPlaylist }) => {
+const PlaylistSection = ({ DBPlaylist, loading }) => {
     const [ list, setList ] = useState([]);
 
     const memoizedList = useMemo(() => DBPlaylist ? DBPlaylist : DBPlaylist = [], [DBPlaylist]);
@@ -28,7 +28,7 @@ const PlaylistSection = ({ DBPlaylist }) => {
             />
             
             <section className="section-playlist-container">
-                {list.length ? 
+                {!loading ? 
                     <Swiper
                         spaceBetween={8}
                         slidesPerView={6}

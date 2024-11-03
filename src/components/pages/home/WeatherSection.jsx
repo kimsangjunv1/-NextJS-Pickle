@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Suspense } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Link from "next/link";

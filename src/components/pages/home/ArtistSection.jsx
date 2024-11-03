@@ -9,7 +9,7 @@ import TitleComponents from "@/components/common/TitleComponents";
 import SkeletonComponents from "@/components/common/SkeletonComponents";
 
 // 섹션 : 아티스트
-const ArtistSection = ({ songList = [] }) => {
+const ArtistSection = ({ songList = [], loading }) => {
     return (
         <Article id={"artist"}>
             {/* 제목 */}
@@ -26,7 +26,7 @@ const ArtistSection = ({ songList = [] }) => {
                     spaceBetween={8}
                     slidesPerView={6}
                 >    
-                    {songList.length ? songList.map((e, i) => 
+                    {!loading ? songList.map((e, i) => 
                         <SwiperSlide key={i}>
                             <ItemComponents data={e} />
                         </SwiperSlide>
