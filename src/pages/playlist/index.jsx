@@ -4,8 +4,10 @@ import SubPageLayout from "@/components/layout/SubPageLayout";
 import TitleComponents from "@/components/common/TitleComponents";
 import Link from "next/link";
 
+import { useQuery } from "@tanstack/react-query";
+
 const index = () => {
-    const [ list, setList ] = useState([]);
+    // const [ list, setList ] = useState([]);
 
     const apiMain = new MainApi();
 
@@ -14,9 +16,17 @@ const index = () => {
         setList(await apiMain.getPlayList());
     };
 
-    useEffect(() => {
-        getApiData();
-    }, []);
+    const { data: playlist, isLoading: playlistLoading } = useQuery({
+        queryKey: ["playlist"],
+        queryFn: async () => {
+            const apiMain = new MainApi();
+            return await apiMain.getPlayList();
+        }
+    });
+
+    // useEffect(() => {
+    //     getApiData();
+    // }, []);
 
     return (
         <SubPageLayout pageTitle={"플레이리스트"} pagePath={"playlist"} detailClassName={"main"}>
@@ -29,26 +39,26 @@ const index = () => {
             <article id="all">
                 {/* <TitleComponents title={"모든 플레이리스트"} /> */}
                 <section className="list">
-                    {Object.keys(list).length != 0 ? 
-                    <Fragment>
-                        {list.map((e, i) =>
-                            <Link href={`/playlist/details/${e._id}`} className="item" key={i}>
-                                <div className="image">
-                                    {e.list.map((e, i) => {
-                                        return(
-                                            <Fragment key={i}>
-                                                {i <= 3 && <img src={e.albumImage} alt="" />}
-                                            </Fragment>
-                                        )
-                                    })}
-                                </div>
-                                <div className="info">
-                                    <p>{e.desc}</p>
-                                    <figcaption>{e.title}</figcaption>
-                                </div>
-                            </Link>
-                        )}
-                    </Fragment>
+                    {!playlistLoading ? 
+                        <Fragment>
+                            {playlist.map((e, i) =>
+                                <Link href={`/playlist/details/${e._id}`} className="item" key={i}>
+                                    <div className="image">
+                                        {e.list.map((e, i) => {
+                                            return(
+                                                <Fragment key={i}>
+                                                    {i <= 3 && <img src={e.albumImage} alt="" />}
+                                                </Fragment>
+                                            )
+                                        })}
+                                    </div>
+                                    <div className="info">
+                                        <p>{e.desc}</p>
+                                        <figcaption>{e.title}</figcaption>
+                                    </div>
+                                </Link>
+                            )}
+                        </Fragment>
                     : "정보를 가져오는 중입니다.."}
                 </section>
             </article>

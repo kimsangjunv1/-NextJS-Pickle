@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import TodayWeatherSection from "@/components/pages/home/TodayWeatherSection";
@@ -23,6 +23,10 @@ import util from "@/api/util";
 const main = () => {
     const { weatherData } = useWeather();
     const { imageData } = useImage(weatherData?.current_observation?.condition.text);
+    const [ randNum, setRandNum ] = useState(0);
+
+    // weatherData가 새로 로딩 될때만 랜덤 실행
+    useEffect(() => setRandNum(util.getRandomNum(10)), [weatherData]);
 
     const { data: playlist, isLoading: playlistLoading } = useQuery({
         queryKey: ["playlist"],
@@ -53,7 +57,7 @@ const main = () => {
     return (
         <Fragment>
             <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
-            <TodayWeatherSection DBWeatherImage={ imageData } select={ util.getRandomNum(10) }/>
+            <TodayWeatherSection DBWeatherImage={ imageData } select={ randNum }/>
             <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } loading={ playlistLoading }/>
             <PlaylistSection DBPlaylist={ playlist } loading={ playlistLoading }/>
