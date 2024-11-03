@@ -49,10 +49,6 @@ const main = () => {
         },
         enabled: !!songList, // user 데이터가 있을 때만 실행
     });
-
-    // useEffect(() => {
-    //     console.log("playlistLoading, songListLoading, artistListLoading", playlistLoading, songListLoading, artistListLoading)
-    // }, [playlistLoading, songListLoading, artistListLoading])
     
     return (
         <Fragment>

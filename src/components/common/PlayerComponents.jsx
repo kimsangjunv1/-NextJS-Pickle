@@ -19,17 +19,20 @@ const PlayerComponents = () => {
     } = usePlayerStore((state) => state);
 
     const getPlayState = () => {
-        utilPlayer.setPlayState(isPlaying);
+        utilPlayer.setPlayState();
     }
 
     // 감지 : 트랙리스트
     useEffect(() => {
         utilPlayer.setCurrentTrack(trackList);
+        utilPlayer.setProgress(elementInfo);
+        utilPlayer.setPlayState(true);
     }, [trackList])
-
-    // 감지 : 현재 트랙 번호
+    
+    // 감지 : 음악 진행 상태
     useEffect(() => {
-    }, [currentTrackIndex])
+        utilPlayer.setProgress(elementInfo);
+    }, [elementInfo])
 
     // 감지 : 재생 상태
     useEffect(() => {
@@ -42,7 +45,7 @@ const PlayerComponents = () => {
             <section id="min" className={`player show`} onClick={() => utilPlayer.setPlayerSize(isNeedSizeMax)}>
                 <div className="player-inner">
                     <MinimizeComponents
-                        setState={() => utilPlayer.setPlayState(isPlaying)}
+                        setState={() => utilPlayer.setPlayState()}
                         setPlayState={() => utilPlayer.setPlaying(refAudio, isPlaying)}
                         setExpandPlayer={() => utilPlayer.setPlayerSize(isNeedSizeMax)}
                         setProgress={(e, i, k, j) => setElementInfo({e, i, k, j, refAudio, getPlayState})}
@@ -144,12 +147,14 @@ const MinimizeComponents = ({
             {/* 재생/다음/이전/숨김&보임 버튼 */}
             <section className="action">
                 <section className="playtime">
-                    <span className="estimated" ref={refEstimatedTime}>00:00</span>
-                    <span className="finished" ref={refFinishTime}>03:50</span>
+                    <span className="estimated" ref={refEstimatedTime}>0:00</span>
+                    <span className="finished" ref={refFinishTime}>1:29</span>
                 </section>
                 <section className="buttons">
                     <button type="button" onClick={(e) => {
                         e.stopPropagation();
+                        setState();
+                        // setPlayState();
                         utilPlayer.setCurrentTrack(trackList, "prev")
                     }}>
                         <img src="/images/icon/ico-common-prev.svg" alt="이전 곡" />
@@ -165,6 +170,8 @@ const MinimizeComponents = ({
 
                     <button type="button" onClick={(e) => {
                         e.stopPropagation();
+                        setState();
+                        // setPlayState();
                         utilPlayer.setCurrentTrack(trackList, "next")
                     }}>
                         <img src="/images/icon/ico-common-next.svg" alt="다음 곡" />

@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 const usePlayerStore = create((set) => ({
-  isPlaying: true,
+  isPlaying: false,
   isNeedSizeMax: 2,
   currentTrackIndex: 0,
 

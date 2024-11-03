@@ -2,11 +2,11 @@ import usePlayerStore from "@/store/playerStore";
 
 const utilPlayer = {
     // 함수 : 재생 상태 세팅
-    setPlayState: () => {
+    setPlayState: (state) => {
         const isPlaying = usePlayerStore.getState().isPlaying;
         const setIsPlaying = usePlayerStore.getState().setIsPlaying;
-        
-        setIsPlaying(!isPlaying);
+
+        setIsPlaying(state !== undefined ? state : !isPlaying);
     },
 
     // 함수 : 음원 재생
@@ -111,7 +111,6 @@ const utilPlayer = {
 
         let progressWidth = progress?.clientWidth //진행바 전체 길이
         let duration = audio?.duration //오디오 전체 길이
-
         let isDragging = false;
 
         const updateCurrentTime = (e) => {
@@ -147,6 +146,27 @@ const utilPlayer = {
             isDragging = false;
         };
 
+        // 함수 : 현재 시간 세팅
+        const setCurrentTime = (currentTime) => {
+            let currentMin = Math.floor(currentTime / 60)
+            let currentSec = Math.floor(currentTime % 60)
+
+            if (currentSec < 10) currentSec = `0${currentSec}`
+
+            timeEstimated.innerText = `${currentMin}:${currentSec}`
+        }
+
+        // 함수 : 총 시간 세팅
+        const setTotalTime = () => {
+            let audioDuration = audio.duration
+            let totalMin = Math.floor(audioDuration / 60) //전체 시간을 분단위로 쪼개줌
+            let totalSec = Math.floor(audioDuration % 60) //남은 초를 저장
+            
+            if (totalSec < 10) totalSec = `0${totalSec}` //초가 한 자릿수일때 앞에 0을 붙임
+            
+            timeFinish.textContent = `${totalMin}:${totalSec}` //완성된 시간 문자열을 출력
+        }
+
         progress?.addEventListener("mousedown", startDrag);
         progress?.addEventListener("touchstart", startDrag, { passive: true });
 
@@ -156,37 +176,23 @@ const utilPlayer = {
         document.addEventListener("mouseup", stopDrag);
         document.addEventListener("touchend", stopDrag);
 
+        audio?.addEventListener("canplay", setTotalTime);
         audio?.addEventListener("timeupdate", (e) => {
-            const currentTime = e.target.currentTime
-            const duration = e.target.duration
+            const currentTime = e.target.currentTime;
+            const duration = e.target.duration;
 
-            let progressWidth = (currentTime / duration) * 100 //전체 길이에서 현재 진행되는 시간을 백분위로 나눔
+            let progressWidth = (currentTime / duration) * 100; //전체 길이에서 현재 진행되는 시간을 백분위로 나눔
 
-            progressBar.style.width = `${progressWidth}%`
+            progressBar.style.width = `${progressWidth}%`;
 
             //전체 시간
             if (timeEstimated && timeFinish) {
-                audio.addEventListener("loadeddata", () => {
-                    let audioDuration = audio.duration
-                    let totalMin = Math.floor(audioDuration / 60) //전체 시간을 분단위로 쪼개줌
-                    let totalSec = Math.floor(audioDuration % 60) //남은 초를 저장
+                audio.addEventListener("loadeddata", () => setTotalTime());
+                
+                setTotalTime();     // 음악 총 시간 세팅
+                setCurrentTime(currentTime);   // 음악 현재 시간 세팅
 
-                    if (totalSec < 10) totalSec = `0${totalSec}` //초가 한 자릿수일때 앞에 0을 붙임
-
-                    timeFinish.textContent = `${totalMin}:${totalSec}` //완성된 시간 문자열을 출력
-                })
-    
-                //진행시간
-                let currentMin = Math.floor(currentTime / 60)
-                let currentSec = Math.floor(currentTime % 60)
-
-                if (currentSec < 10) currentSec = `0${currentSec}`
-
-                timeEstimated.innerText = `${currentMin}:${currentSec}`
-
-                if (audio.duration == currentTime) {
-                    getPlayState();
-                }
+                if (audio.duration == currentTime) getPlayState();
             }
         })
     },
