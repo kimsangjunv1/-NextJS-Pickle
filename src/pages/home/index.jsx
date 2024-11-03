@@ -42,7 +42,7 @@ const main = () => {
             const apiMain = new MainApi();
             return await apiMain.getSongSearchList(utilArtist.getMainArtistList(playlist));
         },
-        enabled: !!playlist, // user 데이터가 있을 때만 실행
+        enabled: !!playlist, // playlist 데이터가 있을 때만 실행
     });
 
     const { data: artistList, isLoading: artistListLoading } = useQuery({
@@ -51,12 +51,12 @@ const main = () => {
             const apiMain = new MainApi();
             return await apiMain.getMultipleArtists(utilArtist.getSongAdamid(songList));
         },
-        enabled: !!songList, // user 데이터가 있을 때만 실행
+        enabled: !!songList, // songList 데이터가 있을 때만 실행
     });
     
     return (
         <Fragment>
-            <NoticeComponents title={"2024.09.20 | 현재 개선 중 입니다."}/>
+            {/* <NoticeComponents title={"2024.10.21 | 현재 개선 중 입니다."}/> */}
             <TodayWeatherSection DBWeatherImage={ imageData } select={ randNum }/>
             <WeatherSection DBWeather={ weatherData } />
             <IntroSection DBPlaylist={ playlist } loading={ playlistLoading }/>
